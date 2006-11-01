@@ -26,7 +26,8 @@
 <!ENTITY digglerShowToolsAsSubmenu.label "Show the tools as a submenu">
 
 <!ENTITY digglerAbout.label "About &diggler.label;">
-<!ENTITY digglerAboutBlurb.label "Original Diggler written and copyright 2002-2004 Adam Lock &lt;adamlock@eircom.net&gt;.\nFirefox 2 Neo Diggler (C) 2006 Neil Bird. Distributed under the terms of the MPL.">
+<!ENTITY digglerAboutBlurb.label1 "Original Diggler written and copyright 2002-2004 Adam Lock &lt;adamlock@eircom.net&gt;.">
+<!ENTITY digglerAboutBlurb.label2 "Firefox 2 Neo Diggler (C) 2006 Neil Bird. Distributed under the terms of the MPL.">
 
 <!-- Tools related stuff -->
 <!ENTITY digglerAddTool.label "Add...">

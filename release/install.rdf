@@ -9,8 +9,8 @@
     <em:id>{9b84cce7-a817-45d7-865e-9e6e8da1c388}</em:id>
     <em:type>2</em:type>
     <em:description>A URL manipulation tool for power users</em:description>
-    <em:creator>Neil Bird [mozilla@fnxweb.com] - Firefox 2 port</em:contributor>
-    <em:contributor>Adam Lock - original Firefox 1 author</em:creator>
+    <em:creator>Neil Bird [mozilla@fnxweb.com] - Firefox 2 port</em:creator>
+    <em:contributor>Adam Lock - original Firefox 1 author</em:contributor>
     <em:optionsURL>chrome://diggler/content/diggler-fb-settings.xul</em:optionsURL>
     <!-- <em:homepageURL>http://diggler.mozdev.org/</em:homepageURL> -->
 

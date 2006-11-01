@@ -115,7 +115,8 @@
     </groupbox>
 
     <groupbox id="pref-diggler-author-blurb">
-      <description>&digglerAboutBlurb.label;</description>
+      <description>&digglerAboutBlurb.label1;</description>
+      <description>&digglerAboutBlurb.label2;</description>
       <label id="digglerHome" onclick="digglerLoadHome()" value="http://diggler.mozdev.org/"/>
     </groupbox>
   </vbox>
