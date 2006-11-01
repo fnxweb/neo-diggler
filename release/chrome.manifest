@@ -1,0 +1,19 @@
+content diggler jar:chrome/diggler.jar!/content/
+
+# Firefox
+overlay chrome://browser/content/browser.xul chrome://diggler/content/digglerOverlay.xul
+
+# Mozilla; I'm not supporting this for now
+##overlay chrome://navigator/content/navigator.xul chrome://diggler/content/digglerOverlay.xul
+
+# Prefs. in main pref. window - TBD for FF2
+##overlay chrome://communicator/content/pref/pref-navigator.xul chrome://diggler/content/digglerPrefOverlay.xul
+##overlay chrome://communicator/content/pref/preftree.xul chrome://diggler/content/digglerPrefOverlay.xul
+
+# Locales
+locale diggler en-US jar:chrome/diggler.jar!/locale/en-US/
+locale diggler es-ES jar:chrome/diggler.jar!/locale/en-US/
+
+# Toolbar button
+skin diggler modern/1.0 jar:chrome/diggler.jar!/skin/modern/
+style chrome://global/content/customizeToolbar.xul chrome://diggler/skin/diggler.css

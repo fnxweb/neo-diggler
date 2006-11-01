@@ -1,0 +1,30 @@
+<!-- The name of the application -->
+<!ENTITY diggler.label         "Diggler">
+
+<!ENTITY digglerButton.label   "&diggler.label;">
+<!ENTITY digglerClear.label    "Borrar dirección">
+<!ENTITY digglerClear.tooltip  "Borrar la dirección actual">
+<!ENTITY digglerPopupKiller.label "Permitir ventanas emergentes">
+
+<!ENTITY digglerImageOff.label   "No mostrar imágenes">
+<!ENTITY digglerImageOnLocal.label   "Mostrar imágenes del mismo sitio">
+<!ENTITY digglerImageOn.label   "Mostrar todas las imágenes">
+
+<!ENTITY digglerNewTab.label   "Nueva pestaña">
+
+<!ENTITY digglerGoogle.label   "Buscar en Google">
+<!ENTITY digglerArchive.label  "Buscar en Archive.org">
+
+<!ENTITY digglerPrefTitle.label "Configuración de &diggler.label;">
+<!ENTITY digglerPrefGeneral.label "Configuración General">
+<!ENTITY digglerPrefEnabled.label "Mostrar el botón de &diggler.label;">
+<!ENTITY digglerShowPopupControls.label "Mostrar las opciones para controlar las ventanas emergentes">
+<!ENTITY digglerShowTabControls.label "Mostrar las opciones relativas a la navegación en pestañas">
+<!ENTITY digglerShowImageControls.label "Mostrar las opciones para controlar la carga de imágenes">
+
+<!ENTITY digglerPrefTools.label "Configuración de herramientas">
+<!ENTITY digglerShowTools.label "Mostrar el submenú de herramientas">
+
+<!ENTITY digglerAbout.label "Sobre &diggler.label;">
+<!ENTITY digglerAboutBlurb.label "Diggler escrito y copyright 2002-2004 Adam Lock &lt;adamlock@eircom.net&gt;.\nFirefox 2 Neo Diggler (C) 2006 Neil Bird. Distribuido bajo los términos de la MPL.">
+

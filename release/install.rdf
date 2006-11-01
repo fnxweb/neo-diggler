@@ -4,35 +4,23 @@
      xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 
   <Description about="urn:mozilla:install-manifest">
-    <em:id>{583102ea-1697-4aee-bd9b-9757892e6a5b}</em:id>
-    <em:version>0.9</em:version>
-      
-    <!-- Target Application this extension can install into -->
+    <em:name>Neo Diggler</em:name>
+    <em:version>1.0.0</em:version>
+    <em:id>{9b84cce7-a817-45d7-865e-9e6e8da1c388}</em:id>
+    <em:type>2</em:type>
+    <em:description>A URL manipulation tool for power users</em:description>
+    <em:creator>Neil Bird [mozilla@fnxweb.com] - Firefox 2 port</em:contributor>
+    <em:contributor>Adam Lock - original Firefox 1 author</em:creator>
+    <em:optionsURL>chrome://diggler/content/diggler-fb-settings.xul</em:optionsURL>
+    <!-- <em:homepageURL>http://diggler.mozdev.org/</em:homepageURL> -->
+
+    <!-- Firefox -->
     <em:targetApplication>
       <Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-        <em:minVersion>0.9</em:minVersion>
-        <em:maxVersion>1.0</em:maxVersion>
-      </Description>          
-    </em:targetApplication>
-      
-    <!-- Front End MetaData -->
-    <em:name>Diggler</em:name>
-    <em:description>A URL manipulation tool for power users</em:description>
-    <em:creator>Adam Lock</em:creator>
-    <em:homepageURL>http://diggler.mozdev.org/</em:homepageURL>
-      
-    <!-- Front End Integration Hooks (used by Extension Manager)-->
-    <em:optionsURL>chrome://diggler/content/diggler-fb-settings.xul</em:optionsURL>
-      
-    <!-- Packages, Skins and Locales that this extension registers -->
-    <em:file>
-      <Description about="urn:mozilla:extension:file:diggler.jar">
-        <em:package>content/diggler/</em:package>
-        <em:locale>locale/en-US/diggler/</em:locale>
-        <em:skin>skin/modern/diggler/</em:skin>
+        <em:minVersion>1.5</em:minVersion>
+        <em:maxVersion>2.0.0.*</em:maxVersion>
       </Description>
-    </em:file>
-  </Description>
+    </em:targetApplication>
 
 </RDF>
