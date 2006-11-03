@@ -13,6 +13,7 @@ overlay chrome://browser/content/browser.xul chrome://diggler/content/digglerOve
 # Locales
 locale diggler en-US jar:chrome/diggler.jar!/locale/en-US/
 locale diggler es-ES jar:chrome/diggler.jar!/locale/en-US/
+locale diggler nl-NL jar:chrome/diggler.jar!/locale/nl-NL/
 
 # Toolbar button
 skin diggler modern/1.0 jar:chrome/diggler.jar!/skin/modern/
