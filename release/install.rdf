@@ -5,7 +5,7 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:name>Neo Diggler</em:name>
-    <em:version>1.0.0</em:version>
+    <em:version>1.0.1</em:version>
     <em:id>{9b84cce7-a817-45d7-865e-9e6e8da1c388}</em:id>
     <em:type>2</em:type>
     <em:description>A URL manipulation tool for power users</em:description>
@@ -13,6 +13,7 @@
     <em:contributor>Adam Lock - original Firefox 1 author</em:contributor>
     <em:contributor>markh/babelzilla.org - Dutch</em:contributor>
     <em:contributor>Okaryn/babelzilla.org - French</em:contributor>
+    <em:contributor>Krcko/babelzilla.org - Croatian</em:contributor>
     <em:optionsURL>chrome://diggler/content/diggler-fb-settings.xul</em:optionsURL>
     <!-- <em:homepageURL>http://diggler.mozdev.org/</em:homepageURL> -->
 

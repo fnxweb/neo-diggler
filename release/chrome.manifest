@@ -14,6 +14,7 @@ overlay chrome://browser/content/browser.xul chrome://diggler/content/digglerOve
 locale diggler en-US jar:chrome/diggler.jar!/locale/en-US/
 locale diggler es-ES jar:chrome/diggler.jar!/locale/en-US/
 locale diggler fr-FR jar:chrome/diggler.jar!/locale/fr-FR/
+locale diggler hr-HR jar:chrome/diggler.jar!/locale/hr-HR/
 locale diggler nl-NL jar:chrome/diggler.jar!/locale/nl-NL/
 
 # Toolbar button

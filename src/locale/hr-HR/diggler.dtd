@@ -1,0 +1,48 @@
+<!ENTITY diggler.label "Diggler">
+<!ENTITY digglerButton.label "&diggler.label;">
+<!ENTITY digglerClear.label "Očisti položaj">
+<!ENTITY digglerClear.tooltip "Očisti trenutni položaj">
+<!ENTITY digglerPopupKiller.label "Stranice koje smiju otvoriti skočne prozore">
+<!ENTITY digglerImageOff.label "Ne prikazuj slike">
+<!ENTITY digglerImageOnLocal.label "Prikaži slike iz istog izvora">
+<!ENTITY digglerImageOn.label "Prikaži sve slike">
+<!ENTITY digglerNewTab.label "Otvori u novoj kartici">
+<!ENTITY digglerGoogle.label "Pronađi stranicu u Google privremenoj memoriji">
+<!ENTITY digglerArchive.label "Pronađi stranicu u Archive.org">
+<!ENTITY digglerPrefTitle.label "&diggler.label; Postavke">
+<!ENTITY digglerPrefGeneral.label "Općenite postavke">
+<!ENTITY digglerPrefEnabled.label "Prikaži gumb &diggler.label;">
+<!ENTITY digglerShowPopupControls.label "Prikaži stavke za kontrolu skočnih prozora">
+<!ENTITY digglerShowTabControls.label "Prikaži stavke vezane za surfanje s karticama">
+<!ENTITY digglerShowImageControls.label "Prikaži stavke za kontrolu učitavanja slika">
+<!ENTITY digglerPrefTools.label "Korisnički definirani alati">
+<!ENTITY digglerShowToolsAsSubmenu.label "Prikaži alate kao podizbornik">
+<!ENTITY digglerAbout.label "O &diggler.label;">
+<!ENTITY digglerAboutBlurb.label1 "Originalni Diggler je napisao i zaštitio autorskim pravom 2002-2004 Adam Lock &lt;adamlock@eircom.net&gt;.">
+<!ENTITY digglerAboutBlurb.label2 "Firefox 2 Neo Diggler (C) 2006 Neil Bird. Distribuira se pod uvjetima MPL.">
+<!ENTITY digglerAddTool.label "Dodaj...">
+<!ENTITY digglerEditTool.label "Uredi...">
+<!ENTITY digglerDeleteTool.label "Obriši">
+<!ENTITY digglerMoveUpTool.label "Pomakni gore">
+<!ENTITY digglerMoveDownTool.label "Pomakni dolje">
+<!ENTITY digglerAddToolDlg.label "Svojstva alata">
+<!ENTITY digglerToolActionSection.label "Akcija alata">
+<!ENTITY digglerToolMenuLabel.label "Ime (i opcionalno oznaka izbornika):">
+<!ENTITY digglerToolAction.label "Akcija:">
+<!ENTITY digglerToolPattern.label "Akcija će se odrediti koristeći ovaj regularni izraz:">
+<!ENTITY digglerToolUseActionAsLabel.label "Koristi akciju kao oznaku izbornika.">
+<!ENTITY digglerToolHints.label "Savjeti">
+<!ENTITY digglerToolHint1.label "Akcija je što će se učitati ovisno o unesenoj web adresi. Možete umetnuti ove varijable da biste umetnuli dijelove izvorne web adrese unutar akcije koja će se izvršiti.">
+<!ENTITY digglerToolHint2.label "$S - cijela web adresa">
+<!ENTITY digglerToolHint3.label "$c - shema (npr. http)">
+<!ENTITY digglerToolHint4.label "$u - korisničko ime / lozinka (npr. marko:blogovi)">
+<!ENTITY digglerToolHint5.label "$h - glavni poslužitelj (npr. www.mozilla.org)">
+<!ENTITY digglerToolHint6.label "$t - broj priključka (npr. 80)">
+<!ENTITY digglerToolHint7.label "$p - putanja (npr. /moja/putanja/index.html)">
+<!ENTITY digglerToolHint8.label "$1, $2 itd. - dijelovi regularnih izraza ograđenih zagradom.">
+<!ENTITY digglerToolPatternCmb1.label "Prilagođeno">
+<!ENTITY digglerToolPatternCmb2.label "Bilo koja web adresa">
+<!ENTITY digglerToolPatternCmb3.label "Bilo koja HTTP adresa">
+<!ENTITY digglerToolPatternCmb4.label "Bilo koja FTP adresa">
+<!ENTITY digglerToolPatternCmb5.label "Bilo koja poddomena">
+<!ENTITY digglerToolDefaultLabel.label "Novi alat">
