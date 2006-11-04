@@ -49,7 +49,7 @@
 
 <page xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
       xmlns:html="http://www.w3.org/1999/xhtml"
-      xmlns:diggler="http://diggler.mozdev.org/"
+      xmlns:diggler="https://addons.mozilla.org/firefox/3763/"
       id="pref-diggler"
       onload="parent.initPanel('chrome://diggler/content/pref/pref-diggler.xul');"
       headertitle="&digglerPrefTitle.label;">
@@ -88,7 +88,7 @@
 
     <groupbox id="pref-diggler-author-blurb">
       <description>&digglerAboutBlurb.label;</description>
-      <label id="digglerHome" onclick="digglerLoadHome()" value="http://diggler.mozdev.org/"/>
+      <label id="digglerHome" onclick="digglerLoadHome()" value="https://addons.mozilla.org/firefox/3763/"/>
     </groupbox>
   </vbox>
 

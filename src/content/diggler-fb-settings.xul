@@ -117,7 +117,7 @@
     <groupbox id="pref-diggler-author-blurb">
       <description>&digglerAboutBlurb.label1;</description>
       <description>&digglerAboutBlurb.label2;</description>
-      <label id="digglerHome" onclick="digglerLoadHome()" value="http://diggler.mozdev.org/"/>
+      <label id="digglerHome" onclick="digglerLoadHome()" value="https://addons.mozilla.org/firefox/3763/"/>
     </groupbox>
   </vbox>
 

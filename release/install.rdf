@@ -15,7 +15,7 @@
     <em:contributor>Okaryn/babelzilla.org - French</em:contributor>
     <em:contributor>Krcko/babelzilla.org - Croatian</em:contributor>
     <em:optionsURL>chrome://diggler/content/diggler-fb-settings.xul</em:optionsURL>
-    <!-- <em:homepageURL>http://diggler.mozdev.org/</em:homepageURL> -->
+    <em:homepageURL>https://addons.mozilla.org/firefox/3763/</em:homepageURL>
 
     <!-- Firefox -->
     <em:targetApplication>
@@ -25,5 +25,7 @@
         <em:maxVersion>2.0.0.*</em:maxVersion>
       </Description>
     </em:targetApplication>
+
+  </Description>
 
 </RDF>
