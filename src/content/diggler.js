@@ -84,7 +84,7 @@ var prefObserver =
     this.showTabMenuItems = true;
     this.showImageMenuItems = true;
     this.showTools = false;
-    this.imageBehaviour = 0;
+    this.imageBehaviour = 1;
     this.showPopups = true;
 
     try {
@@ -148,11 +148,11 @@ function digglerDoMenu(aEvent)
   }
   else if (id == "diggler-imageon")
   {
-    digglerSetImageMode(0);
+    digglerSetImageMode(1);
   }
   else if (id == "diggler-imageonlocal")
   {
-    digglerSetImageMode(1);
+    digglerSetImageMode(3);
   }
   else if (id == "diggler-imageoff")
   {
@@ -235,9 +235,9 @@ function digglerBuildMenu()
   if (showImageMenuItems) {
     var imageMode = digglerGetImageMode();
     var imageEl;
-    if (imageMode == 0)
+    if (imageMode == 1)
       imageEl = document.getElementById("diggler-imageon");
-    else if (imageMode == 1)
+    else if (imageMode == 3)
       imageEl = document.getElementById("diggler-imageonlocal");
     else if (imageMode == 2)
       imageEl = document.getElementById("diggler-imageoff");

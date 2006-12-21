@@ -46,7 +46,7 @@ const kPREF_DIGGLER_TOOLS_SUBMENU  = kPREF_DIGGLER_TOOLS + ".submenu";
 const kPREF_DIGGLER_TOOL_PREFIX    = kPREF_DIGGLER_TOOLS + ".tool";
 
 const kPREF_DOM_POPUP       = "dom.disable_open_during_load";
-const kPREF_IMAGE_BEHAVIOUR = "network.image.imageBehavior"
+const kPREF_IMAGE_BEHAVIOUR = "permissions.default.image"
 
 const kMATCH_EVERYTHING = "^.*$";
 const kSEPARATOR = '|';
