@@ -1,0 +1,48 @@
+<!ENTITY diggler.label "Diggler">
+<!ENTITY digglerButton.label "&diggler.label;">
+<!ENTITY digglerClear.label "Limpar local">
+<!ENTITY digglerClear.tooltip "Limpar o local atual">
+<!ENTITY digglerPopupKiller.label "Sites podem abrir janelas popup">
+<!ENTITY digglerImageOff.label "Não exibir imagens">
+<!ENTITY digglerImageOnLocal.label "Exibir imagens da mesma fonte">
+<!ENTITY digglerImageOn.label "Exibir todas as imagens">
+<!ENTITY digglerNewTab.label "Abrir uma nova aba">
+<!ENTITY digglerGoogle.label "Encontrar página no cache do Google">
+<!ENTITY digglerArchive.label "Encontrar página no Archive.org">
+<!ENTITY digglerPrefTitle.label "Preferências do &diggler.label;">
+<!ENTITY digglerPrefGeneral.label "Configurações gerais">
+<!ENTITY digglerPrefEnabled.label "Exibir o botão &diggler.label;">
+<!ENTITY digglerShowPopupControls.label "Exibir itens para controlar janelas popup">
+<!ENTITY digglerShowTabControls.label "Exibir itens relacionados a navegação em abas">
+<!ENTITY digglerShowImageControls.label "Exibir itens para controlar carregamento de imagem">
+<!ENTITY digglerPrefTools.label "Ferramentas definidas pelo usuário">
+<!ENTITY digglerShowToolsAsSubmenu.label "Exibir as ferramentas como um submenu">
+<!ENTITY digglerAbout.label "Sobre o &diggler.label;">
+<!ENTITY digglerAboutBlurb.label1 "Diggler original escrito por Adam Lock &lt;adamlock@eircom.net&gt;. Copyright 2002-2004">
+<!ENTITY digglerAboutBlurb.label2 "Firefox 2 Neo Diggler (C) 2006 Neil Bird. Distribuído sob os termos da MPL.">
+<!ENTITY digglerAddTool.label "Adicionar...">
+<!ENTITY digglerEditTool.label "Editar...">
+<!ENTITY digglerDeleteTool.label "Excluir">
+<!ENTITY digglerMoveUpTool.label "Para cima">
+<!ENTITY digglerMoveDownTool.label "Para baixo">
+<!ENTITY digglerAddToolDlg.label "Propriedades da ferramenta">
+<!ENTITY digglerToolActionSection.label "Ação da ferramenta">
+<!ENTITY digglerToolMenuLabel.label "Nome (e opcionalmente rótulo do menu):">
+<!ENTITY digglerToolAction.label "Ação:">
+<!ENTITY digglerToolPattern.label "A ação será comparada utilizando esta expressão regular:">
+<!ENTITY digglerToolUseActionAsLabel.label "Utilizar a ação como o rótulo do menu.">
+<!ENTITY digglerToolHints.label "Dicas">
+<!ENTITY digglerToolHint1.label "A ação é o que carregar dada a URL de entrada. Você pode inserir estas variáveis para inserir partes da URL original na ação a ser executada.">
+<!ENTITY digglerToolHint2.label "$S - a URL inteira">
+<!ENTITY digglerToolHint3.label "$c - o esquema (ex. http)">
+<!ENTITY digglerToolHint4.label "$u - o nome de usuário / senha (ex. fred:bloggs)">
+<!ENTITY digglerToolHint5.label "$h - o host (ex. www.mozilla.org)">
+<!ENTITY digglerToolHint6.label "$t - o número da porta (ex. 80)">
+<!ENTITY digglerToolHint7.label "$p - o caminho (ex. /meu/caminho/index.html)">
+<!ENTITY digglerToolHint8.label "$1, $2 etc. - partes separadas da expressão regular.">
+<!ENTITY digglerToolPatternCmb1.label "Personalizado">
+<!ENTITY digglerToolPatternCmb2.label "Qualquer URL">
+<!ENTITY digglerToolPatternCmb3.label "Qualquer endereço HTTP">
+<!ENTITY digglerToolPatternCmb4.label "Qualquer endereço FTP">
+<!ENTITY digglerToolPatternCmb5.label "Qualquer subdomínio">
+<!ENTITY digglerToolDefaultLabel.label "Nova ferramenta">

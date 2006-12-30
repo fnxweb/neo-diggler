@@ -11,11 +11,15 @@ overlay chrome://browser/content/browser.xul chrome://diggler/content/digglerOve
 ##overlay chrome://communicator/content/pref/preftree.xul chrome://diggler/content/digglerPrefOverlay.xul
 
 # Locales
+locale diggler de-DE jar:chrome/diggler.jar!/locale/de-DE/
 locale diggler en-US jar:chrome/diggler.jar!/locale/en-US/
-locale diggler es-ES jar:chrome/diggler.jar!/locale/en-US/
+locale diggler es-ES jar:chrome/diggler.jar!/locale/es-ES/
 locale diggler fr-FR jar:chrome/diggler.jar!/locale/fr-FR/
 locale diggler hr-HR jar:chrome/diggler.jar!/locale/hr-HR/
+locale diggler it-IT jar:chrome/diggler.jar!/locale/it-IT/
 locale diggler nl-NL jar:chrome/diggler.jar!/locale/nl-NL/
+locale diggler pt-BR jar:chrome/diggler.jar!/locale/pt-BR/
+locale diggler zh-TW jar:chrome/diggler.jar!/locale/zh-TW/
 
 # Toolbar button
 skin diggler modern/1.0 jar:chrome/diggler.jar!/skin/modern/

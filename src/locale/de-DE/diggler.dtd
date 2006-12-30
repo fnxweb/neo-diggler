@@ -1,0 +1,48 @@
+<!ENTITY diggler.label "Diggler">
+<!ENTITY digglerButton.label "&diggler.label;">
+<!ENTITY digglerClear.label "Adresse löschen">
+<!ENTITY digglerClear.tooltip "Aktuelle Adresse löschen">
+<!ENTITY digglerPopupKiller.label "Seite darf Popup-Fenster öffnen">
+<!ENTITY digglerImageOff.label "Keine Bilder anzeigen">
+<!ENTITY digglerImageOnLocal.label "Bilder aus derselben Quelle anzeigen">
+<!ENTITY digglerImageOn.label "Alle Bilder anzeigen">
+<!ENTITY digglerNewTab.label "Neuen Tab öffnen">
+<!ENTITY digglerGoogle.label "Seite im Google-Archiv suchen">
+<!ENTITY digglerArchive.label "Seite in Archive.org suchen">
+<!ENTITY digglerPrefTitle.label "&diggler.label; Einstellungen">
+<!ENTITY digglerPrefGeneral.label "Allgemeine Einstellungen">
+<!ENTITY digglerPrefEnabled.label "&diggler.label; Taste anzeigen">
+<!ENTITY digglerShowPopupControls.label "Einträge zur Steuerung von Popup-Fenstern anzeigen">
+<!ENTITY digglerShowTabControls.label "Einträge für Tab-Einstellungen anzeigen">
+<!ENTITY digglerShowImageControls.label "Einträge zur Steuerung der Bilderanzeige anzeigen">
+<!ENTITY digglerPrefTools.label "Benutzerdefinierte Werkzeuge">
+<!ENTITY digglerShowToolsAsSubmenu.label "Zeige Werkzeuge als Untermenü">
+<!ENTITY digglerAbout.label "Über &diggler.label;">
+<!ENTITY digglerAboutBlurb.label1 "Original Diggler erstellt und Copyright 2002-2004 Adam Lock &lt;adamlock@eircom.net&gt;">
+<!ENTITY digglerAboutBlurb.label2 "Firefox 2 Neo Diggler (C) 2006 Neil Bird unter den Bedingungen der MPL.">
+<!ENTITY digglerAddTool.label "Hinzufügen...">
+<!ENTITY digglerEditTool.label "Bearbeiten...">
+<!ENTITY digglerDeleteTool.label "Löschen">
+<!ENTITY digglerMoveUpTool.label "Aufwärts">
+<!ENTITY digglerMoveDownTool.label "Abwärts">
+<!ENTITY digglerAddToolDlg.label "Werkzeugeigenschaften">
+<!ENTITY digglerToolActionSection.label "Werkzeugaktionen">
+<!ENTITY digglerToolMenuLabel.label "Name (und optional ein Menüeintrag)">
+<!ENTITY digglerToolAction.label "Aktion:">
+<!ENTITY digglerToolPattern.label "Die Aktion wird beim Zutreffen dieses regulären Ausdrucks durchgeführt:">
+<!ENTITY digglerToolUseActionAsLabel.label "Aktion als Menüeintrag verwenden.">
+<!ENTITY digglerToolHints.label "Hinweis">
+<!ENTITY digglerToolHint1.label "Eine Aktion gibt vor, was bei einer eingegebenen URL getan werden soll. Mit folgende Variablen können Teile der eingegebenen URL in die auszuführende Aktion übernommen werden.">
+<!ENTITY digglerToolHint2.label "$S - vollständige URL">
+<!ENTITY digglerToolHint3.label "&amp;c - Protokoll (z.B. http)">
+<!ENTITY digglerToolHint4.label "$u - Benutzername/Passwort (z.B. fred:bloggs)">
+<!ENTITY digglerToolHint5.label "$h - Host (z.B. www.mozilla.org)">
+<!ENTITY digglerToolHint6.label "$t - Portnummer (z.B. 80)">
+<!ENTITY digglerToolHint7.label "$p - Pfad (z.B. /mein/pfad/index.html)">
+<!ENTITY digglerToolHint8.label "$1,$2 etc. - geklammerte Teile des regulären Ausdrucks">
+<!ENTITY digglerToolPatternCmb1.label "Benutzerdefiniert">
+<!ENTITY digglerToolPatternCmb2.label "Beliebige URL">
+<!ENTITY digglerToolPatternCmb3.label "Beliebige HTTP-Adresse">
+<!ENTITY digglerToolPatternCmb4.label "Beliebige FTP-Adresse">
+<!ENTITY digglerToolPatternCmb5.label "Beliebige Unterdomäne">
+<!ENTITY digglerToolDefaultLabel.label "Neues Werkzeug">

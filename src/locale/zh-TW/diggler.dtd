@@ -1,0 +1,48 @@
+<!ENTITY diggler.label "Diggler">
+<!ENTITY digglerButton.label "&diggler.label;">
+<!ENTITY digglerClear.label "清除網址">
+<!ENTITY digglerClear.tooltip "清除此網址">
+<!ENTITY digglerPopupKiller.label "允許網址可以開啟彈出視窗">
+<!ENTITY digglerImageOff.label "不顯示圖片">
+<!ENTITY digglerImageOnLocal.label "顯示相同來源的圖片">
+<!ENTITY digglerImageOn.label "顯示所有圖片">
+<!ENTITY digglerNewTab.label "開啟新分頁">
+<!ENTITY digglerGoogle.label "在Google頁庫存檔搜尋此頁">
+<!ENTITY digglerArchive.label "在Archive.org搜尋此頁">
+<!ENTITY digglerPrefTitle.label "&diggler.label; 設置">
+<!ENTITY digglerPrefGeneral.label "一般設定">
+<!ENTITY digglerPrefEnabled.label "顯示&diggler.label;按鈕">
+<!ENTITY digglerShowPopupControls.label "顯示控制彈出視窗的項目">
+<!ENTITY digglerShowTabControls.label "顯示控制分頁的項目">
+<!ENTITY digglerShowImageControls.label "顯示控制圖片載入的項目">
+<!ENTITY digglerPrefTools.label "使用者定義工具">
+<!ENTITY digglerShowToolsAsSubmenu.label "顯示工具於副選單">
+<!ENTITY digglerAbout.label "關於&diggler.label;">
+<!ENTITY digglerAboutBlurb.label1 "Original Diggler written and copyright 2002-2004 Adam Lock &lt;adamlock@eircom.net&gt;.">
+<!ENTITY digglerAboutBlurb.label2 "Firefox 2 Neo Diggler (C) 2006 Neil Bird. Distributed under the terms of the MPL.">
+<!ENTITY digglerAddTool.label "加入...">
+<!ENTITY digglerEditTool.label "編輯...">
+<!ENTITY digglerDeleteTool.label "刪除">
+<!ENTITY digglerMoveUpTool.label "上移">
+<!ENTITY digglerMoveDownTool.label "下移">
+<!ENTITY digglerAddToolDlg.label "工具設置">
+<!ENTITY digglerToolActionSection.label "工具動作">
+<!ENTITY digglerToolMenuLabel.label "名稱(及選單標籤)">
+<!ENTITY digglerToolAction.label "動作：">
+<!ENTITY digglerToolPattern.label "當以下的指定運算式符合時，動作會運行：">
+<!ENTITY digglerToolUseActionAsLabel.label "使用動作作為選單標籤">
+<!ENTITY digglerToolHints.label "提示">
+<!ENTITY digglerToolHint1.label "動作是根據輸入的文字載入。您可以加入這些變數來加入到原本的URL中。">
+<!ENTITY digglerToolHint2.label "$S - 全網址">
+<!ENTITY digglerToolHint3.label "$c - 協定 (e.g. http)">
+<!ENTITY digglerToolHint4.label "$u - 登入名稱/密碼 (e.g. fred:bloggs)">
+<!ENTITY digglerToolHint5.label "$h - 主機 (e.g. www.mozilla.org)">
+<!ENTITY digglerToolHint6.label "$t - 連接埠Port (e.g. 80)">
+<!ENTITY digglerToolHint7.label "$p - 路徑 (e.g. /my/path/index.html)">
+<!ENTITY digglerToolHint8.label "$1, $2 etc. - 括號內的指定運算式">
+<!ENTITY digglerToolPatternCmb1.label "自訂">
+<!ENTITY digglerToolPatternCmb2.label "任何URL">
+<!ENTITY digglerToolPatternCmb3.label "任何HTTP地址">
+<!ENTITY digglerToolPatternCmb4.label "任何FTP地址">
+<!ENTITY digglerToolPatternCmb5.label "任何次網域">
+<!ENTITY digglerToolDefaultLabel.label "新工具">
