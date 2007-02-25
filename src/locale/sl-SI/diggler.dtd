@@ -1,0 +1,48 @@
+<!ENTITY diggler.label "Diggler">
+<!ENTITY digglerButton.label "Diggler">
+<!ENTITY digglerClear.label "Počisti naslov strani">
+<!ENTITY digglerClear.tooltip "Počisti trenutni naslov">
+<!ENTITY digglerPopupKiller.label "Strani lahko odpirajo pojavna okna">
+<!ENTITY digglerImageOff.label "Skrij prikaz slik">
+<!ENTITY digglerImageOnLocal.label "Prikaži slike iz istega strežnika">
+<!ENTITY digglerImageOn.label "Prikaži vse slike">
+<!ENTITY digglerNewTab.label "Odpri v novem zavihku">
+<!ENTITY digglerGoogle.label "Poišči stran med Googlovimi posnetki">
+<!ENTITY digglerArchive.label "Poišči stran na archive.org">
+<!ENTITY digglerPrefTitle.label "Nastavitve">
+<!ENTITY digglerPrefGeneral.label "Splošne nastavitve">
+<!ENTITY digglerPrefEnabled.label "Prikaži Digglerjevo ikono">
+<!ENTITY digglerShowPopupControls.label "Prikaži menije za nadzor pojavnih oken">
+<!ENTITY digglerShowTabControls.label "Prikaži menije za nadzor zavihkov">
+<!ENTITY digglerShowImageControls.label "Prikaži menije za nadzor nalaganja slik">
+<!ENTITY digglerPrefTools.label "Upšrabniško ustvarjena orodja">
+<!ENTITY digglerShowToolsAsSubmenu.label "Prikaži orodja kot podmeni">
+<!ENTITY digglerAbout.label "O Digglerju">
+<!ENTITY digglerAboutBlurb.label1 "Prvotni Diggler je napisal Adam Lock &lt;adamlock@eircom.net&gt;, copyright 2002-2004">
+<!ENTITY digglerAboutBlurb.label2 "Firefox 2 Neo Diggler (C) 2006 Neil Bird. Izdano pod licenčnimi pogoji MPL.">
+<!ENTITY digglerAddTool.label "Dodaj...">
+<!ENTITY digglerEditTool.label "Uredi...">
+<!ENTITY digglerDeleteTool.label "Zbriši">
+<!ENTITY digglerMoveUpTool.label "Premakni navzgor">
+<!ENTITY digglerMoveDownTool.label "Premakni navzdol">
+<!ENTITY digglerAddToolDlg.label "Nastavitve orodja">
+<!ENTITY digglerToolActionSection.label "Dogodek orodja">
+<!ENTITY digglerToolMenuLabel.label "Naziv (in oznaka za meni)">
+<!ENTITY digglerToolAction.label "Dogodek:">
+<!ENTITY digglerToolPattern.label "Dogodek bo prepoznan preko vpisanega regularnega izraza:">
+<!ENTITY digglerToolUseActionAsLabel.label "Uporabi naziv dogodka za oznako menija.">
+<!ENTITY digglerToolHints.label "Uporaba">
+<!ENTITY digglerToolHint1.label "Dogodek je naslov, ki naj se naloži ob vpisanem URLju. V dogodek lahko vstavite spodnje spremenljivke, ki bodo nadomeščene z deli prvotnega naslova.">
+<!ENTITY digglerToolHint2.label "$S - celotni URL">
+<!ENTITY digglerToolHint3.label "$c - protokol (npr. http)">
+<!ENTITY digglerToolHint4.label "$u - uporabniško ime / geslo (npr. janez:skrivnost)">
+<!ENTITY digglerToolHint5.label "$h - strežnik (npr. www.mozilla.org)">
+<!ENTITY digglerToolHint6.label "$t - številka vrat (npr. 80)">
+<!ENTITY digglerToolHint7.label "$p - pot (npr. /moja/pot/index.html)">
+<!ENTITY digglerToolHint8.label "$1, $2, itd. - deli regularnega izraza v oklepajih">
+<!ENTITY digglerToolPatternCmb1.label "Poljubno">
+<!ENTITY digglerToolPatternCmb2.label "Vsi URL naslovi">
+<!ENTITY digglerToolPatternCmb3.label "Vsi HTTP naslovi">
+<!ENTITY digglerToolPatternCmb4.label "Vsi FTP naslovi">
+<!ENTITY digglerToolPatternCmb5.label "Vse poddomene">
+<!ENTITY digglerToolDefaultLabel.label "Novo orodje">
