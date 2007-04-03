@@ -273,13 +273,15 @@ function digglerBuildMenu()
   try {
     var showToolsAsSubmenu = prefObserver.showTools;
     var tools = prefObserver.tools;
-    // TODO there is no point showing a tools submenu if the user hasn't got any!
-    // if (tools.length == 0 || allToolsAreHidden)
-    showToolsAsSubmenu = false;
-    if (toolsSubMenu)
-      toolsSubMenu.setAttribute("visible", showToolsAsSubmenu);
-    var toolsMenu = urlMenu; // showToolsAsSubmenu ? urlMenu : toolsSubMenu;
-    digglerBuildToolsMenu(toolsMenu, url, tools);
+    // There is no point showing a tools submenu if the user hasn't got any!
+    if (tools  &&  tools.length > 0)
+    {
+        showToolsAsSubmenu = false;
+        if (toolsSubMenu)
+          toolsSubMenu.setAttribute("visible", showToolsAsSubmenu);
+        var toolsMenu = urlMenu; // showToolsAsSubmenu ? urlMenu : toolsSubMenu;
+        digglerBuildToolsMenu(toolsMenu, url, tools);
+    }
   }
   catch (ex)
   {
