@@ -5,7 +5,7 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:name>Neo Diggler</em:name>
-    <em:version>1.0.2</em:version>
+    <em:version>1.0.3</em:version>
     <em:id>{9b84cce7-a817-45d7-865e-9e6e8da1c388}</em:id>
     <em:type>2</em:type>
     <em:description>A URL manipulation tool for power users</em:description>
