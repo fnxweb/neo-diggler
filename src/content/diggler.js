@@ -65,6 +65,20 @@ var prefObserver =
     this.syncPrefs();
   },
 
+  removePrefListener: function ()
+  {
+    try {
+      var pbi = this.pref.QueryInterface(Components.interfaces.nsIPrefBranchInternal);
+      pbi.removeObserver(kPREF_DIGGLER, this, false);
+      pbi.removeObserver(kPREF_DOM_POPUP, this, false);
+      pbi.removeObserver(kPREF_IMAGE_BEHAVIOUR, this, false);
+      pbi.removeObserver(kPREF_DIGGLER_TOOLS, this, false);
+    } catch(ex) {
+      dump("Diggler failed to unobserve prefs: " + ex + "\n");
+    }
+    this.syncPrefs();
+  },
+
   readTools: function()
   {
     try {
@@ -119,8 +133,21 @@ var prefObserver =
   }
 };
 
+
 // Add a listener such that commonly read prefs can be cached
-prefObserver.addPrefListener();
+function addListeners()
+{
+    prefObserver.addPrefListener();
+}
+
+function removeListeners()
+{
+    prefObserver.removePrefListener();
+}
+
+window.addEventListener('load',addListeners,false);
+window.addEventListener('unload',removeListeners,false);
+
 
 function digglerSubstituteURI(originalURI, pattern)
 {
