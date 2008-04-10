@@ -2,6 +2,7 @@
 <!ENTITY digglerButton.label "&diggler.label;">
 <!ENTITY digglerClear.label "Locatie wissen">
 <!ENTITY digglerClear.tooltip "Huidige locatie wissen">
+<!ENTITY digglerRestore.label  "Reset location">
 <!ENTITY digglerPopupKiller.label "Sites mogen popup vensters openen">
 <!ENTITY digglerImageOff.label "Geen afbeeldingen tonen">
 <!ENTITY digglerImageOnLocal.label "Afbeeldingen van dezelfde bron tonen">
@@ -9,6 +10,7 @@
 <!ENTITY digglerNewTab.label "Nieuw tabblad openen">
 <!ENTITY digglerGoogle.label "Pagina in Google cache opzoeken">
 <!ENTITY digglerArchive.label "Pagina in archive.org opzoeken">
+<!ENTITY digglerWebcitation.label  "Pagina in Webcitation.org">
 <!ENTITY digglerPrefTitle.label "&diggler.label; Voorkeuren">
 <!ENTITY digglerPrefGeneral.label "Algemene instellingen">
 <!ENTITY digglerPrefEnabled.label "De &diggler.label; knop weergeven">

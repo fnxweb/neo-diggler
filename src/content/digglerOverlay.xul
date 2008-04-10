@@ -51,6 +51,7 @@
     /* These strings are expanded out with the appropriate entity values */
     const digglerSearchGoogleLabel = "&digglerGoogle.label;";
     const digglerSearchArchiveLabel = "&digglerArchive.label;";
+    const digglerSearchWebcitationLabel = "&digglerWebcitation.label;";
   </script>
   <script type="application/x-javascript" src="chrome://diggler/content/diggler-consts.js"/>
   <script type="application/x-javascript" src="chrome://diggler/content/diggler-common.js"/>
@@ -77,6 +78,7 @@
                  tooltip="diggler-tooltip">
     <menupopup id="diggler-url-menu">
       <menuitem id="diggler-clear" label="&digglerClear.label;"/>
+      <menuitem id="diggler-restore" label="&digglerRestore.label;"/>
       <!-- Popup menu items -->
       <menuseparator id="diggler-popupsep"/>
       <menuitem id="diggler-popupkiller" label="&digglerPopupKiller.label;" type="checkbox" checked="false"/>

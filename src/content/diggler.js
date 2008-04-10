@@ -173,6 +173,10 @@ function digglerDoMenu(aEvent)
   if (id == "diggler-clear") {
     digglerClearLocation();
   }
+  else if (id == "diggler-restore")
+  {
+    digglerRestoreLocation();
+  }
   else if (id == "diggler-imageon")
   {
     digglerSetImageMode(1);
@@ -380,6 +384,7 @@ var digglerOptions = [
   ["sourceforge home to summary", "(https?)://([a-z0-9\\-]+)\\.sourceforge\\.net/?.*", "$1://sourceforge.net/projects/$2/", "i", false],
   [],
   ["Archive.org", "^(https?://(?!web\\.archive\\.org).*)$", "http://web.archive.org/web/*/$1", "i", false],
+  ["Webcitation", "^http://(.*)$", "http://www.webcitation.org/query?url=$1", "i", false],
   ["Google", "^http://(.*)$", "http://google.com/search?q=cache:$1", "i", false],
 //  [],
 //  []
@@ -421,6 +426,10 @@ function digglerBuildUrlMenu (urlMenu, siteUrl)
       else if (menuList[i][0] == "Archive.org")
       {
         digglerCreateTempMenuItemName(urlMenu, digglerSearchArchiveLabel, menuList[i][1]);
+      }
+      else if (menuList[i][0] == "Webcitation")
+      {
+        digglerCreateTempMenuItemName(urlMenu, digglerSearchWebcitationLabel, menuList[i][1]);
       }
       else
       {
@@ -543,6 +552,14 @@ function digglerClearLocation()
 {
   urlBar = document.getElementById("urlbar");
   urlBar.value = "";
+  urlBar.focus();
+}
+
+function digglerRestoreLocation()
+{
+  urlBar = document.getElementById("urlbar");
+  /* top.location.href (etc.) returns chrome://browser/content/browser.xul */
+  urlBar.value = getBrowser().mCurrentBrowser.currentURI.spec;
   urlBar.focus();
 }
 

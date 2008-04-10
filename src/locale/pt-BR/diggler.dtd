@@ -2,6 +2,7 @@
 <!ENTITY digglerButton.label "&diggler.label;">
 <!ENTITY digglerClear.label "Limpar local">
 <!ENTITY digglerClear.tooltip "Limpar o local atual">
+<!ENTITY digglerRestore.label  "Reset location">
 <!ENTITY digglerPopupKiller.label "Sites podem abrir janelas popup">
 <!ENTITY digglerImageOff.label "Não exibir imagens">
 <!ENTITY digglerImageOnLocal.label "Exibir imagens da mesma fonte">
@@ -9,6 +10,7 @@
 <!ENTITY digglerNewTab.label "Abrir uma nova aba">
 <!ENTITY digglerGoogle.label "Encontrar página no cache do Google">
 <!ENTITY digglerArchive.label "Encontrar página no Archive.org">
+<!ENTITY digglerWebcitation.label "Encontrar página no Webcitation.org">
 <!ENTITY digglerPrefTitle.label "Preferências do &diggler.label;">
 <!ENTITY digglerPrefGeneral.label "Configurações gerais">
 <!ENTITY digglerPrefEnabled.label "Exibir o botão &diggler.label;">

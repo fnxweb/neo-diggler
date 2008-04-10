@@ -4,6 +4,7 @@
 <!ENTITY digglerButton.label   "&diggler.label;">
 <!ENTITY digglerClear.label    "Clear location">
 <!ENTITY digglerClear.tooltip  "Clear the current location">
+<!ENTITY digglerRestore.label  "Reset location">
 <!ENTITY digglerPopupKiller.label "Sites can open popup Windows">
 
 <!ENTITY digglerImageOff.label   "Show no images">
@@ -14,6 +15,7 @@
 
 <!ENTITY digglerGoogle.label   "Find page in Google cache">
 <!ENTITY digglerArchive.label  "Find page in Archive.org">
+<!ENTITY digglerWebcitation.label  "Find page in Webcitation.org">
 
 <!ENTITY digglerPrefTitle.label "&diggler.label; Prefs">
 <!ENTITY digglerPrefGeneral.label "General Settings">

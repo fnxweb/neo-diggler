@@ -4,6 +4,7 @@
 <!ENTITY digglerButton.label   "&diggler.label;">
 <!ENTITY digglerClear.label    "Borrar dirección">
 <!ENTITY digglerClear.tooltip  "Borrar la dirección actual">
+<!ENTITY digglerRestore.label  "Reset location">
 <!ENTITY digglerPopupKiller.label "Permitir ventanas emergentes">
 
 <!ENTITY digglerImageOff.label   "No mostrar imágenes">
@@ -14,6 +15,7 @@
 
 <!ENTITY digglerGoogle.label   "Buscar en Google">
 <!ENTITY digglerArchive.label  "Buscar en Archive.org">
+<!ENTITY digglerWebcitation.label  "Buscar en Webcitation.org">
 
 <!ENTITY digglerPrefTitle.label "Configuración de &diggler.label;">
 <!ENTITY digglerPrefGeneral.label "Configuración General">

@@ -2,6 +2,7 @@
 <!ENTITY digglerButton.label "&diggler.label;">
 <!ENTITY digglerClear.label "Effacer l&apos;adresse">
 <!ENTITY digglerClear.tooltip "Effacer l&apos;adresse actuelle">
+<!ENTITY digglerRestore.label  "Reset location">
 <!ENTITY digglerPopupKiller.label "Sites pouvant ouvrir des fenêtres popup">
 <!ENTITY digglerImageOff.label "N&apos;afficher aucune image">
 <!ENTITY digglerImageOnLocal.label "Afficher les images provenant de la même source">
@@ -9,6 +10,7 @@
 <!ENTITY digglerNewTab.label "Ouvrir un nouvel onglet">
 <!ENTITY digglerGoogle.label "Trouver cette page dans le cache de Google">
 <!ENTITY digglerArchive.label "Trouver cette page dans Archive.org">
+<!ENTITY digglerwebcitation.label  "Trouver cette page dans Webcitation.org">
 <!ENTITY digglerPrefTitle.label "Préférences de &diggler.label;">
 <!ENTITY digglerPrefGeneral.label "Paramètres généraux">
 <!ENTITY digglerPrefEnabled.label "Afficher le boutton &diggler.label;">

@@ -2,6 +2,7 @@
 <!ENTITY digglerButton.label "&diggler.label;">
 <!ENTITY digglerClear.label "Očisti položaj">
 <!ENTITY digglerClear.tooltip "Očisti trenutni položaj">
+<!ENTITY digglerRestore.label  "Reset location">
 <!ENTITY digglerPopupKiller.label "Stranice koje smiju otvoriti skočne prozore">
 <!ENTITY digglerImageOff.label "Ne prikazuj slike">
 <!ENTITY digglerImageOnLocal.label "Prikaži slike iz istog izvora">
@@ -9,6 +10,7 @@
 <!ENTITY digglerNewTab.label "Otvori u novoj kartici">
 <!ENTITY digglerGoogle.label "Pronađi stranicu u Google privremenoj memoriji">
 <!ENTITY digglerArchive.label "Pronađi stranicu u Archive.org">
+<!ENTITY digglerWebcitation.label  "Pronađi stranicu u Webcitation.org">
 <!ENTITY digglerPrefTitle.label "&diggler.label; Postavke">
 <!ENTITY digglerPrefGeneral.label "Općenite postavke">
 <!ENTITY digglerPrefEnabled.label "Prikaži gumb &diggler.label;">
