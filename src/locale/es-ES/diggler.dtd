@@ -1,32 +1,50 @@
-<!-- The name of the application -->
-<!ENTITY diggler.label         "Diggler">
-
-<!ENTITY digglerButton.label   "&diggler.label;">
-<!ENTITY digglerClear.label    "Borrar dirección">
-<!ENTITY digglerClear.tooltip  "Borrar la dirección actual">
-<!ENTITY digglerRestore.label  "Reset location">
+<!ENTITY diggler.label "Diggler">
+<!ENTITY digglerButton.label "&diggler.label;">
+<!ENTITY digglerClear.label "Borrar dirección">
+<!ENTITY digglerClear.tooltip "Borrar la dirección actual">
+<!ENTITY digglerRestore.label "Reset location">
 <!ENTITY digglerPopupKiller.label "Permitir ventanas emergentes">
-
-<!ENTITY digglerImageOff.label   "No mostrar imágenes">
-<!ENTITY digglerImageOnLocal.label   "Mostrar imágenes del mismo sitio">
-<!ENTITY digglerImageOn.label   "Mostrar todas las imágenes">
-
-<!ENTITY digglerNewTab.label   "Nueva pestaña">
-
-<!ENTITY digglerGoogle.label   "Buscar en Google">
-<!ENTITY digglerArchive.label  "Buscar en Archive.org">
-<!ENTITY digglerWebcitation.label  "Buscar en Webcitation.org">
-
+<!ENTITY digglerImageOff.label "No mostrar imágenes">
+<!ENTITY digglerImageOnLocal.label "Mostrar imágenes del mismo sitio">
+<!ENTITY digglerImageOn.label "Mostrar todas las imágenes">
+<!ENTITY digglerNewTab.label "Nueva pestaña">
+<!ENTITY digglerGoogle.label "Buscar en Google">
+<!ENTITY digglerArchive.label "Buscar en Archive.org">
+<!ENTITY digglerWebcitation.label "Buscar en Webcitation.org">
 <!ENTITY digglerPrefTitle.label "Configuración de &diggler.label;">
 <!ENTITY digglerPrefGeneral.label "Configuración General">
 <!ENTITY digglerPrefEnabled.label "Mostrar el botón de &diggler.label;">
 <!ENTITY digglerShowPopupControls.label "Mostrar las opciones para controlar las ventanas emergentes">
 <!ENTITY digglerShowTabControls.label "Mostrar las opciones relativas a la navegación en pestañas">
 <!ENTITY digglerShowImageControls.label "Mostrar las opciones para controlar la carga de imágenes">
-
 <!ENTITY digglerPrefTools.label "Configuración de herramientas">
-<!ENTITY digglerShowTools.label "Mostrar el submenú de herramientas">
-
+<!ENTITY digglerShowToolsAsSubmenu.label "Show the tools as a submenu">
 <!ENTITY digglerAbout.label "Sobre &diggler.label;">
-<!ENTITY digglerAboutBlurb.label "Diggler escrito y copyright 2002-2004 Adam Lock &lt;adamlock@eircom.net&gt;.\nFirefox 2 Neo Diggler (C) 2006 Neil Bird. Distribuido bajo los términos de la MPL.">
-
+<!ENTITY digglerAboutBlurb.label1 "Original Diggler written and copyright 2002-2004 Adam Lock &lt;adamlock@eircom.net&gt;.">
+<!ENTITY digglerAboutBlurb.label2 "Firefox 2 Neo Diggler (C) 2006 Neil Bird. Distributed under the terms of the MPL.">
+<!ENTITY digglerAddTool.label "Add...">
+<!ENTITY digglerEditTool.label "Edit...">
+<!ENTITY digglerDeleteTool.label "Delete">
+<!ENTITY digglerMoveUpTool.label "Move Up">
+<!ENTITY digglerMoveDownTool.label "Move Down">
+<!ENTITY digglerAddToolDlg.label "Tool Properties">
+<!ENTITY digglerToolActionSection.label "Tool Action">
+<!ENTITY digglerToolMenuLabel.label "Name (and optionally menu label):">
+<!ENTITY digglerToolAction.label "Action:">
+<!ENTITY digglerToolPattern.label "Action will be matched using this regular expression:">
+<!ENTITY digglerToolUseActionAsLabel.label "Use the action as the menu label.">
+<!ENTITY digglerToolHints.label "Hints">
+<!ENTITY digglerToolHint1.label "The action is what to load given the input URL. You can insert these variables to insert parts of the original URL into the action to be performed.">
+<!ENTITY digglerToolHint2.label "$S - the whole URL">
+<!ENTITY digglerToolHint3.label "$c - the scheme (e.g. http)">
+<!ENTITY digglerToolHint4.label "$u - the username / password (e.g. fred:bloggs)">
+<!ENTITY digglerToolHint5.label "$h - the host (e.g. www.mozilla.org)">
+<!ENTITY digglerToolHint6.label "$t - the port number (e.g. 80)">
+<!ENTITY digglerToolHint7.label "$p - the path (e.g. /my/path/index.html)">
+<!ENTITY digglerToolHint8.label "$1, $2 etc. - bracketed parts of the regular expression.">
+<!ENTITY digglerToolPatternCmb1.label "Custom">
+<!ENTITY digglerToolPatternCmb2.label "Any URL">
+<!ENTITY digglerToolPatternCmb3.label "Any HTTP address">
+<!ENTITY digglerToolPatternCmb4.label "Any FTP address">
+<!ENTITY digglerToolPatternCmb5.label "Any subdomain">
+<!ENTITY digglerToolDefaultLabel.label "New Tool">

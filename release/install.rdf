@@ -5,7 +5,7 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:name>Neo Diggler</em:name>
-    <em:version>1.0.5a</em:version>
+    <em:version>1.0.6</em:version>
     <em:id>{9b84cce7-a817-45d7-865e-9e6e8da1c388}</em:id>
     <em:type>2</em:type>
     <em:description>A URL manipulation tool for power users</em:description>
@@ -18,7 +18,7 @@
     <em:contributor>kennith/babelzilla.org - Chinese</em:contributor>
     <em:contributor>MatrixIsAllOver/babelzilla.org - Italian</em:contributor>
     <em:contributor>Rodrigo Bergmann Laurindo/babelzilla.org - Portuguese</em:contributor>
-    <em:contributor>nassimjd/babelzilla.org - Arabic</em:contributor>
+    <!-- <em:contributor>nassimjd/babelzilla.org - Arabic</em:contributor> -->
     <em:optionsURL>chrome://diggler/content/diggler-fb-settings.xul</em:optionsURL>
     <em:homepageURL>https://addons.mozilla.org/firefox/3763/</em:homepageURL>
 
@@ -27,7 +27,7 @@
       <Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
         <em:minVersion>1.5</em:minVersion>
-        <em:maxVersion>3.0pre</em:maxVersion>
+        <em:maxVersion>3.0.*</em:maxVersion>
       </Description>
     </em:targetApplication>
 

@@ -2,6 +2,7 @@
 <!ENTITY digglerButton.label "&diggler.label;">
 <!ENTITY digglerClear.label "清除網址">
 <!ENTITY digglerClear.tooltip "清除此網址">
+<!ENTITY digglerRestore.label "重設地址">
 <!ENTITY digglerPopupKiller.label "允許網址可以開啟彈出視窗">
 <!ENTITY digglerImageOff.label "不顯示圖片">
 <!ENTITY digglerImageOnLocal.label "顯示相同來源的圖片">
@@ -9,6 +10,7 @@
 <!ENTITY digglerNewTab.label "開啟新分頁">
 <!ENTITY digglerGoogle.label "在Google頁庫存檔搜尋此頁">
 <!ENTITY digglerArchive.label "在Archive.org搜尋此頁">
+<!ENTITY digglerWebcitation.label "在Webcitation.org搜尋此頁">
 <!ENTITY digglerPrefTitle.label "&diggler.label; 設置">
 <!ENTITY digglerPrefGeneral.label "一般設定">
 <!ENTITY digglerPrefEnabled.label "顯示&diggler.label;按鈕">

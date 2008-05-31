@@ -11,7 +11,7 @@ overlay chrome://browser/content/browser.xul chrome://diggler/content/digglerOve
 ##overlay chrome://communicator/content/pref/preftree.xul chrome://diggler/content/digglerPrefOverlay.xul
 
 # Locales
-locale diggler ar    jar:chrome/diggler.jar!/locale/ar/
+##locale diggler ar    jar:chrome/diggler.jar!/locale/ar/
 locale diggler de-DE jar:chrome/diggler.jar!/locale/de-DE/
 locale diggler en-US jar:chrome/diggler.jar!/locale/en-US/
 locale diggler es-ES jar:chrome/diggler.jar!/locale/es-ES/

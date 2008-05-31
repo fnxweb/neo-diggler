@@ -1,44 +1,32 @@
-<!-- The name of the application -->
-<!ENTITY diggler.label         "Diggler">
-
-<!ENTITY digglerButton.label   "&diggler.label;">
-<!ENTITY digglerClear.label    "Clear location">
-<!ENTITY digglerClear.tooltip  "Clear the current location">
-<!ENTITY digglerRestore.label  "Reset location">
+<!ENTITY diggler.label "Diggler">
+<!ENTITY digglerButton.label "&diggler.label;">
+<!ENTITY digglerClear.label "Clear location">
+<!ENTITY digglerClear.tooltip "Clear the current location">
+<!ENTITY digglerRestore.label "Reset location">
 <!ENTITY digglerPopupKiller.label "Sites can open popup Windows">
-
-<!ENTITY digglerImageOff.label   "Show no images">
-<!ENTITY digglerImageOnLocal.label   "Show images from same source">
-<!ENTITY digglerImageOn.label   "Show all images">
-
-<!ENTITY digglerNewTab.label   "Open a new tab">
-
-<!ENTITY digglerGoogle.label   "Find page in Google cache">
-<!ENTITY digglerArchive.label  "Find page in Archive.org">
-<!ENTITY digglerWebcitation.label  "Find page in Webcitation.org">
-
+<!ENTITY digglerImageOff.label "Show no images">
+<!ENTITY digglerImageOnLocal.label "Show images from same source">
+<!ENTITY digglerImageOn.label "Show all images">
+<!ENTITY digglerNewTab.label "Open a new tab">
+<!ENTITY digglerGoogle.label "Find page in Google cache">
+<!ENTITY digglerArchive.label "Find page in Archive.org">
+<!ENTITY digglerWebcitation.label "Find page in Webcitation.org">
 <!ENTITY digglerPrefTitle.label "&diggler.label; Prefs">
 <!ENTITY digglerPrefGeneral.label "General Settings">
 <!ENTITY digglerPrefEnabled.label "Display the &diggler.label; button">
 <!ENTITY digglerShowPopupControls.label "Show items to control popup windows">
 <!ENTITY digglerShowTabControls.label "Show items related to tabbed browsing">
 <!ENTITY digglerShowImageControls.label "Show items to control image loading">
-
 <!ENTITY digglerPrefTools.label "User Defined Tools">
 <!ENTITY digglerShowToolsAsSubmenu.label "Show the tools as a submenu">
-
 <!ENTITY digglerAbout.label "About &diggler.label;">
 <!ENTITY digglerAboutBlurb.label1 "Original Diggler written and copyright 2002-2004 Adam Lock &lt;adamlock@eircom.net&gt;.">
 <!ENTITY digglerAboutBlurb.label2 "Firefox 2 Neo Diggler (C) 2006 Neil Bird. Distributed under the terms of the MPL.">
-
-<!-- Tools related stuff -->
 <!ENTITY digglerAddTool.label "Add...">
 <!ENTITY digglerEditTool.label "Edit...">
 <!ENTITY digglerDeleteTool.label "Delete">
 <!ENTITY digglerMoveUpTool.label "Move Up">
 <!ENTITY digglerMoveDownTool.label "Move Down">
-
-<!-- Add Tool dialog -->
 <!ENTITY digglerAddToolDlg.label "Tool Properties">
 <!ENTITY digglerToolActionSection.label "Tool Action">
 <!ENTITY digglerToolMenuLabel.label "Name (and optionally menu label):">
@@ -54,15 +42,9 @@
 <!ENTITY digglerToolHint6.label "$t - the port number (e.g. 80)">
 <!ENTITY digglerToolHint7.label "$p - the path (e.g. /my/path/index.html)">
 <!ENTITY digglerToolHint8.label "$1, $2 etc. - bracketed parts of the regular expression.">
-
-<!-- Tool pattern combo box -->
 <!ENTITY digglerToolPatternCmb1.label "Custom">
 <!ENTITY digglerToolPatternCmb2.label "Any URL">
 <!ENTITY digglerToolPatternCmb3.label "Any HTTP address">
 <!ENTITY digglerToolPatternCmb4.label "Any FTP address">
 <!ENTITY digglerToolPatternCmb5.label "Any subdomain">
-
-<!-- Default label for new tools -->
 <!ENTITY digglerToolDefaultLabel.label "New Tool">
-
-

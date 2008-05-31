@@ -2,26 +2,26 @@
 <!ENTITY digglerButton.label "&diggler.label;">
 <!ENTITY digglerClear.label "Locatie wissen">
 <!ENTITY digglerClear.tooltip "Huidige locatie wissen">
-<!ENTITY digglerRestore.label  "Reset location">
-<!ENTITY digglerPopupKiller.label "Sites mogen popup vensters openen">
+<!ENTITY digglerRestore.label "Locatie resetten">
+<!ENTITY digglerPopupKiller.label "Sites mogen pop-upvensters openen">
 <!ENTITY digglerImageOff.label "Geen afbeeldingen tonen">
 <!ENTITY digglerImageOnLocal.label "Afbeeldingen van dezelfde bron tonen">
 <!ENTITY digglerImageOn.label "Alle afbeeldingen tonen">
 <!ENTITY digglerNewTab.label "Nieuw tabblad openen">
 <!ENTITY digglerGoogle.label "Pagina in Google cache opzoeken">
 <!ENTITY digglerArchive.label "Pagina in archive.org opzoeken">
-<!ENTITY digglerWebcitation.label  "Pagina in Webcitation.org">
-<!ENTITY digglerPrefTitle.label "&diggler.label; Voorkeuren">
+<!ENTITY digglerWebcitation.label "Pagina in Webcitation.org opzoeken">
+<!ENTITY digglerPrefTitle.label "&diggler.label; voorkeuren">
 <!ENTITY digglerPrefGeneral.label "Algemene instellingen">
-<!ENTITY digglerPrefEnabled.label "De &diggler.label; knop weergeven">
-<!ENTITY digglerShowPopupControls.label "Onderdelen om popup vensters te controleren weergeven">
-<!ENTITY digglerShowTabControls.label "Onderdelen gerelateerd aan tabblad-surfen weergeven">
+<!ENTITY digglerPrefEnabled.label "De knop &diggler.label; weergeven">
+<!ENTITY digglerShowPopupControls.label "Onderdelen om pop-upvensters te controleren weergeven">
+<!ENTITY digglerShowTabControls.label "Onderdelen gerelateerd aan tabbladsurfen weergeven">
 <!ENTITY digglerShowImageControls.label "Onderdelen om het laden van afbeeldingen te controleren weergeven">
 <!ENTITY digglerPrefTools.label "Hulpmiddelen gedefinieerd door de gebruiker">
 <!ENTITY digglerShowToolsAsSubmenu.label "Hulpmiddelen tonen als submenu">
 <!ENTITY digglerAbout.label "Over &diggler.label;">
 <!ENTITY digglerAboutBlurb.label1 "Oorspronkelijke Diggler geschreven en copyright 2002-2004 Adam Lock &lt;adamlock@eircom.net&gt;.">
-<!ENTITY digglerAboutBlurb.label2 "Firefox 2 Neo Diggler (C) 2006 Neil Bird. Verspreid onder de voorwaarden  van de MPL.">
+<!ENTITY digglerAboutBlurb.label2 "Firefox 2 Neo Diggler (C) 2006 Neil Bird. Verspreid onder de voorwaarden van de MPL.">
 <!ENTITY digglerAddTool.label "Toevoegen...">
 <!ENTITY digglerEditTool.label "Wijzigen...">
 <!ENTITY digglerDeleteTool.label "Verwijderen">
@@ -29,10 +29,10 @@
 <!ENTITY digglerMoveDownTool.label "Omlaag">
 <!ENTITY digglerAddToolDlg.label "Eigenschappen hulpmiddel">
 <!ENTITY digglerToolActionSection.label "Actie hulpmiddel">
-<!ENTITY digglerToolMenuLabel.label "Naam (en optioneel menu label):">
+<!ENTITY digglerToolMenuLabel.label "Naam (en optioneel menulabel):">
 <!ENTITY digglerToolAction.label "Actie:">
 <!ENTITY digglerToolPattern.label "Actie zal worden gematcht door gebruik van deze reguliere expressie:">
-<!ENTITY digglerToolUseActionAsLabel.label "Actie gebruiken als menu label.">
+<!ENTITY digglerToolUseActionAsLabel.label "Actie gebruiken als menulabel">
 <!ENTITY digglerToolHints.label "Hints">
 <!ENTITY digglerToolHint1.label "De actie is wat moet worden geladen uitgaand van de ingegeven URL. Deze variabelen kunnen worden ingevoegd om delen van de oorspronkelijke URL in de uit te voeren actie in te voegen.">
 <!ENTITY digglerToolHint2.label "$S - de volledige URL">
@@ -41,7 +41,7 @@
 <!ENTITY digglerToolHint5.label "$h - de host (b.v. www.mozilla.org)">
 <!ENTITY digglerToolHint6.label "$t - het poortnummer (b.v. 80)">
 <!ENTITY digglerToolHint7.label "$p - het pad (b.v. /mijn/pad/index.html)">
-<!ENTITY digglerToolHint8.label "$1, $2 enz. - delen van de reguliere expressie tussen haakjes.">
+<!ENTITY digglerToolHint8.label "$1, $2 enz. - delen van de reguliere expressie tussen haakjes">
 <!ENTITY digglerToolPatternCmb1.label "Aanpassen">
 <!ENTITY digglerToolPatternCmb2.label "Willekeurige URL">
 <!ENTITY digglerToolPatternCmb3.label "Willekeurig HTTP adres">

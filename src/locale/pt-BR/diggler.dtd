@@ -2,7 +2,7 @@
 <!ENTITY digglerButton.label "&diggler.label;">
 <!ENTITY digglerClear.label "Limpar local">
 <!ENTITY digglerClear.tooltip "Limpar o local atual">
-<!ENTITY digglerRestore.label  "Reset location">
+<!ENTITY digglerRestore.label "Reset location">
 <!ENTITY digglerPopupKiller.label "Sites podem abrir janelas popup">
 <!ENTITY digglerImageOff.label "Não exibir imagens">
 <!ENTITY digglerImageOnLocal.label "Exibir imagens da mesma fonte">
