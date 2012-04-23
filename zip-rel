@@ -1,2 +1,4 @@
 #!/bin/bash
-zip -vrX9 ../diggler.xpi `find . -type f | grep -v '\.svn'`
+[ -d release ]  &&  cd release
+/bin/rm -f ../diggler.xpi
+zip -vrX9 ../diggler.xpi $(find . -type f | grep -v -e '\.svn' -e babelzilla)
