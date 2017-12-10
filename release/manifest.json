@@ -5,6 +5,7 @@
     "description": "A URL manipulation tool for power users",
     "author": "Neil Bird",
     "homepage_url": "https://addons.mozilla.org/en-GB/firefox/addon/neo-diggler/",
+    "default_locale": "en_US",
 
     "applications": {
         "gecko": {
