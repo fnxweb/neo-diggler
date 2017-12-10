@@ -1,50 +1,205 @@
-<!ENTITY diggler.label "Diggler">
-<!ENTITY digglerButton.label "&diggler.label;">
-<!ENTITY digglerClear.label "Očisti položaj">
-<!ENTITY digglerClear.tooltip "Očisti trenutni položaj">
-<!ENTITY digglerRestore.label "Reset location">
-<!ENTITY digglerPopupKiller.label "Stranice koje smiju otvoriti skočne prozore">
-<!ENTITY digglerImageOff.label "Ne prikazuj slike">
-<!ENTITY digglerImageOnLocal.label "Prikaži slike iz istog izvora">
-<!ENTITY digglerImageOn.label "Prikaži sve slike">
-<!ENTITY digglerNewTab.label "Otvori u novoj kartici">
-<!ENTITY digglerGoogle.label "Pronađi stranicu u Google privremenoj memoriji">
-<!ENTITY digglerArchive.label "Pronađi stranicu u Archive.org">
-<!ENTITY digglerWebcitation.label "Pronađi stranicu u Webcitation.org">
-<!ENTITY digglerPrefTitle.label "&diggler.label; Postavke">
-<!ENTITY digglerPrefGeneral.label "Općenite postavke">
-<!ENTITY digglerPrefEnabled.label "Prikaži gumb &diggler.label;">
-<!ENTITY digglerShowPopupControls.label "Prikaži stavke za kontrolu skočnih prozora">
-<!ENTITY digglerShowTabControls.label "Prikaži stavke vezane za surfanje s karticama">
-<!ENTITY digglerShowImageControls.label "Prikaži stavke za kontrolu učitavanja slika">
-<!ENTITY digglerPrefTools.label "Korisnički definirani alati">
-<!ENTITY digglerShowToolsAsSubmenu.label "Prikaži alate kao podizbornik">
-<!ENTITY digglerAbout.label "O &diggler.label;">
-<!ENTITY digglerAboutBlurb.label1 "Originalni Diggler je napisao i zaštitio autorskim pravom 2002-2004 Adam Lock &lt;adamlock@eircom.net&gt;.">
-<!ENTITY digglerAboutBlurb.label2 "Firefox 2 Neo Diggler (C) 2006 Neil Bird. Distribuira se pod uvjetima MPL.">
-<!ENTITY digglerAddTool.label "Dodaj...">
-<!ENTITY digglerEditTool.label "Uredi...">
-<!ENTITY digglerDeleteTool.label "Obriši">
-<!ENTITY digglerMoveUpTool.label "Pomakni gore">
-<!ENTITY digglerMoveDownTool.label "Pomakni dolje">
-<!ENTITY digglerAddToolDlg.label "Svojstva alata">
-<!ENTITY digglerToolActionSection.label "Akcija alata">
-<!ENTITY digglerToolMenuLabel.label "Ime (i opcionalno oznaka izbornika):">
-<!ENTITY digglerToolAction.label "Akcija:">
-<!ENTITY digglerToolPattern.label "Akcija će se odrediti koristeći ovaj regularni izraz:">
-<!ENTITY digglerToolUseActionAsLabel.label "Koristi akciju kao oznaku izbornika.">
-<!ENTITY digglerToolHints.label "Savjeti">
-<!ENTITY digglerToolHint1.label "Akcija je što će se učitati ovisno o unesenoj web adresi. Možete umetnuti ove varijable da biste umetnuli dijelove izvorne web adrese unutar akcije koja će se izvršiti.">
-<!ENTITY digglerToolHint2.label "$S - cijela web adresa">
-<!ENTITY digglerToolHint3.label "$c - shema (npr. http)">
-<!ENTITY digglerToolHint4.label "$u - korisničko ime / lozinka (npr. marko:blogovi)">
-<!ENTITY digglerToolHint5.label "$h - glavni poslužitelj (npr. www.mozilla.org)">
-<!ENTITY digglerToolHint6.label "$t - broj priključka (npr. 80)">
-<!ENTITY digglerToolHint7.label "$p - putanja (npr. /moja/putanja/index.html)">
-<!ENTITY digglerToolHint8.label "$1, $2 itd. - dijelovi regularnih izraza ograđenih zagradom.">
-<!ENTITY digglerToolPatternCmb1.label "Prilagođeno">
-<!ENTITY digglerToolPatternCmb2.label "Bilo koja web adresa">
-<!ENTITY digglerToolPatternCmb3.label "Bilo koja HTTP adresa">
-<!ENTITY digglerToolPatternCmb4.label "Bilo koja FTP adresa">
-<!ENTITY digglerToolPatternCmb5.label "Bilo koja poddomena">
-<!ENTITY digglerToolDefaultLabel.label "Novi alat">
+{
+    "extensionName": {
+        "message": "Diggler"
+    },
+
+    "extensionDescription": {
+        "message": "Alat za manipulaciju web adresom za napredne korisnike"
+    },
+
+    "digglerButton.label": {
+        "message": "&diggler.label;"
+    },
+
+    "digglerClear.label": {
+        "message": "Očisti položaj"
+    },
+
+    "digglerClear.tooltip": {
+        "message": "Očisti trenutni položaj"
+    },
+
+    "digglerRestore.label": {
+        "message": "Reset location"
+    },
+
+    "digglerPopupKiller.label": {
+        "message": "Stranice koje smiju otvoriti skočne prozore"
+    },
+
+    "digglerImageOff.label": {
+        "message": "Ne prikazuj slike"
+    },
+
+    "digglerImageOnLocal.label": {
+        "message": "Prikaži slike iz istog izvora"
+    },
+
+    "digglerImageOn.label": {
+        "message": "Prikaži sve slike"
+    },
+
+    "digglerNewTab.label": {
+        "message": "Otvori u novoj kartici"
+    },
+
+    "digglerGoogle.label": {
+        "message": "Pronađi stranicu u Google privremenoj memoriji"
+    },
+
+    "digglerArchive.label": {
+        "message": "Pronađi stranicu u Archive.org"
+    },
+
+    "digglerWebcitation.label": {
+        "message": "Pronađi stranicu u Webcitation.org"
+    },
+
+    "digglerPrefTitle.label": {
+        "message": "&diggler.label; Postavke"
+    },
+
+    "digglerPrefGeneral.label": {
+        "message": "Općenite postavke"
+    },
+
+    "digglerPrefEnabled.label": {
+        "message": "Prikaži gumb &diggler.label;"
+    },
+
+    "digglerShowPopupControls.label": {
+        "message": "Prikaži stavke za kontrolu skočnih prozora"
+    },
+
+    "digglerShowTabControls.label": {
+        "message": "Prikaži stavke vezane za surfanje s karticama"
+    },
+
+    "digglerShowImageControls.label": {
+        "message": "Prikaži stavke za kontrolu učitavanja slika"
+    },
+
+    "digglerPrefTools.label": {
+        "message": "Korisnički definirani alati"
+    },
+
+    "digglerShowToolsAsSubmenu.label": {
+        "message": "Prikaži alate kao podizbornik"
+    },
+
+    "digglerAbout.label": {
+        "message": "O &diggler.label;"
+    },
+
+    "digglerAboutBlurb.label1": {
+        "message": "Originalni Diggler je napisao i zaštitio autorskim pravom 2002-2004 Adam Lock &lt;adamlock@eircom.net&gt;."
+    },
+
+    "digglerAboutBlurb.label2": {
+        "message": "Firefox 2 Neo Diggler (C) 2006 Neil Bird. Distribuira se pod uvjetima MPL."
+    },
+
+    "digglerAddTool.label": {
+        "message": "Dodaj..."
+    },
+
+    "digglerEditTool.label": {
+        "message": "Uredi..."
+    },
+
+    "digglerDeleteTool.label": {
+        "message": "Obriši"
+    },
+
+    "digglerMoveUpTool.label": {
+        "message": "Pomakni gore"
+    },
+
+    "digglerMoveDownTool.label": {
+        "message": "Pomakni dolje"
+    },
+
+    "digglerAddToolDlg.label": {
+        "message": "Svojstva alata"
+    },
+
+    "digglerToolActionSection.label": {
+        "message": "Akcija alata"
+    },
+
+    "digglerToolMenuLabel.label": {
+        "message": "Ime (i opcionalno oznaka izbornika):"
+    },
+
+    "digglerToolAction.label": {
+        "message": "Akcija:"
+    },
+
+    "digglerToolPattern.label": {
+        "message": "Akcija će se odrediti koristeći ovaj regularni izraz:"
+    },
+
+    "digglerToolUseActionAsLabel.label": {
+        "message": "Koristi akciju kao oznaku izbornika."
+    },
+
+    "digglerToolHints.label": {
+        "message": "Savjeti"
+    },
+
+    "digglerToolHint1.label": {
+        "message": "Akcija je što će se učitati ovisno o unesenoj web adresi. Možete umetnuti ove varijable da biste umetnuli dijelove izvorne web adrese unutar akcije koja će se izvršiti."
+    },
+
+    "digglerToolHint2.label": {
+        "message": "$S - cijela web adresa"
+    },
+
+    "digglerToolHint3.label": {
+        "message": "$c - shema (npr. http)"
+    },
+
+    "digglerToolHint4.label": {
+        "message": "$u - korisničko ime / lozinka (npr. marko:blogovi)"
+    },
+
+    "digglerToolHint5.label": {
+        "message": "$h - glavni poslužitelj (npr. www.mozilla.org)"
+    },
+
+    "digglerToolHint6.label": {
+        "message": "$t - broj priključka (npr. 80)"
+    },
+
+    "digglerToolHint7.label": {
+        "message": "$p - putanja (npr. /moja/putanja/index.html)"
+    },
+
+    "digglerToolHint8.label": {
+        "message": "$1, $2 itd. - dijelovi regularnih izraza ograđenih zagradom."
+    },
+
+    "digglerToolPatternCmb1.label": {
+        "message": "Prilagođeno"
+    },
+
+    "digglerToolPatternCmb2.label": {
+        "message": "Bilo koja web adresa"
+    },
+
+    "digglerToolPatternCmb3.label": {
+        "message": "Bilo koja HTTP adresa"
+    },
+
+    "digglerToolPatternCmb4.label": {
+        "message": "Bilo koja FTP adresa"
+    },
+
+    "digglerToolPatternCmb5.label": {
+        "message": "Bilo koja poddomena"
+    },
+
+    "digglerToolDefaultLabel.label": {
+        "message": "Novi alat"
+    }
+}

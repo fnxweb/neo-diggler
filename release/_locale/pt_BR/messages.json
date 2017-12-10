@@ -1,50 +1,205 @@
-<!ENTITY diggler.label "Diggler">
-<!ENTITY digglerButton.label "&diggler.label;">
-<!ENTITY digglerClear.label "Limpar local">
-<!ENTITY digglerClear.tooltip "Limpar o local atual">
-<!ENTITY digglerRestore.label "Reset location">
-<!ENTITY digglerPopupKiller.label "Sites podem abrir janelas popup">
-<!ENTITY digglerImageOff.label "Não exibir imagens">
-<!ENTITY digglerImageOnLocal.label "Exibir imagens da mesma fonte">
-<!ENTITY digglerImageOn.label "Exibir todas as imagens">
-<!ENTITY digglerNewTab.label "Abrir uma nova aba">
-<!ENTITY digglerGoogle.label "Encontrar página no cache do Google">
-<!ENTITY digglerArchive.label "Encontrar página no Archive.org">
-<!ENTITY digglerWebcitation.label "Encontrar página no Webcitation.org">
-<!ENTITY digglerPrefTitle.label "Preferências do &diggler.label;">
-<!ENTITY digglerPrefGeneral.label "Configurações gerais">
-<!ENTITY digglerPrefEnabled.label "Exibir o botão &diggler.label;">
-<!ENTITY digglerShowPopupControls.label "Exibir itens para controlar janelas popup">
-<!ENTITY digglerShowTabControls.label "Exibir itens relacionados a navegação em abas">
-<!ENTITY digglerShowImageControls.label "Exibir itens para controlar carregamento de imagem">
-<!ENTITY digglerPrefTools.label "Ferramentas definidas pelo usuário">
-<!ENTITY digglerShowToolsAsSubmenu.label "Exibir as ferramentas como um submenu">
-<!ENTITY digglerAbout.label "Sobre o &diggler.label;">
-<!ENTITY digglerAboutBlurb.label1 "Diggler original escrito por Adam Lock &lt;adamlock@eircom.net&gt;. Copyright 2002-2004">
-<!ENTITY digglerAboutBlurb.label2 "Firefox 2 Neo Diggler (C) 2006 Neil Bird. Distribuído sob os termos da MPL.">
-<!ENTITY digglerAddTool.label "Adicionar...">
-<!ENTITY digglerEditTool.label "Editar...">
-<!ENTITY digglerDeleteTool.label "Excluir">
-<!ENTITY digglerMoveUpTool.label "Para cima">
-<!ENTITY digglerMoveDownTool.label "Para baixo">
-<!ENTITY digglerAddToolDlg.label "Propriedades da ferramenta">
-<!ENTITY digglerToolActionSection.label "Ação da ferramenta">
-<!ENTITY digglerToolMenuLabel.label "Nome (e opcionalmente rótulo do menu):">
-<!ENTITY digglerToolAction.label "Ação:">
-<!ENTITY digglerToolPattern.label "A ação será comparada utilizando esta expressão regular:">
-<!ENTITY digglerToolUseActionAsLabel.label "Utilizar a ação como o rótulo do menu.">
-<!ENTITY digglerToolHints.label "Dicas">
-<!ENTITY digglerToolHint1.label "A ação é o que carregar dada a URL de entrada. Você pode inserir estas variáveis para inserir partes da URL original na ação a ser executada.">
-<!ENTITY digglerToolHint2.label "$S - a URL inteira">
-<!ENTITY digglerToolHint3.label "$c - o esquema (ex. http)">
-<!ENTITY digglerToolHint4.label "$u - o nome de usuário / senha (ex. fred:bloggs)">
-<!ENTITY digglerToolHint5.label "$h - o host (ex. www.mozilla.org)">
-<!ENTITY digglerToolHint6.label "$t - o número da porta (ex. 80)">
-<!ENTITY digglerToolHint7.label "$p - o caminho (ex. /meu/caminho/index.html)">
-<!ENTITY digglerToolHint8.label "$1, $2 etc. - partes separadas da expressão regular.">
-<!ENTITY digglerToolPatternCmb1.label "Personalizado">
-<!ENTITY digglerToolPatternCmb2.label "Qualquer URL">
-<!ENTITY digglerToolPatternCmb3.label "Qualquer endereço HTTP">
-<!ENTITY digglerToolPatternCmb4.label "Qualquer endereço FTP">
-<!ENTITY digglerToolPatternCmb5.label "Qualquer subdomínio">
-<!ENTITY digglerToolDefaultLabel.label "Nova ferramenta">
+{
+    "extensionName": {
+        "message": "Diggler"
+    },
+
+    "extensionDescription": {
+        "message": "Uma ferramenta de manipulação de URL para usuários avançados"
+    },
+
+    "digglerButton.label": {
+        "message": "&diggler.label;"
+    },
+
+    "digglerClear.label": {
+        "message": "Limpar local"
+    },
+
+    "digglerClear.tooltip": {
+        "message": "Limpar o local atual"
+    },
+
+    "digglerRestore.label": {
+        "message": "Reset location"
+    },
+
+    "digglerPopupKiller.label": {
+        "message": "Sites podem abrir janelas popup"
+    },
+
+    "digglerImageOff.label": {
+        "message": "Não exibir imagens"
+    },
+
+    "digglerImageOnLocal.label": {
+        "message": "Exibir imagens da mesma fonte"
+    },
+
+    "digglerImageOn.label": {
+        "message": "Exibir todas as imagens"
+    },
+
+    "digglerNewTab.label": {
+        "message": "Abrir uma nova aba"
+    },
+
+    "digglerGoogle.label": {
+        "message": "Encontrar página no cache do Google"
+    },
+
+    "digglerArchive.label": {
+        "message": "Encontrar página no Archive.org"
+    },
+
+    "digglerWebcitation.label": {
+        "message": "Encontrar página no Webcitation.org"
+    },
+
+    "digglerPrefTitle.label": {
+        "message": "Preferências do &diggler.label;"
+    },
+
+    "digglerPrefGeneral.label": {
+        "message": "Configurações gerais"
+    },
+
+    "digglerPrefEnabled.label": {
+        "message": "Exibir o botão &diggler.label;"
+    },
+
+    "digglerShowPopupControls.label": {
+        "message": "Exibir itens para controlar janelas popup"
+    },
+
+    "digglerShowTabControls.label": {
+        "message": "Exibir itens relacionados a navegação em abas"
+    },
+
+    "digglerShowImageControls.label": {
+        "message": "Exibir itens para controlar carregamento de imagem"
+    },
+
+    "digglerPrefTools.label": {
+        "message": "Ferramentas definidas pelo usuário"
+    },
+
+    "digglerShowToolsAsSubmenu.label": {
+        "message": "Exibir as ferramentas como um submenu"
+    },
+
+    "digglerAbout.label": {
+        "message": "Sobre o &diggler.label;"
+    },
+
+    "digglerAboutBlurb.label1": {
+        "message": "Diggler original escrito por Adam Lock &lt;adamlock@eircom.net&gt;. Copyright 2002-2004"
+    },
+
+    "digglerAboutBlurb.label2": {
+        "message": "Firefox 2 Neo Diggler (C) 2006 Neil Bird. Distribuído sob os termos da MPL."
+    },
+
+    "digglerAddTool.label": {
+        "message": "Adicionar..."
+    },
+
+    "digglerEditTool.label": {
+        "message": "Editar..."
+    },
+
+    "digglerDeleteTool.label": {
+        "message": "Excluir"
+    },
+
+    "digglerMoveUpTool.label": {
+        "message": "Para cima"
+    },
+
+    "digglerMoveDownTool.label": {
+        "message": "Para baixo"
+    },
+
+    "digglerAddToolDlg.label": {
+        "message": "Propriedades da ferramenta"
+    },
+
+    "digglerToolActionSection.label": {
+        "message": "Ação da ferramenta"
+    },
+
+    "digglerToolMenuLabel.label": {
+        "message": "Nome (e opcionalmente rótulo do menu):"
+    },
+
+    "digglerToolAction.label": {
+        "message": "Ação:"
+    },
+
+    "digglerToolPattern.label": {
+        "message": "A ação será comparada utilizando esta expressão regular:"
+    },
+
+    "digglerToolUseActionAsLabel.label": {
+        "message": "Utilizar a ação como o rótulo do menu."
+    },
+
+    "digglerToolHints.label": {
+        "message": "Dicas"
+    },
+
+    "digglerToolHint1.label": {
+        "message": "A ação é o que carregar dada a URL de entrada. Você pode inserir estas variáveis para inserir partes da URL original na ação a ser executada."
+    },
+
+    "digglerToolHint2.label": {
+        "message": "$S - a URL inteira"
+    },
+
+    "digglerToolHint3.label": {
+        "message": "$c - o esquema (ex. http)"
+    },
+
+    "digglerToolHint4.label": {
+        "message": "$u - o nome de usuário / senha (ex. fred:bloggs)"
+    },
+
+    "digglerToolHint5.label": {
+        "message": "$h - o host (ex. www.mozilla.org)"
+    },
+
+    "digglerToolHint6.label": {
+        "message": "$t - o número da porta (ex. 80)"
+    },
+
+    "digglerToolHint7.label": {
+        "message": "$p - o caminho (ex. /meu/caminho/index.html)"
+    },
+
+    "digglerToolHint8.label": {
+        "message": "$1, $2 etc. - partes separadas da expressão regular."
+    },
+
+    "digglerToolPatternCmb1.label": {
+        "message": "Personalizado"
+    },
+
+    "digglerToolPatternCmb2.label": {
+        "message": "Qualquer URL"
+    },
+
+    "digglerToolPatternCmb3.label": {
+        "message": "Qualquer endereço HTTP"
+    },
+
+    "digglerToolPatternCmb4.label": {
+        "message": "Qualquer endereço FTP"
+    },
+
+    "digglerToolPatternCmb5.label": {
+        "message": "Qualquer subdomínio"
+    },
+
+    "digglerToolDefaultLabel.label": {
+        "message": "Nova ferramenta"
+    }
+}
