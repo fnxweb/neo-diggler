@@ -21,7 +21,7 @@
  * Contributor(s):
  *
  *   Adam Lock <adamlock@netscape.com>
- *   Firefox 2 New Diggler:  Neil Bird <mozilla@fnxweb.com>
+ *   Firefox 2 Neo Diggler:  Neil Bird <mozilla@fnxweb.com>
  *   Chris Neale <orbit@cdn.gs>
  *
  * Alternatively, the contents of this file may be used under the terms of
@@ -63,6 +63,7 @@ var prefObserver =
       dump("Diggler failed to observe prefs: " + ex + "\n");
     }
     this.syncPrefs();
+    this.setupWebExtension();
   },
 
   removePrefListener: function ()
@@ -118,6 +119,7 @@ var prefObserver =
       // Other prefs
       this.imageBehaviour = this.pref.getIntPref(kPREF_IMAGE_BEHAVIOUR);
       this.showPopups = this.pref.getBoolPref(kPREF_DOM_POPUP);
+
       // TODO tools menu
     } catch (ex) {
       dump("Diggler failed to syncPrefs: " + ex + "\n");
@@ -130,9 +132,100 @@ var prefObserver =
     if (topic != "nsPref:changed")
       return;
     this.syncPrefs();
-  }
-};
+  },
 
+  // Collate all preferences in use
+  collatePrefs: function()
+  {
+    let preferences = {};
+
+    // Simple ones
+    preferences["popup_controls"] = this.showPopupMenuItems;
+    preferences["tab_controls"]   = this.showTabMenuItems;
+    preferences["image_controls"] = this.showImageMenuItems;
+    preferences["submenu"]        = this.showToolsAsSubmenu;
+
+    // TBD system prefs.
+    preferences["image_behaviour"] = this.imageBehaviour;  // permissions.default.image
+    preferences["show_popups"]     = this.showPopups;      // dom.disable_open_during_load
+
+    // Tools
+    preferences["tools"] = this.tools;
+
+    // Done
+    return preferences;
+  },
+
+  // Migrate prefs for future WebExtension version
+  setupWebExtension: function()
+  {
+    // Prefs. migration attach webextension to ask for our old prefs and put them in new storage
+    Components.utils.import("resource://gre/modules/AddonManager.jsm");  // access AddonManager
+    let LegacyExtensionsUtils;
+    try
+    {
+      LegacyExtensionsUtils = Components.utils.import("resource://gre/modules/LegacyExtensionsUtils.jsm").LegacyExtensionsUtils;
+    } catch (e)
+    {
+      // Firefox too old for this module, nothing we can do.
+    }
+    if (LegacyExtensionsUtils)
+    {
+      try
+      {
+        let addonID = "{9b84cce7-a817-45d7-865e-9e6e8da1c388}";
+        AddonManager.getAddonByID( addonID, addon => {
+          const baseURI = addon.getResourceURI("/");
+
+          const embeddedWebExtension = LegacyExtensionsUtils.getEmbeddedExtensionFor({
+            id: addonID, resourceURI: baseURI,
+          });
+
+          if (embeddedWebExtension)
+          {
+            embeddedWebExtension.startup().then( api => {
+              // Started it - create a comms port
+              const {browser} = api;
+              browser.runtime.onConnect.addListener( port => {
+                let webExtensionPort = port;
+
+                // Wait for message(s) on that port
+                webExtensionPort.onMessage.addListener( message => {
+                  if (message == "neodiggler-preferences-request")
+                  {
+                    // Push updated prefs to embedded WebExtension for later
+                    webExtensionPort.postMessage( {"neodiggler-preferences": this.collatePrefs()} );
+                  }
+                });
+              });
+            }).catch( error => {
+              // Don't seem able to tell is it's already been started:  we come in here once per window
+              if (!error.message.includes("already been started"))
+              {
+                setTimeout( function() {
+                  alert("Neo Diggler Embedded WebExtension failed. Data loss may occur. Details: " +
+                    error.message + " " + error.stack);
+                }, 2 );
+              }
+            });
+          }
+          else
+          {
+            setTimeout( function() {
+              alert("Neo Diggler failed to find WebExtension object. Data loss may occur" );
+            }, 2 );
+          }
+        });
+      } catch (e)
+      {
+        setTimeout( function() {
+          alert("Neo Diggler Embedded WebExtension crashed. Data loss may occur. Details: " + e.message + " " + e.stack);
+        }, 2 );
+      }
+    }
+  }
+
+};
 
 // Add a listener such that commonly read prefs can be cached
 function addListeners()

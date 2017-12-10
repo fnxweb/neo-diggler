@@ -5,9 +5,10 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:name>Neo Diggler</em:name>
-    <em:version>1.0.6</em:version>
+    <em:version>1.0.7</em:version>
     <em:id>{9b84cce7-a817-45d7-865e-9e6e8da1c388}</em:id>
     <em:type>2</em:type>
+    <em:hasEmbeddedWebExtension>true</em:hasEmbeddedWebExtension>
     <em:description>A URL manipulation tool for power users</em:description>
     <em:creator>Neil Bird [mozilla@fnxweb.com] - Firefox 2-3 port</em:creator>
     <em:contributor>Adam Lock - original Firefox 1 author</em:contributor>
@@ -26,8 +27,8 @@
     <em:targetApplication>
       <Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-        <em:minVersion>1.5</em:minVersion>
-        <em:maxVersion>11.*</em:maxVersion>
+        <em:minVersion>52.0</em:minVersion>
+        <em:maxVersion>56.*</em:maxVersion>
       </Description>
     </em:targetApplication>
 

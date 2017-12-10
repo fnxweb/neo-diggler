@@ -44,7 +44,7 @@ function digglerAbout()
 
 function digglerLoadHome()
 {
-  window.open("http://diggler.mozdev.org/");
+  window.open("https://addons.mozilla.org/en-GB/firefox/addon/neo-diggler/");
 }
 
 function digglerReadTools(prefsvc)

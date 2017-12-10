@@ -1,0 +1,14 @@
+{
+    "manifest_version": 2,
+    "name": "Neo Diggler",
+    "version": "1.0.7",
+    "description": "A URL manipulation tool for power users",
+
+    "background": {
+        "scripts": [ "background.js" ]
+    },
+
+    "permissions": [
+        "storage"
+        ]
+}
