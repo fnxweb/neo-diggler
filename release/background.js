@@ -44,209 +44,121 @@
 // ***** END LICENSE BLOCK ***** */
 
 
-/*
-// This is our pref observer which makes sure that various prefs are read and
-// kept up to date. It saves having to lookup this stuff each time when it
-// rarely changes.
-
-var prefObserver =
+// Preferences, initialised to defaults
+var defaultPrefs =
 {
-  addPrefListener: function ()
-  {
-    try {
-      if (this.pref == null) {
-        var prefService = Components.classes["@mozilla.org/preferences-service;1"]
-                                    .getService(Components.interfaces.nsIPrefService);
-        this.pref = prefService.getBranch(null);
-      }
-      var pbi = this.pref.QueryInterface(Components.interfaces.nsIPrefBranchInternal);
-      pbi.addObserver(kPREF_DIGGLER, this, false);
-      pbi.addObserver(kPREF_DOM_POPUP, this, false);
-      pbi.addObserver(kPREF_IMAGE_BEHAVIOUR, this, false);
-      pbi.addObserver(kPREF_DIGGLER_TOOLS, this, false);
-    } catch(ex) {
-      dump("Diggler failed to observe prefs: " + ex + "\n");
-    }
-    this.syncPrefs();
-    this.setupWebExtension();
-  },
+    // Actual prefs.
+    showPopupMenuItems : true,
+    showTabMenuItems : true,
+    showImageMenuItems : true,
+    showToolsAsSubmenu : false,
+    imageBehaviour : 1,
+    showPopups : true,
+    showPageAction : true,
 
-  removePrefListener: function ()
-  {
-    try {
-      var pbi = this.pref.QueryInterface(Components.interfaces.nsIPrefBranchInternal);
-      pbi.removeObserver(kPREF_DIGGLER, this, false);
-      pbi.removeObserver(kPREF_DOM_POPUP, this, false);
-      pbi.removeObserver(kPREF_IMAGE_BEHAVIOUR, this, false);
-      pbi.removeObserver(kPREF_DIGGLER_TOOLS, this, false);
-    } catch(ex) {
-      dump("Diggler failed to unobserve prefs: " + ex + "\n");
-    }
-    this.syncPrefs();
-  },
+    tools : []
+}
+var prefs = defaultPrefs;
 
-  readTools: function()
-  {
-    try {
-      this.showToolsAsSubmenu =
-        this.pref.prefHasUserValue(kPREF_DIGGLER_TOOLS_SUBMENU) &&
-        this.pref.getBoolPref(kPREF_DIGGLER_TOOLS_SUBMENU);
-      this.tools = digglerReadTools(this.pref);
-    } catch (ex) {
-      alert("Diggler failed to syncPrefs: " + ex + "\n");
-    }
-  },
+// List of created menus, so that can re-created
+// Have to always re-create everything to preserve order (new ones always go on the end)
+// Items are each {id,label,url}
+var currentMenuItems = [];
 
-  syncPrefs: function()
-  {
-    // Fill in prefs with their default values first
-    this.showPopupMenuItems = true;
-    this.showTabMenuItems = true;
-    this.showImageMenuItems = true;
-    this.showTools = false;
-    this.imageBehaviour = 1;
-    this.showPopups = true;
+// Current URL used to generate the current menu
+var currentUrl = "";
 
-    try {
-      // Diggler prefs
-      this.showPopupMenuItems =
-        this.pref.prefHasUserValue(kPREF_DIGGLER_POPUP_CONTROLS) &&
-        this.pref.getBoolPref(kPREF_DIGGLER_POPUP_CONTROLS);
-      this.showTabMenuItems   =
-        this.pref.prefHasUserValue(kPREF_DIGGLER_TAB_CONTROLS) &&
-        this.pref.getBoolPref(kPREF_DIGGLER_TAB_CONTROLS);
-      this.showImageMenuItems =
-        this.pref.prefHasUserValue(kPREF_DIGGLER_IMAGE_CONTROLS) &&
-        this.pref.getBoolPref(kPREF_DIGGLER_IMAGE_CONTROLS);
 
-      this.readTools();
+// Load preferences
+function loadPrefs()
+{
+    // Async request
+    browser.storage.local.get("preferences").then( results => {
+        // Have something
+        if (results.hasOwnProperty("preferences"))
+        {
+            // Extract apply
+            if (preferences.hasOwnProperty("popup_controls"))   prefs.showPopupMenuItems = preferences["popup_controls"];
+            if (preferences.hasOwnProperty("tab_controls"))     prefs.showTabMenuItems   = preferences["tab_controls"];
+            if (preferences.hasOwnProperty("image_controls"))   prefs.showImageMenuItems = preferences["image_controls"];
+            if (preferences.hasOwnProperty("submenu"))          prefs.showToolsAsSubmenu = preferences["submenu"];
+            if (preferences.hasOwnProperty("page_action"))      prefs.showPageAction     = preferences["page_action"];
 
-      // Other prefs
-      this.imageBehaviour = this.pref.getIntPref(kPREF_IMAGE_BEHAVIOUR);
-      this.showPopups = this.pref.getBoolPref(kPREF_DOM_POPUP);
+            // TBD system prefs.
+            if (preferences.hasOwnProperty("image_behaviour"))  prefs.imageBehaviour = preferences["image_behaviour"];  // permissions.default.image
+            if (preferences.hasOwnProperty("show_popups"))      prefs.showPopups = preferences["show_popups"];          // dom.disable_open_during_load
 
-      // TODO tools menu
-    } catch (ex) {
-      dump("Diggler failed to syncPrefs: " + ex + "\n");
-    }
-  },
+            // Tools
+            if (preferences.hasOwnProperty("tools"))            prefs.tools = preferences["tools"];
 
-  // nsIObserver
-  observe: function(subject, topic, state)
-  {
-    if (topic != "nsPref:changed")
-      return;
-    this.syncPrefs();
-  },
+            // And remove from current prefs any not in defaults any more
+            let writePrefs = false;
+            let defaults = collatePrefs( defaultPrefs );
+            for (let pref in preferences)
+                if (preferencess.hasOwnProperty(pref)  &&  !defaults.hasOwnProperty(pref))
+                    writePrefs = true;
+            if (writePrefs)
+                savePrefs();
 
-  // Collate all preferences in use
-  collatePrefs: function()
-  {
+
+            // Show/hide page action on all tabs
+            browser.tabs.query( {}, tabs => {
+                for (let tab of tabs)
+                {
+                    if (prefs.showPageAction)
+                        browser.pageAction.show( tab.id );
+                    else
+                        browser.pageAction.hide( tab.id );
+                }
+            });
+
+            // Create menu for current tab
+            browser.tabs.query( {active:true, currentWindow:true}, tabs => {
+                digglerBuildMenu( tab.url );
+            });
+        }
+    }).catch( error => {
+        // Create menu for current tab using defaults
+        browser.tabs.query( {active:true, currentWindow:true}, tabs => {
+            digglerBuildMenu( tab.url );
+        });
+    });
+}
+
+
+// Collate preferences
+function collatePrefs( prefs )
+{
     let preferences = {};
 
     // Simple ones
-    preferences["popup_controls"] = this.showPopupMenuItems;
-    preferences["tab_controls"]   = this.showTabMenuItems;
-    preferences["image_controls"] = this.showImageMenuItems;
-    preferences["submenu"]        = this.showToolsAsSubmenu;
+    preferences["popup_controls"] = prefs.showPopupMenuItems;
+    preferences["tab_controls"]   = prefs.showTabMenuItems;
+    preferences["image_controls"] = prefs.showImageMenuItems;
+    preferences["submenu"]        = prefs.showToolsAsSubmenu;
+    preferences["page_action"]    = prefs.showPageAction;
 
     // TBD system prefs.
-    preferences["image_behaviour"] = this.imageBehaviour;  // permissions.default.image
-    preferences["show_popups"]     = this.showPopups;      // dom.disable_open_during_load
+    preferences["image_behaviour"] = prefs.imageBehaviour;  // permissions.default.image
+    preferences["show_popups"]     = prefs.showPopups;      // dom.disable_open_during_load
 
     // Tools
-    preferences["tools"] = this.tools;
+    preferences["tools"] = prefs.tools;
 
     // Done
     return preferences;
-  },
-
-  // Migrate prefs for future WebExtension version
-  setupWebExtension: function()
-  {
-    // Prefs. migration attach webextension to ask for our old prefs and put them in new storage
-    Components.utils.import("resource://gre/modules/AddonManager.jsm");  // access AddonManager
-    let LegacyExtensionsUtils;
-    try
-    {
-      LegacyExtensionsUtils = Components.utils.import("resource://gre/modules/LegacyExtensionsUtils.jsm").LegacyExtensionsUtils;
-    } catch (e)
-    {
-      // Firefox too old for this module, nothing we can do.
-    }
-    if (LegacyExtensionsUtils)
-    {
-      try
-      {
-        let addonID = "{9b84cce7-a817-45d7-865e-9e6e8da1c388}";
-        AddonManager.getAddonByID( addonID, addon => {
-          const baseURI = addon.getResourceURI("/");
-
-          const embeddedWebExtension = LegacyExtensionsUtils.getEmbeddedExtensionFor({
-            id: addonID, resourceURI: baseURI,
-          });
-
-          if (embeddedWebExtension)
-          {
-            embeddedWebExtension.startup().then( api => {
-              // Started it - create a comms port
-              const {browser} = api;
-              browser.runtime.onConnect.addListener( port => {
-                let webExtensionPort = port;
-
-                // Wait for message(s) on that port
-                webExtensionPort.onMessage.addListener( message => {
-                  if (message == "neodiggler-preferences-request")
-                  {
-                    // Push updated prefs to embedded WebExtension for later
-                    webExtensionPort.postMessage( {"neodiggler-preferences": this.collatePrefs()} );
-                  }
-                });
-              });
-            }).catch( error => {
-              // Don't seem able to tell is it's already been started:  we come in here once per window
-              if (!error.message.includes("already been started"))
-              {
-                setTimeout( function() {
-                  alert("Neo Diggler Embedded WebExtension failed. Data loss may occur. Details: " +
-                    error.message + " " + error.stack);
-                }, 2 );
-              }
-            });
-          }
-          else
-          {
-            setTimeout( function() {
-              alert("Neo Diggler failed to find WebExtension object. Data loss may occur" );
-            }, 2 );
-          }
-        });
-      } catch (e)
-      {
-        setTimeout( function() {
-          alert("Neo Diggler Embedded WebExtension crashed. Data loss may occur. Details: " + e.message + " " + e.stack);
-        }, 2 );
-      }
-    }
-  }
-
-};
-
-// Add a listener such that commonly read prefs can be cached
-function addListeners()
-{
-    prefObserver.addPrefListener();
 }
 
-function removeListeners()
+
+// Save preferences in use
+function savePrefs()
 {
-    prefObserver.removePrefListener();
+    let preferences = collatePrefs( prefs );
+    // TBD browser.storage.local.set({"preferences": preferences});
 }
 
-window.addEventListener('load',addListeners,false);
-window.addEventListener('unload',removeListeners,false);
 
-
+// URI editing
 function digglerSubstituteURI(originalURI, pattern)
 {
     // $S - the whole URL
@@ -265,163 +177,78 @@ function digglerSubstituteURI(originalURI, pattern)
         .replace(/\$p/, originalURI.path);
 }
 
-function digglerDoMenu(aEvent)
+
+// Menu handler
+function digglerDoMenu( info, tab )
 {
-  var id = aEvent.target.getAttribute("id");
-  if (id == "diggler-clear") {
-    digglerClearLocation();
-  }
-  else if (id == "diggler-restore")
-  {
-    digglerRestoreLocation();
-  }
-  else if (id == "diggler-imageon")
-  {
-    digglerSetImageMode(1);
-  }
-  else if (id == "diggler-imageonlocal")
-  {
-    digglerSetImageMode(3);
-  }
-  else if (id == "diggler-imageoff")
-  {
-    digglerSetImageMode(2);
-  }
-  else if (id == "diggler-popupkiller") {
-    var killPopups =  !digglerGetKillPopups();
-    dump("toggle killpopups to " + killPopups + "\n");
-    digglerSetKillPopups(killPopups);
-  }
-  else if (id == "diggler-newtab")
-  {
-    BrowserOpenTab();
-  }
-  else {
-    digglerSetUrl(aEvent);
-  }
+    console.log("++ menu " + info.menuItemId + " on tab " + tab.id);
+    // Only URL actions off the menu any more
+    digglerSetUrl( tab.id, info.menuItemId );
 }
 
-function digglerSetKillPopups(killPopups)
+
+// Follow URL of given menu item
+function digglerSetUrl( tabId, menuId )
 {
-    prefObserver.pref.setBoolPref(kPREF_DOM_POPUP, killPopups);
+    let match = menuId.match( /menuitem-([0-9]+)$/ );
+    if (match.length > 1)
+    {
+        let index = parseInt( match[1] );
+        let uriToLoad = currentMenuItems[index].url;
+        // TBD Use URL Link hack for file:/// links
+        browser.tabs.update( tabId, { "url": uriToLoad } );
+    }
 }
 
-function digglerGetKillPopups()
-{
-    return prefObserver.showPopups;
-}
 
-function digglerSetUrl(aEvent)
-{
-  var uriToLoad = aEvent.target.getAttribute("url");
-  urlBar = document.getElementById("urlbar");
-  urlBar.value = uriToLoad;
-  loadURI(uriToLoad);
-}
-
-var gURIFixup = null;
-
+// Used to wrap now-unavailable nsIURIFixup
 function digglerFixupUrl(url)
 {
-  var fixedUpURI = digglerFixupURI(url);
-  if (fixedUpURI)
-    return fixedUpURI.spec;
-  return url;
+    let match = url.match(/^ *(.*?) *$/);
+    if (match.length > 1)
+        return match[1];
+    return url;
 }
 
-function digglerFixupURI(url)
+
+// Build menus
+function digglerBuildMenu(url)
 {
-  try {
-    if (!gURIFixup)
-       gURIFixup = Components.classes["@mozilla.org/docshell/urifixup;1"]
-             .getService(Components.interfaces.nsIURIFixup);
+    url = digglerFixupUrl(url);
 
-    var fixedUpURI = gURIFixup.createFixupURI(url,
-        Components.interfaces.nsIURIFixup.FIXUP_FLAGS_MAKE_ALTERNATE_URI);
-    return fixedUpURI;
-  }
-  catch (ex) {
-    dump("Fixup failed - " + ex);
-    return null;
-  }
-}
+    // Need to do it?
+    if (url === currentUrl)
+        return;
+    else
+        currentUrl = url;
 
-function digglerBuildMenu()
-{
-  urlBar = document.getElementById("urlbar");
-  var url = digglerFixupUrl(urlBar.value);
-  var siteUrl;
+    // Clear all of the previous tools
+    digglerClearTempMenuItems();
 
-  // Enable/disable the popup killer
-  var showPopupMenuItems = prefObserver.showPopupMenuItems;
-  var popupKiller = document.getElementById("diggler-popupkiller");
-  popupKiller.setAttribute("checked", !digglerGetKillPopups());
-  document.getElementById("diggler-popupsep").setAttribute("visible", showPopupMenuItems);
-  popupKiller.setAttribute("visible", showPopupMenuItems);
-
-  // Enable/disable view images radio buttons
-  var showImageMenuItems = prefObserver.showImageMenuItems;
-  if (showImageMenuItems) {
-    var imageMode = digglerGetImageMode();
-    var imageEl;
-    if (imageMode == 1)
-      imageEl = document.getElementById("diggler-imageon");
-    else if (imageMode == 3)
-      imageEl = document.getElementById("diggler-imageonlocal");
-    else if (imageMode == 2)
-      imageEl = document.getElementById("diggler-imageoff");
-    if (imageEl)
-      imageEl.setAttribute("checked", "true");
-  }
-  // This code stinks, there must be a better way
-  document.getElementById("diggler-imagesep").setAttribute("visible", showImageMenuItems);
-  document.getElementById("diggler-imageon").setAttribute("visible", showImageMenuItems);
-  document.getElementById("diggler-imageonlocal").setAttribute("visible", showImageMenuItems);
-  document.getElementById("diggler-imageoff").setAttribute("visible", showImageMenuItems);
-
-  // Hide/show new tab menu item
-  var showTabMenuItems = prefObserver.showTabMenuItems;
-  var newTab = document.getElementById("diggler-newtab");
-  if (newTab) {
-    var hideNewTab = false;
-    // count number of tabs in window
-    // if (tabs == 1) check "browser.tabs.autoHide"
-    //
-  }
-  document.getElementById("diggler-tabsep").setAttribute("visible", showTabMenuItems);
-  document.getElementById("diggler-newtab").setAttribute("visible", showTabMenuItems);
-
-  var urlMenu      = document.getElementById("diggler-url-menu");
-  var toolsSubMenu = document.getElementById("diggler-tools-menu");
-
-  // Clear all of the previous tools
-  digglerClearTempMenuItems(urlMenu);
-
-  // Build the user specified tools menu
-
-  try {
-    var showToolsAsSubmenu = prefObserver.showTools;
-    var tools = prefObserver.tools;
-    // There is no point showing a tools submenu if the user hasn't got any!
-    if (tools  &&  tools.length > 0)
-    {
-        showToolsAsSubmenu = false;
-        if (toolsSubMenu)
-          toolsSubMenu.setAttribute("visible", showToolsAsSubmenu);
-        var toolsMenu = urlMenu; // showToolsAsSubmenu ? urlMenu : toolsSubMenu;
-        digglerBuildToolsMenu(toolsMenu, url, tools);
+    // Build the user specified tools menu
+    try {
+        // There is no point showing a tools submenu if the user hasn't got any!
+        if (prefs.tools  &&  prefs.tools.length > 0)
+        {
+            // If using submenu, create it
+            let submenuId = null;
+            if (prefs.showToolsAsSubmenu)
+                submenuId = digglerCreateTempMenuItemName( "User Defined Tools", "" );
+            digglerBuildToolsMenu(submenuId, url, tools);
+        }
     }
-  }
-  catch (ex)
-  {
-    alert("Exception " + ex);
-  }
-  digglerBuildUrlMenu(urlMenu, url);
+    catch (ex)
+    {
+        console.log("Neo Diggler: exception " + ex);
+    }
+    digglerBuildUrlMenu(url);
 }
 
+
+// Create custom tools menu
 function digglerBuildToolsMenu(toolsMenu, siteUrl, tools)
 {
-  var uri = digglerFixupURI(siteUrl);
+  var uri = digglerFixupUrl(siteUrl);
 
   // Read the array of tools and turn them into menu items
   var menuList = new Array();
@@ -459,7 +286,8 @@ function digglerBuildToolsMenu(toolsMenu, siteUrl, tools)
   }
 }
 
-*/
+
+// Stock tools / conversions
 var digglerOptions = [
 // [],
 //  [],
@@ -483,14 +311,15 @@ var digglerOptions = [
   ["sourceforge home to summary", "(https?)://([a-z0-9\\-]+)\\.sourceforge\\.net/?.*", "$1://sourceforge.net/projects/$2/", "i", false],
   [],
   ["Archive.org", "^(https?://(?!web\\.archive\\.org).*)$", "http://web.archive.org/web/*/$1", "i", false],
-  ["Webcitation", "^http://(.*)$", "http://www.webcitation.org/query?url=$1", "i", false],
-  ["Google", "^http://(.*)$", "http://google.com/search?q=cache:$1", "i", false],
+  ["Webcitation", "^https?://(.*)$", "http://www.webcitation.org/query?url=$1", "i", false],
+  ["Google", "^https?://(.*)$", "http://google.com/search?q=cache:$1", "i", false],
 //  [],
 //  []
 ];
-/*
 
-function digglerBuildUrlMenu (urlMenu, siteUrl)
+
+// Build URL menus for site
+function digglerBuildUrlMenu (siteUrl)
 {
   if (siteUrl.length == 0)
     return;
@@ -511,36 +340,36 @@ function digglerBuildUrlMenu (urlMenu, siteUrl)
 
   if (menuList.length > 0)
   {
-    digglerCreateTempMenuSeparator(urlMenu);
+    digglerCreateTempMenuSeparator();
 
     for (i = 0; i < menuList.length; i++)
     {
       if (menuList[i].length == 0)
       {
-        digglerCreateTempMenuSeparator(urlMenu);
+        digglerCreateTempMenuSeparator();
       }
       else if (menuList[i][0] == "Google")
       {
-        digglerCreateTempMenuItemName(urlMenu, digglerSearchGoogleLabel, menuList[i][1]);
+        digglerCreateTempMenuItemName(null, "Find page in Google cache", menuList[i][1]); // TBD
       }
       else if (menuList[i][0] == "Archive.org")
       {
-        digglerCreateTempMenuItemName(urlMenu, digglerSearchArchiveLabel, menuList[i][1]);
+        digglerCreateTempMenuItemName(null, "Find page in Archive.org", menuList[i][1]); // TBD
       }
       else if (menuList[i][0] == "Webcitation")
       {
-        digglerCreateTempMenuItemName(urlMenu, digglerSearchWebcitationLabel, menuList[i][1]);
+        digglerCreateTempMenuItemName(null, "Find page in Webcitation.org", menuList[i][1]); // TBD
       }
       else
       {
-        digglerCreateTempMenuItem(urlMenu, menuList[i][1]);
+        digglerCreateTempMenuItem(null, menuList[i][1]);
       }
     }
   }
-
-// document.write ("<tr><td title='" + menuList[i][0] + "' class='link'><a href='" + menuList[i][1] + "'>" + menuList[i][1] + "</a></td></tr>");
 }
 
+
+// Return whether given URL matches site URL according to given options
 function matchUrl(url, option, uri)
 {
   var name = option[0]
@@ -578,6 +407,8 @@ function matchUrl(url, option, uri)
   return result;
 }
 
+
+// Remove sequential separators
 function cleanExtraSeparators (menuList)
 {
   // remove starting separators
@@ -605,118 +436,84 @@ function cleanExtraSeparators (menuList)
   return menuList;
 }
 
-function digglerClearTempMenuItems(aParent)
+
+// Remove current ,enu items
+function digglerClearTempMenuItems()
 {
-  var children = aParent.childNodes;
-  for (var i = 0; i < children.length;)
-  {
-    var index = children[i].getAttribute("tmp");
-    if (index)
-    {
-      var olditem = aParent.removeChild(children[i]);
-      delete olditem;
-    }
-    else
-    {
-      ++i;
-    }
-  }
+    for (var i = 0; i < currentMenuItems.length; ++i)
+        browser.menus.remove( currentMenuItems[i].id );
+    currentMenuItems = [];
+    globalMenuIndex = 0;
 }
 
-function digglerCreateTempMenuSeparator(aParent)
+
+// Create separator menu item
+function digglerCreateTempMenuSeparator()
 {
-  var menuitem = document.createElement("menuseparator");
-  menuitem.setAttribute("tmp", "separator");
-  aParent.appendChild(menuitem);
+    // Create
+    let id = "diggler-separator-" + currentMenuItems.length;
+    browser.menus.create({
+        id: id,
+        type: "separator",
+        contexts: ["browser_action", "page_action"]
+    });
+
+    // Store
+    currentMenuItems.push({
+        "id": id
+    });
 }
 
+
+// Create menu item with name
 function digglerCreateTempMenuItemName(aParent, label, url)
 {
-  var menuitem = document.createElement("menuitem");
-  menuitem.setAttribute("label", label);
-  menuitem.setAttribute("url", url);
-  menuitem.setAttribute("tmp", "item");
-  aParent.appendChild(menuitem);
+    // Create
+    let id = "diggler-menuitem-" + currentMenuItems.length;
+    let newmenu = {
+        id: id,
+        title: label,
+        contexts: ["browser_action", "page_action"]
+    };
+    if (aParent)
+        newmenu.parentId = aParent;
+    browser.menus.create( newmenu );
+
+    // Store info
+    currentMenuItems.push({
+        "id": id,
+        "label": label,
+        "url": url
+    });
+
+    return id;
 }
 
+
+// Create basic menu item
 function digglerCreateTempMenuItem(aParent, url)
 {
-  var menuitem = document.createElement("menuitem");
-  menuitem.setAttribute("label", url);
-  menuitem.setAttribute("url",   url);
-  menuitem.setAttribute("tmp", "item");
-  aParent.appendChild(menuitem);
+    digglerCreateTempMenuItemName(aParent,url,url);
 }
 
-function digglerClearLocation()
-{
-  urlBar = document.getElementById("urlbar");
-  urlBar.value = "";
-  urlBar.focus();
-}
-
-function digglerRestoreLocation()
-{
-  urlBar = document.getElementById("urlbar");
-  // top.location.href (etc.) returns chrome://browser/content/browser.xul
-  urlBar.value = getBrowser().mCurrentBrowser.currentURI.spec;
-  urlBar.focus();
-}
-
-function digglerSetImageMode(mode)
-{
-  prefObserver.pref.setIntPref(kPREF_IMAGE_BEHAVIOUR, mode);
-}
-
-function digglerGetImageMode()
-{
-  return prefObserver.imageBehaviour;
-}
-
-function digglerUpdateTooltip(tipElement)
-{
-  if (tipElement != document.getElementById("diggler-button"))
-  {
-    return false;
-  }
-  return true;
-}
-
-*/
-
-
-// Menu option handler
-function onMenu( info, tab )
-{
-    console.log("++ menu " + info.menuItemId + " on tab " + tab.id);
-}
-
-
-
-// Dummy menu generation
-browser.menus.create({
-    id: "neodiggler-one",
-    title: "One",
-    contexts: ["browser_action", "page_action"]
-});
-browser.menus.create({
-    id: "neodiggler-two",
-    title: "Two",
-    contexts: ["browser_action", "page_action"]
-});
-
-
-// Show page action on all relevant tabs
-// TBD do this after reading prefs and knowing if it's wanted
-browser.tabs.query( {}, tabs => {
-    for (let tab of tabs)
-    {
-        // Only add it for pages we know we can work with
-        if (tab.url.match(/^(ftp|http|https):/))
-            browser.pageAction.show( tab.id );
-    }
-});
 
 
 // Add menu handler
-browser.menus.onClicked.addListener( onMenu );
+browser.menus.onClicked.addListener( digglerDoMenu );
+
+// Load prefs
+loadPrefs();
+
+// Be notified of tab content changes
+browser.tabs.onUpdated.addListener( (tabId, changeInfo, tab) => {
+    // Rebuild menu for new URL
+    digglerBuildMenu( tab.url );
+});
+
+// Be notified of tab selection changes
+browser.tabs.onActivated.addListener( activeInfo => {
+    // Determine URL of tab and rebuild menu
+    browser.tabs.get( activeInfo.tabId ).then( tab => digglerBuildMenu( tab.url ) );
+});
+
+// vim: set ai et sts=4 sw=4 :
