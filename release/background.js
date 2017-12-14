@@ -83,9 +83,9 @@ function loadPrefs()
             for (let tab of tabs)
             {
                 if (prefs.showPageAction)
-                browser.pageAction.show( tab.id );
+                    browser.pageAction.show( tab.id );
                 else
-                browser.pageAction.hide( tab.id );
+                    browser.pageAction.hide( tab.id );
             }
         });
 
@@ -525,6 +525,12 @@ loadPrefs();
 browser.tabs.onUpdated.addListener( (tabId, changeInfo, tab) => {
     // Rebuild menu for new URL
     digglerBuildMenu( tab.url );
+
+    // And update page action visibility
+    if (prefs.showPageAction)
+        browser.pageAction.show( tab.id );
+    else
+        browser.pageAction.hide( tab.id );
 });
 
 // Be notified of tab selection changes
