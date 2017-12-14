@@ -340,8 +340,6 @@ function digglerBuildUrlMenu (siteUrl)
 
   if (menuList.length > 0)
   {
-    digglerCreateTempMenuSeparator();
-
     for (i = 0; i < menuList.length; i++)
     {
       if (menuList[i].length == 0)
@@ -369,7 +367,7 @@ function digglerBuildUrlMenu (siteUrl)
 }
 
 
-// Return whether given URL matches site URL according to given options
+// Return matches for site URL according to given options
 function matchUrl(url, option, uri)
 {
   var name = option[0]
