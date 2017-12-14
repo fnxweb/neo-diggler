@@ -81,18 +81,17 @@ function loadPrefs()
         // Show/hide page action on all tabs
         browser.tabs.query( {}, tabs => {
             for (let tab of tabs)
-        {
-            console.log(`++ showPageAction = ${prefs.showPageAction} on tab ${tab.id}`);
-            if (prefs.showPageAction)
-            browser.pageAction.show( tab.id );
-            else
-            browser.pageAction.hide( tab.id );
-        }
+            {
+                if (prefs.showPageAction)
+                browser.pageAction.show( tab.id );
+                else
+                browser.pageAction.hide( tab.id );
+            }
         });
 
         // Create menu for current tab
         browser.tabs.query( {active:true, currentWindow:true}, tabs => {
-            digglerBuildMenu( tab.url );
+            digglerBuildMenu( tabs[0].url );
         });
     }
 
