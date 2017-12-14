@@ -68,6 +68,9 @@ var currentMenuItems = [];
 // Current URL used to generate the current menu
 var currentUrl = "";
 
+// ID of top-level menu
+var mainMenu = "neo-diggler";
+
 
 // Load preferences
 function loadPrefs()
@@ -231,7 +234,7 @@ function digglerBuildMenu(url)
         if (prefs.tools  &&  prefs.tools.length > 0)
         {
             // If using submenu, create it
-            let submenuId = null;
+            let submenuId = mainMenu;
             if (prefs.showToolsAsSubmenu)
                 submenuId = digglerCreateTempMenuItemName( "User Defined Tools", "" );
             digglerBuildToolsMenu(submenuId, url, tools);
@@ -344,23 +347,23 @@ function digglerBuildUrlMenu (siteUrl)
     {
       if (menuList[i].length == 0)
       {
-        digglerCreateTempMenuSeparator();
+        digglerCreateTempMenuSeparator(mainMenu);
       }
       else if (menuList[i][0] == "Google")
       {
-        digglerCreateTempMenuItemName(null, "Find page in Google cache", menuList[i][1]); // TBD
+        digglerCreateTempMenuItemName(mainMenu, "Find page in Google cache", menuList[i][1]); // TBD
       }
       else if (menuList[i][0] == "Archive.org")
       {
-        digglerCreateTempMenuItemName(null, "Find page in Archive.org", menuList[i][1]); // TBD
+        digglerCreateTempMenuItemName(mainMenu, "Find page in Archive.org", menuList[i][1]); // TBD
       }
       else if (menuList[i][0] == "Webcitation")
       {
-        digglerCreateTempMenuItemName(null, "Find page in Webcitation.org", menuList[i][1]); // TBD
+        digglerCreateTempMenuItemName(mainMenu, "Find page in Webcitation.org", menuList[i][1]); // TBD
       }
       else
       {
-        digglerCreateTempMenuItem(null, menuList[i][1]);
+        digglerCreateTempMenuItem(mainMenu, menuList[i][1]);
       }
     }
   }
@@ -446,15 +449,18 @@ function digglerClearTempMenuItems()
 
 
 // Create separator menu item
-function digglerCreateTempMenuSeparator()
+function digglerCreateTempMenuSeparator(aParent)
 {
     // Create
     let id = "diggler-separator-" + currentMenuItems.length;
-    browser.menus.create({
+    let newmenu = {
         id: id,
         type: "separator",
         contexts: ["browser_action", "page_action"]
-    });
+    };
+    if (aParent)
+        newmenu.parentId = aParent;
+    browser.menus.create( newmenu );
 
     // Store
     currentMenuItems.push({
@@ -498,6 +504,16 @@ function digglerCreateTempMenuItem(aParent, url)
 
 // Add menu handler
 browser.menus.onClicked.addListener( digglerDoMenu );
+
+// Create custom submenu to work around max 6 limit of button context menu items (!)
+browser.menus.create({
+    id: mainMenu,
+    title: "Neo Diggler",
+    icons: {
+        "48": "icons/neo-diggler.svg"
+    },
+    contexts: ["browser_action", "page_action"]
+});
 
 // Load prefs
 loadPrefs();
