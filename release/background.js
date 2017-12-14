@@ -75,7 +75,28 @@ var mainMenu = "neo-diggler";
 // Load preferences
 function loadPrefs()
 {
-    // Async request
+    // Apply loaded / default prefs to initial menu
+    function applyPrefs()
+    {
+        // Show/hide page action on all tabs
+        browser.tabs.query( {}, tabs => {
+            for (let tab of tabs)
+        {
+            console.log(`++ showPageAction = ${prefs.showPageAction} on tab ${tab.id}`);
+            if (prefs.showPageAction)
+            browser.pageAction.show( tab.id );
+            else
+            browser.pageAction.hide( tab.id );
+        }
+        });
+
+        // Create menu for current tab
+        browser.tabs.query( {active:true, currentWindow:true}, tabs => {
+            digglerBuildMenu( tab.url );
+        });
+    }
+
+    // Async request for prefs.
     browser.storage.local.get("preferences").then( results => {
         // Have something
         if (results.hasOwnProperty("preferences"))
@@ -102,29 +123,13 @@ function loadPrefs()
                     writePrefs = true;
             if (writePrefs)
                 savePrefs();
-
-
-            // Show/hide page action on all tabs
-            browser.tabs.query( {}, tabs => {
-                for (let tab of tabs)
-                {
-                    if (prefs.showPageAction)
-                        browser.pageAction.show( tab.id );
-                    else
-                        browser.pageAction.hide( tab.id );
-                }
-            });
-
-            // Create menu for current tab
-            browser.tabs.query( {active:true, currentWindow:true}, tabs => {
-                digglerBuildMenu( tab.url );
-            });
         }
+
+        // Use prefs.
+        applyPrefs();
     }).catch( error => {
-        // Create menu for current tab using defaults
-        browser.tabs.query( {active:true, currentWindow:true}, tabs => {
-            digglerBuildMenu( tab.url );
-        });
+        // Use prefs.
+        applyPrefs();
     });
 }
 
@@ -184,7 +189,6 @@ function digglerSubstituteURI(originalURI, pattern)
 // Menu handler
 function digglerDoMenu( info, tab )
 {
-    console.log("++ menu " + info.menuItemId + " on tab " + tab.id);
     // Only URL actions off the menu any more
     digglerSetUrl( tab.id, info.menuItemId );
 }
