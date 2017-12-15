@@ -25,16 +25,14 @@
   <title data-i18n="popup-title">[popup-title]</title>
   <meta charset="utf-8">
   <script src="popup.js"></script>
-  <!-- <link type="text/css" rel="stylesheet" href="chrome://browser/content/extension.css"> -->
   <style type="text/css">
 .button
 {
   height: 2ex;
   padding: 0.5em;
   vertical-align: middle;
-  margin-right: 1em;
   border-radius: 4px;
-  transition-duration: 0.3s;
+  transition-duration: 0.2s;
 }
 .button:hover
 {
@@ -43,12 +41,13 @@
 #diggler-url
 {
   vertical-align: middle;
-  transition-duration: 0.25s;
+  transition-duration: 0.2s;
   height: 4ex;
   border: 1px solid #b1b1b1;
   box-shadow: 0 0 0 0 rgba(97, 181, 255, 0);
   font: caption;
   padding: 0 6px 0;
+  margin-left: 0.25em;
   border-radius: 4px;
 }
 .illegal-url
@@ -66,7 +65,6 @@
   </head>
   <body>
     <div id="diggler-control">
-      <img id="diggler-reload" class="button" src="icons/resource-chrome-browser-skin-classic-browser-reload.svg">
       <input id="diggler-url" class="browser-style" name="url" type="text" size="64" autofocus>
       <img id="diggler-go" class="button" src="icons/resource-chrome-browser-skin-classic-browser-forward.svg">
     </div>

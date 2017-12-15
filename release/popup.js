@@ -17,19 +17,6 @@
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-// Reload button
-function onReload( event )
-{
-    // Copy page URL to text input
-    browser.tabs.query( {active:true,currentWindow:true}, tabs => {
-        let url = document.getElementById("diggler-url");
-        url.value = tabs[0].url;
-        url.focus();
-    });
-
-}
-
-
 // Flash background on error
 function flagError( input )
 {
@@ -80,7 +67,6 @@ function onGo( event )
 
 // Set up
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("diggler-reload").onclick = onReload;
     document.getElementById("diggler-url").onkeyup = function(event) {
         if (event.keyCode === 13)
             onGo(event);
