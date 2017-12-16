@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/REC-html401/loose.dtd">
+<!-- changelog.html -->
+<html>
+  <head>
+  <title>Neo Diggler Changelog</title>
+  <meta charset="utf-8">
+  <link type="text/css" rel="stylesheet" href="chrome://browser/content/extension.css">
+  <style type="text/css">
+body
+{
+  margin-left: 1em;
+}
+  </style>
+  </head>
+  <body>
+    <h2>Neo Diggler Changelog</h2>
+    <p>Welcome to the WebExtensions re-write of <i>Neo Diggler</i>.
+    <p><b>If you have any problems, check the <a
+        href="https://github.com/fnxweb/neo-diggler/issues">bug-list on
+        GitHub</a> first, but do feel free to email me (or create a new bug
+    report).<br> Please don't use Mozilla Add-ons site reviews as a
+    bug-reporting tool.</b>
+    <p>See <a
+        href="https://addons.mozilla.org/en-GB/firefox/addon/neo-diggler/">the
+        add-on page</a> for an explanation of required permissions.
+    <hr>
+    <p><b>PLEASE NOTE</b> that there have had to be some concessions to the way
+    Neo Diggler works due to limitations imposed by the WebExtensions
+    architecture.  I can do nothing about these, as yet, it is inherent in
+    Firefox.  I hope the alternatives I have provided work for you;  if you
+    have any ideas for improvements, please let me know!
+    <p>The main changes from the old version are:
+    <ul>
+      <li>WebExtensions cannot affect standard browser options, so the image,
+        JavaScript and Popup permission toggles had to go.</li>
+      <li>WebExtensions cannot affect the URL bar, so I cannot directly clear
+        it.  Instead, I provide a blank popup and a “go” button to recreate the
+        old behaviour.  <b>However</b> for security reasons the URLs that this
+        can access are limited (to <i>ftp/http/https</i>).  If the URL you enter is
+        prevented by Firefox, it will flash red.</li>
+      <li>The old menu is now a context menu;  the top-level context menus for
+        browser buttons has a maximum of 6 extra items, so I have had to push
+        the menu list to a sub-menu which has no such limitation.  <b>But!</b>
+        I have added the ability to have a page-action button instead of a normal
+        one (inside the URL bar, on the right).  You can turn this off in
+        preferences, or, if you prefer it, drag the old-style button off the
+        display while in <i>customise</i> mode.</li>
+    </ul>
+    <hr>
+    <pre>
+
+3.0.0 : 16-dec-17
+- First WebExtensions version
+
+See github for the history of prior releases.
+  </body>
+</html>

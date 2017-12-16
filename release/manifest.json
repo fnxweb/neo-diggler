@@ -22,6 +22,12 @@
         "scripts": [ "background.js" ]
     },
 
+    "options_ui": {
+        "browser_style": true,
+        "page": "preferences.html",
+        "open_in_tab": true
+    },
+
     "permissions": [
         "menus",
         "storage",
