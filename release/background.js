@@ -56,7 +56,9 @@ var defaultPrefs =
     showPopups : true,
     showPageAction : true,
 
-    tools : []
+    tools : [],
+
+    lastversion : ''
 }
 var prefs = defaultPrefs;
 
@@ -106,6 +108,7 @@ function loadPrefs()
             if (preferences.hasOwnProperty("image_controls"))   prefs.showImageMenuItems = preferences["image_controls"];
             if (preferences.hasOwnProperty("submenu"))          prefs.showToolsAsSubmenu = preferences["submenu"];
             if (preferences.hasOwnProperty("page_action"))      prefs.showPageAction     = preferences["page_action"];
+            if (preferences.hasOwnProperty("lastversion"))      prefs.showPageAction     = preferences["lastversion"];
 
             // TBD system prefs.
             if (preferences.hasOwnProperty("image_behaviour"))  prefs.imageBehaviour = preferences["image_behaviour"];  // permissions.default.image
@@ -144,6 +147,7 @@ function collatePrefs( prefs )
     preferences["image_controls"] = prefs.showImageMenuItems;
     preferences["submenu"]        = prefs.showToolsAsSubmenu;
     preferences["page_action"]    = prefs.showPageAction;
+    preferences["lastversion"]    = prefs.lastversion;
 
     // TBD system prefs.
     preferences["image_behaviour"] = prefs.imageBehaviour;  // permissions.default.image
@@ -161,7 +165,7 @@ function collatePrefs( prefs )
 function savePrefs()
 {
     let preferences = collatePrefs( prefs );
-    // TBD browser.storage.local.set({"preferences": preferences});
+    browser.storage.local.set({"preferences": preferences});
 }
 
 
@@ -537,6 +541,32 @@ browser.tabs.onUpdated.addListener( (tabId, changeInfo, tab) => {
 browser.tabs.onActivated.addListener( activeInfo => {
     // Determine URL of tab and rebuild menu
     browser.tabs.get( activeInfo.tabId ).then( tab => digglerBuildMenu( tab.url ) );
+});
+
+
+// Finally - changed?
+browser.runtime.onInstalled.addListener( details => {
+    // Maybe not do this this on minor versions ...
+    if (details.reason === "update")
+    {
+        let showChangelog = true;
+
+        // Check version
+        if (prefs.hasOwnProperty("lastversion"))
+        {
+            let newvn = browser.runtime.getManifest().version;
+            if (details.previousVersion === newvn)
+                showChangelog = false;
+
+            // Update records
+            prefs.lastversion = newvn;
+            savePrefs();
+        }
+
+        // Show changelog?
+        if (showChangelog)
+            browser.tabs.create({ "url": "changelog.html" });
+    }
 });
 
 // vim: set ai et sts=4 sw=4 :
