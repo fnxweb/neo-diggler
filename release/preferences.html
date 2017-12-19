@@ -3,22 +3,157 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <script src="preferences.js"></script>
     <link type="text/css" rel="stylesheet" href="chrome://browser/content/extension.css">
     <style type="text/css">
 body
 {
   margin-left: 1em;
 }
+
+ul.neo-diggler-list
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  transition: 0.25s;
+}
+.neo-diggler-list li.li-data
+{
+  display: block;
+  word-break: break-all;
+  width: calc(100% - 2em);
+  background-color: #fbfbfb;
+  border: 1px solid #b1b1b1;
+  color: #0c0c0d;
+  border-radius: 4px;
+  padding-top: 0.5ex;
+  padding-bottom: 0.5ex;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+.neo-diggler-list li:hover.li-data
+{
+  background-color: #ebebeb;
+  transition: 0.3s;
+}
+.neo-diggler-list li.li-data.dragging,
+.neo-diggler-list li.li-data.dragging span.delete-button,
+.neo-diggler-list li.li-data.dragging:hover span.delete-button,
+.neo-diggler-list li.li-data.dragging span.for-delete-button,
+.neo-diggler-list li.li-data.dragging span.edit-button
+{
+  background-color: #d7d7db;
+}
+.neo-diggler-list li.li-data.dragging span.for-delete-button
+{
+  color: #d7d7db;
+}
+
+span.entry
+{
+  display: inline-block;
+  position: relative;
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+  left: 0;
+  width: calc(100% - 8em);
+  min-height: 1.8ex;
+}
+span.entry:before
+{
+  content: " ";  // Fudge due to caret moving off to left when text empty!
+}
+span.delete-button,
+span.for-delete-button
+{
+  display: inline-block;
+  float: left;
+  background-color: #fbfbfb;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  border-radius: 4px;
+}
+span.delete-button
+{
+  cursor: pointer;
+}
+span.for-delete-button
+{
+  color: #fbfbfb;
+  cursor: default;
+}
+.neo-diggler-list li.li-data:hover span.delete-button,
+.neo-diggler-list li.li-data:hover span.for-delete-button
+{
+  background-color: #ebebeb;
+  transition: 0.3s;
+}
+.neo-diggler-list li.li-data:hover span.delete-button:hover,
+.neo-diggler-list li.li-data:hover span.edit-button:hover
+{
+  background-color: #737373;
+  color: white;
+  transition: 0.3s;
+}
+.neo-diggler-list li.li-data:hover span.for-delete-button
+{
+  color: #ebebeb;
+}
+
+.neo-diggler-list li.li-sep
+{
+  display: block;
+  height: 1.5ex;
+  width: calc(100% - 1em - 4px);
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.neo-diggler-list li.li-sep div
+{
+  display: block;
+  width: 100%;
+  padding-top: 0.5ex;
+  padding-bottom: 0.5ex;
+}
+.neo-diggler-list li.li-sep span
+{
+  display: block;
+  height: 0.5ex;
+  width: 100%;
+  border-radius: 4px;
+}
+.neo-diggler-list li.li-sep.dragging span,
+.neo-diggler-list li.li-sep div.dragging span,
+.neo-diggler-list li.li-sep span.dragging
+{
+  background-color: #b1b1b3;
+}
+
+span.edit-button
+{
+  display: inline-block;
+  float: right;
+  cursor: pointer;
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+  border-radius: 4px;
+}
     </style>
   </head>
+
   <body>
-    <h1>Preferences</h1>
+    <h1 data-i18n="prefs-title">[i18n:prefs-title]</h1>
 
-    <p>Preference editing coming soon ...
+    <div id="tools-list" class="list-content">
+      <ul class="neo-diggler-list"></ul>
+    </div>
 
-    <p>But if you're feeling brave in the meantime, you can edit the preferences in their JSON file:  click the “hamburger” menu button, help “(?)”, “Troubleshooting Information”, and then under “Application Basics” select “Show Folder” or “Open Directory”.  This is your Firefox profile.  Go into the <b>browser-extension-data/{9b84cce7-a817-45d7-865e-9e6e8da1c388}</b> directory and the preferences are there.  <b>Make a backup before editing</b>!
-
-    <p> <b><a target="_blank" href="changelog.html">Changelog</a></b>
+    <h1><a target="_blank" href="changelog.html">Changelog</a></h1>
 
   </body>
 </html>

@@ -108,7 +108,7 @@ function loadPrefs()
             if (preferences.hasOwnProperty("image_controls"))   prefs.showImageMenuItems = preferences["image_controls"];
             if (preferences.hasOwnProperty("submenu"))          prefs.showToolsAsSubmenu = preferences["submenu"];
             if (preferences.hasOwnProperty("page_action"))      prefs.showPageAction     = preferences["page_action"];
-            if (preferences.hasOwnProperty("lastversion"))      prefs.showPageAction     = preferences["lastversion"];
+            if (preferences.hasOwnProperty("lastversion"))      prefs.lastversion        = preferences["lastversion"];
 
             // TBD system prefs.
             if (preferences.hasOwnProperty("image_behaviour"))  prefs.imageBehaviour = preferences["image_behaviour"];  // permissions.default.image
@@ -116,6 +116,15 @@ function loadPrefs()
 
             // Tools
             if (preferences.hasOwnProperty("tools"))            prefs.tools = preferences["tools"];
+
+            // Converted prefs from old version still have URI encoded tools;  treat as prefVn 0.
+            // We can also drop leading indices.
+            if (!preferences.hasOwnProperty("prefVn"))
+            {
+                for (let idx in prefs.tools)
+                    prefs.tools[idx] = decodeURIComponent( prefs.tools[idx] ).replace(/^\d+\|/,"");
+                writePrefs = true;
+            }
 
             // And remove from current prefs any not in defaults any more
             let writePrefs = false;
@@ -155,6 +164,9 @@ function collatePrefs( prefs )
 
     // Tools
     preferences["tools"] = prefs.tools;
+
+    // Prefs. vn. 1
+    preferences["prefVn"] = 1;
 
     // Done
     return preferences;
