@@ -117,13 +117,14 @@ function loadPrefs()
             // Tools
             if (preferences.hasOwnProperty("tools"))            prefs.tools = preferences["tools"];
 
-            // Converted prefs from old version still have URI encoded tools;  treat as prefVn 0.
-            // We can also drop leading indices.
-            if (!preferences.hasOwnProperty("prefVn"))
+            // Converted prefs from old version still have URI encoded too (issue 1), so move to 2
+            for (let idx in prefs.tools)
             {
-                for (let idx in prefs.tools)
-                    prefs.tools[idx] = decodeURIComponent( prefs.tools[idx] ).replace(/^\d+\|/,"");
-                writePrefs = true;
+                if (prefs.tools[idx].search(/^1\|/) === 0)
+                {
+                    prefs.tools[idx] = decodeURIComponent( prefs.tools[idx] ).replace(/^\d+\|/,"2|");
+                    writePrefs = true;
+                }
             }
 
             // And remove from current prefs any not in defaults any more
@@ -164,9 +165,6 @@ function collatePrefs( prefs )
 
     // Tools
     preferences["tools"] = prefs.tools;
-
-    // Prefs. vn. 1
-    preferences["prefVn"] = 1;
 
     // Done
     return preferences;

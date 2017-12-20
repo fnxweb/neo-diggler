@@ -21,7 +21,7 @@
 // Current prefs
 var prefs = {};
 let debugPrefs =
-    {"popup_controls":true,"tab_controls":true,"image_controls":true,"submenu":true,"page_action":true,"image_behaviour":0,"show_popups":true,"tools":["Google Cache|0|^[a-z]+://(.*)$|https://www.google.co.uk/search?q=cache:$1","Google UK|0|^[a-z]+://(.*)$|https://www.google.co.uk/search?q=$1"]}
+    {"popup_controls":true,"tab_controls":true,"image_controls":true,"submenu":true,"page_action":true,"image_behaviour":0,"show_popups":true,"tools":["2|Google Cache|0|^[a-z]+://(.*)$|https://www.google.co.uk/search?q=cache:$1","2|Google UK|0|^[a-z]+://(.*)$|https://www.google.co.uk/search?q=$1"]}
 
 // Plus
 var plusChar = "➕";
@@ -223,6 +223,7 @@ function addPlusEntry( list, n, type )
 {
     list.appendChild( createLi( n, type, "sep", "li-sep", "" ) );
     let li = createLi( parseInt(n)+1, type, "add", "li-data", plusChar );
+    li.onclick = event => editEntry( li );
     list.appendChild( li );
 }
 
@@ -235,6 +236,14 @@ function createLi( n, list, listtype, cls, text )
     // List entry?
     if (listtype !== "sep")
     {
+        // If the text is an option-set [not the +], store that away and only show the label.
+        let bits = text.split("|");
+        if (bits.length > 1)
+        {
+            li.setAttribute( "data-tool", text );
+            text = bits[1];
+        }
+
         // Delete button (or space for it for the add entry)
         let span = document.createElement("span");
         span.className = "for-delete-button";
@@ -304,6 +313,18 @@ function editEntry(li)
     currentEdit = li;
 
     // Populate edit page
+    let tool = li.getAttribute("data-tool");
+    if (tool === null  ||  tool === "")
+        tool = "2|" + i18nGet("digglerToolDefaultLabel.label") + "|0||";
+
+    // Extract bits
+    let bits = tool.split("|");
+
+    // Assign
+    document.getElementById("action-name").value       = bits[1];
+    document.getElementById("action-as-label").checked = !!parseInt(bits[2]);
+    document.getElementById("action-re").value         = bits[3];
+    document.getElementById("action").value            = bits[4];
 
     // Display it
     document.getElementById("editpage").className = "";
@@ -316,6 +337,31 @@ function editDone()
 {
     currentEdit = null;
     document.getElementById("editpage").className = "hidden";
+}
+
+
+// Save tool data back to LI
+function saveTool()
+{
+    // Sanity check
+    if (currentEdit !== null)
+    {
+        // Collate values
+        let bits = [
+            "2",    // format version (1 had URI encoded action URL)
+            document.getElementById("action-name").value,
+            document.getElementById("action-as-label").checked ? "1" : "0",
+            document.getElementById("action-re").value,
+            document.getElementById("action").value
+        ];
+
+        // Squirrel away
+        currentEdit.querySelector( ".entry" ).innerText = bits[1];
+        currentEdit.setAttribute( "data-tool", bits.join("|") );
+    }
+
+    // Close edit
+    editDone();
 }
 
 
