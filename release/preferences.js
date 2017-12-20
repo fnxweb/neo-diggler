@@ -384,6 +384,30 @@ function saveTool()
 }
 
 
+// Save off prefs
+function savePrefs()
+{
+    // Only if actually in extension
+    if (typeof(browser) === "undefined")
+        return;
+
+    // Collate tools from page
+    let tools = document.querySelectorAll( "li[data-tool]" );
+    prefs.tools = [];
+    for (let tool of tools)
+        prefs.tools.push( tool.getAttribute( "data-tool" ) );
+
+    // Now action button
+    prefs.page_action = document.getElementById("page-button").checked;
+
+    // Pass to extension
+    browser.runtime.sendMessage({
+        "message": "neo-diggler-prefs-save",
+        "preferences": prefs
+    });
+}
+
+
 // On page load
 function preparePage(ev)
 {
@@ -396,7 +420,21 @@ function preparePage(ev)
             if (results.hasOwnProperty("preferences"))
                 prefs = results["preferences"];
 
+            // Fall-back
+            if (!prefs.hasOwnProperty("tools"))
+            {
+                console.error( "Neo Diggler failed to read preferences" );
+                prefs = debugPrefs;
+                prefs.tools = [];
+            }
+
             // Apply prefs.
+            displayPrefs();
+        },
+        error => {
+            console.error( "Neo Diggler failed to read preferences: " + JSON.stringify(error) );
+            prefs = debugPrefs;
+            prefs.tools = [];
             displayPrefs();
         });
     }

@@ -102,7 +102,9 @@ function loadPrefs()
         // Have something
         if (results.hasOwnProperty("preferences"))
         {
-            // Extract apply
+            let preferences = results.preferences;
+
+            // Extract & apply
             if (preferences.hasOwnProperty("popup_controls"))   prefs.showPopupMenuItems = preferences["popup_controls"];
             if (preferences.hasOwnProperty("tab_controls"))     prefs.showTabMenuItems   = preferences["tab_controls"];
             if (preferences.hasOwnProperty("image_controls"))   prefs.showImageMenuItems = preferences["image_controls"];
@@ -117,30 +119,48 @@ function loadPrefs()
             // Tools
             if (preferences.hasOwnProperty("tools"))            prefs.tools = preferences["tools"];
 
-            // Converted prefs from old version still have URI encoded too (issue 1), so move to 2
+            // Keep tools locally as array
             for (let idx in prefs.tools)
             {
+                // Converted prefs from old version still have data encoded (issue 1), so move to 2
                 if (prefs.tools[idx].search(/^1\|/) === 0)
                 {
-                    prefs.tools[idx] = decodeURIComponent( prefs.tools[idx] ).replace(/^\d+\|/,"2|");
+                    prefs.tools[idx] = unescape( prefs.tools[idx] ).replace(/^\d+\|/,"2|");
                     writePrefs = true;
                 }
+
+                // As array
+                prefs.tools[idx] = prefs.tools[idx].split("|");
             }
 
             // And remove from current prefs any not in defaults any more
             let writePrefs = false;
             let defaults = collatePrefs( defaultPrefs );
             for (let pref in preferences)
-                if (preferencess.hasOwnProperty(pref)  &&  !defaults.hasOwnProperty(pref))
+                if (preferences.hasOwnProperty(pref)  &&  !defaults.hasOwnProperty(pref))
                     writePrefs = true;
+
+            // Check version
+            let thisVn = browser.runtime.getManifest().version;
+            if (prefs.lastversion !== thisVn)
+            {
+                prefs.lastversion = thisVn;
+                writePrefs = true;
+            }
+
+            // Updated?
             if (writePrefs)
                 savePrefs();
         }
 
-        // Use prefs.
+        // Use default prefs.
         applyPrefs();
-    }).catch( error => {
-        // Use prefs.
+        savePrefs();
+
+    },
+    error => {
+        // Use default prefs.
+        console.error( "Neo Diggler failed to read preferences: " + JSON.stringify(error) );
         applyPrefs();
     });
 }
@@ -163,8 +183,10 @@ function collatePrefs( prefs )
     preferences["image_behaviour"] = prefs.imageBehaviour;  // permissions.default.image
     preferences["show_popups"]     = prefs.showPopups;      // dom.disable_open_during_load
 
-    // Tools
-    preferences["tools"] = prefs.tools;
+    // Tools - de-array each tool
+    preferences["tools"] = [];
+    for (let tool of prefs.tools)
+        preferences["tools"].push( tool.join("|") );
 
     // Done
     return preferences;
@@ -253,8 +275,8 @@ function digglerBuildMenu(url)
             // If using submenu, create it
             let submenuId = mainMenu;
             if (prefs.showToolsAsSubmenu)
-                submenuId = digglerCreateTempMenuItemName( "User Defined Tools", "" );
-            digglerBuildToolsMenu(submenuId, url, tools);
+                submenuId = digglerCreateTempMenuItemName( "User Defined Tools", "" ); // TBD
+            digglerBuildToolsMenu(submenuId, url, prefs.tools);
         }
     }
     catch (ex)
@@ -294,7 +316,6 @@ function digglerBuildToolsMenu(toolsMenu, siteUrl, tools)
   menuList = cleanExtraSeparators(menuList);
 
   if (menuList.length > 0) {
-    digglerCreateTempMenuSeparator(toolsMenu);
     for (i = 0; i < menuList.length; ++i) {
       if (menuList[i][0] == "----USE_ACTION----") {
         digglerCreateTempMenuItem(toolsMenu, menuList[i][1]);
@@ -303,6 +324,7 @@ function digglerBuildToolsMenu(toolsMenu, siteUrl, tools)
         digglerCreateTempMenuItemName(toolsMenu, menuList[i][0], menuList[i][1]);
       }
     }
+    digglerCreateTempMenuSeparator(toolsMenu);
   }
 }
 
@@ -553,8 +575,14 @@ browser.tabs.onActivated.addListener( activeInfo => {
     browser.tabs.get( activeInfo.tabId ).then( tab => digglerBuildMenu( tab.url ) );
 });
 
+// Prefs. save request from prefs. page
+browser.runtime.onMessage.addListener( (message, sender) => {
+    // Save prefs and then re-apply them
+    if (message["message"] === "neo-diggler-prefs-save"  &&  message.hasOwnProperty("preferences"))
+        browser.storage.local.set({"preferences": message["preferences"]}).then( results => loadPrefs() );
+});
 
-// Finally - changed?
+// Finally - extension changed?
 browser.runtime.onInstalled.addListener( details => {
     // Maybe not do this this on minor versions ...
     if (details.reason === "update")
@@ -562,7 +590,7 @@ browser.runtime.onInstalled.addListener( details => {
         let showChangelog = true;
 
         // Check version
-        if (prefs.hasOwnProperty("lastversion"))
+        if (prefs.hasOwnProperty("lastversion")  &&  prefs.lastversion !== "")
         {
             let newvn = browser.runtime.getManifest().version;
             if (details.previousVersion === newvn)
