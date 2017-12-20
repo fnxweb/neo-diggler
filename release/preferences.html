@@ -6,7 +6,10 @@
     <script src="preferences.js"></script>
     <link type="text/css" rel="stylesheet" href="chrome://browser/content/extension.css">
     <style type="text/css">
-body
+body > div,
+body > h1,
+body > h2,
+body > h3
 {
   margin-left: 1em;
 }
@@ -55,11 +58,10 @@ ul.neo-diggler-list
 span.entry
 {
   display: inline-block;
+  overflow: hidden;
   position: relative;
   padding-left: 0.25em;
   padding-right: 0.25em;
-  left: 0;
-  width: calc(100% - 8em);
   min-height: 1.8ex;
 }
 span.entry:before
@@ -143,17 +145,140 @@ span.edit-button
   padding-right: 0.25em;
   border-radius: 4px;
 }
+
+.hidden
+{
+  display: none;
+}
+div.background
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.6;
+}
+#editor
+{
+  border: solid #444 6px;
+  border-radius: 4px;
+  background-color: white;
+  position: absolute;
+  top: 10ex;
+  left: 20em;
+  width: calc(100% - 40em);
+}
+#editor div.content
+{
+  margin: 1em;
+}
+.edit-section
+{
+  margin-left: 2em;
+}
+.edit-section input.full
+{
+  width: calc(100% - 2em);
+}
+span.block
+{
+  display: block;
+  overflow: hidden;
+}
+.edit-section select
+{
+  float: right;
+  margin-right: 2em;
+}
+input[type="checkbox"]
+{
+  margin-right: 1em;
+  margin-bottom: 2ex;
+}
+form.buttons button
+{
+  float: left;
+  min-width: 10em;
+  text-align: center;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-top: 8ex;
+}
     </style>
   </head>
 
   <body>
-    <h1 data-i18n="prefs-title">[i18n:prefs-title]</h1>
+  <h1><span data-i18n="extensionName"></span> <span data-i18n="digglerPrefTitle.label"></span></h1>
 
+    <h3 data-i18n="digglerPrefTools.label"></h3>
     <div id="tools-list" class="list-content">
       <ul class="neo-diggler-list"></ul>
     </div>
 
-    <h1><a target="_blank" href="changelog.html">Changelog</a></h1>
+    <p></p>
+
+    <h3 data-i18n="digglerPrefGeneral.label"></h3>
+    <div class="edit-section">
+      <input id="action-page-button" type="checkbox" selected="true">
+      <span data-i18n="digglerPrefEnabled.label"></span>
+    </div>
+
+    <div id="editpage" class="hidden">
+      <div id="editor-background" class="background"></div>
+      <div id="editor">
+        <div class="content">
+
+          <h3 data-i18n="digglerToolActionSection.label"></h3>
+          <div class="edit-section">
+            <p><span data-i18n="digglerToolMenuLabel.label"></span></p>
+            <input id="action-name" type="text" class="full">
+            <br>
+            <p><span data-i18n="digglerToolPattern.label"></span></p>
+            <select id="action-select">
+              <option data-i18n="digglerToolPatternCmb1.label" selected></option>
+              <option data-i18n="digglerToolPatternCmb2.label"></option>
+              <option data-i18n="digglerToolPatternCmb3.label"></option>
+              <option data-i18n="digglerToolPatternCmb4.label"></option>
+              <option data-i18n="digglerToolPatternCmb5.label"></option>
+            </select>
+            <span class="block"><input id="action-re" type="text" class="full"></span>
+            <br>
+            <p><span data-i18n="digglerToolAction.label"></span></p>
+            <input id="action-as-label" type="checkbox" selected="false">
+            <span data-i18n="digglerToolUseActionAsLabel.label"></span>
+            <br>
+            <input id="action" type="text" class="full">
+          </div>
+          <br>
+
+          <h3 data-i18n="digglerToolHints.label"></h3>
+          <div class="edit-section">
+            <span data-i18n="digglerToolHint1.label"></span><br>
+            <span data-i18n="digglerToolHint2.label"></span><br>
+            <span data-i18n="digglerToolHint3.label"></span><br>
+            <span data-i18n="digglerToolHint4.label"></span><br>
+            <span data-i18n="digglerToolHint5.label"></span><br>
+            <span data-i18n="digglerToolHint6.label"></span><br>
+            <span data-i18n="digglerToolHint7.label"></span><br>
+            <span data-i18n="digglerToolHint8.label"></span><br>
+          </div>
+
+          <form class="buttons">
+            <button type="submit" class="browser-style" id="prefs-tool-save" data-i18n="prefs-apply"></button>
+            <button type="submit" class="browser-style" id="prefs-tool-cancel" data-i18n="prefs-cancel"></button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+    <form class="buttons">
+      <button type="submit" class="browser-style" id="prefs-save" data-i18n="prefs-apply"></button>
+    </form>
+
+    <h2><a target="_blank" href="changelog.html">Changelog</a></h2>
 
   </body>
 </html>

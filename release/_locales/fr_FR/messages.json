@@ -1,6 +1,6 @@
 {
     "extensionName": {
-        "message": "Diggler"
+        "message": "Neo Diggler"
     },
 
     "extensionDescription": {
@@ -8,7 +8,7 @@
     },
 
     "digglerButton.label": {
-        "message": "&diggler.label;"
+        "message": "Neo Diggler"
     },
 
     "digglerClear.label": {
@@ -56,7 +56,7 @@
     },
 
     "digglerPrefTitle.label": {
-        "message": "Préférences de &diggler.label;"
+        "message": "Préférences"
     },
 
     "digglerPrefGeneral.label": {
@@ -64,7 +64,7 @@
     },
 
     "digglerPrefEnabled.label": {
-        "message": "Afficher le boutton &diggler.label;"
+        "message": "Afficher le boutton Neo Diggler"
     },
 
     "digglerShowPopupControls.label": {
@@ -88,7 +88,7 @@
     },
 
     "digglerAbout.label": {
-        "message": "A propos de &diggler.label;"
+        "message": "A propos de Neo Diggler"
     },
 
     "digglerAboutBlurb.label1": {
@@ -100,15 +100,15 @@
     },
 
     "digglerAddTool.label": {
-        "message": "Ajouter..."
+        "message": "Ajouter"
     },
 
     "digglerEditTool.label": {
-        "message": "Éditer..."
+        "message": "Éditer"
     },
 
     "digglerDeleteTool.label": {
-        "message": "Effacer..."
+        "message": "Effacer"
     },
 
     "digglerMoveUpTool.label": {
@@ -201,5 +201,15 @@
 
     "digglerToolDefaultLabel.label": {
         "message": "Nouvel outil"
+    },
+
+    "prefs-cancel": {
+        "message": "Cancel",
+        "description": "Cancel changes and close without saving"
+    },
+
+    "prefs-apply": {
+        "message": "Apply",
+        "description": "Apply changes"
     }
 }

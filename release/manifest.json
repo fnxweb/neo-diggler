@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name": "Neo Diggler",
+    "name": "__MSG_extensionName__",
     "version": "2.0.0beta1",
-    "description": "A URL manipulation tool for power users",
+    "description": "__MSG_extensionDescription__",
     "author": "Neil Bird",
     "homepage_url": "https://addons.mozilla.org/en-GB/firefox/addon/neo-diggler/",
     "default_locale": "en_US",
@@ -36,14 +36,14 @@
 
     "browser_action": {
         "default_icon":  "icons/neo-diggler.svg",
-        "default_title": "Neo Diggler\nClick for URL bar\nRight-click for menu",
+        "default_title": "__MSG_digglerButton__",
         "default_popup": "popup.html",
         "browser_style": false
     },
 
     "page_action": {
         "default_icon":  "icons/neo-diggler-reverse.svg",
-        "default_title": "Neo Diggler\nClick for URL bar\nRight-click for menu",
+        "default_title": "__MSG_digglerButton__",
         "default_popup": "popup.html",
         "browser_style": false
     }

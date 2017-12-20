@@ -1,6 +1,6 @@
 {
     "extensionName": {
-        "message": "Diggler"
+        "message": "Neo Diggler"
     },
 
     "extensionDescription": {
@@ -8,7 +8,7 @@
     },
 
     "digglerButton.label": {
-        "message": "&diggler.label;"
+        "message": "Neo Diggler"
     },
 
     "digglerClear.label": {
@@ -56,7 +56,7 @@
     },
 
     "digglerPrefTitle.label": {
-        "message": "&diggler.label; 設置"
+        "message": "設置"
     },
 
     "digglerPrefGeneral.label": {
@@ -64,7 +64,7 @@
     },
 
     "digglerPrefEnabled.label": {
-        "message": "顯示&diggler.label;按鈕"
+        "message": "顯示 Neo Diggler 按鈕"
     },
 
     "digglerShowPopupControls.label": {
@@ -88,7 +88,7 @@
     },
 
     "digglerAbout.label": {
-        "message": "關於&diggler.label;"
+        "message": "關於 Neo Diggler"
     },
 
     "digglerAboutBlurb.label1": {
@@ -100,11 +100,11 @@
     },
 
     "digglerAddTool.label": {
-        "message": "加入..."
+        "message": "加入"
     },
 
     "digglerEditTool.label": {
-        "message": "編輯..."
+        "message": "編輯"
     },
 
     "digglerDeleteTool.label": {
@@ -201,5 +201,15 @@
 
     "digglerToolDefaultLabel.label": {
         "message": "新工具"
+    },
+
+    "prefs-cancel": {
+        "message": "Cancel",
+        "description": "Cancel changes and close without saving"
+    },
+
+    "prefs-apply": {
+        "message": "Apply",
+        "description": "Apply changes"
     }
 }

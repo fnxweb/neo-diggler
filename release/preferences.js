@@ -28,9 +28,9 @@ var plusChar = "➕";
 
 
 // i18n lookup
-function i18nGet( text )
+function i18nGet( key )
 {
-    let i18n = `[i18n:${text}]`;
+    let i18n = `[i18n:${key}]`;
     if (typeof(browser) !== "undefined")
     {
         let text = browser.i18n.getMessage(key);
@@ -246,15 +246,15 @@ function createLi( n, list, listtype, cls, text )
             setDeletable( li );
         }
 
-        // Entry itself
+        // Drag button
+        if (listtype !== "add")
+            addEdit( li );
+
+        // Entry itself (after the floats to ensure it fills remaining space [with overflow:hidden])
         let entry = document.createElement("span");
         entry.className = "entry";
         entry.appendChild( document.createTextNode(text) );
         li.appendChild( entry );
-
-        // Drag button
-        if (listtype !== "add")
-            addEdit( li );
     }
     else
     {
@@ -302,30 +302,26 @@ var currentEdit = null;
 function editEntry(li)
 {
     currentEdit = li;
-    console.log(`++ editing ${li.id}`);
+
+    // Populate edit page
+
+    // Display it
+    document.getElementById("editpage").className = "";
+    document.getElementById("action-name").focus();
+}
+
+
+// Close edit display
+function editDone()
+{
+    currentEdit = null;
+    document.getElementById("editpage").className = "hidden";
 }
 
 
 // On page load
 function preparePage(ev)
 {
-//    // Monitor main buttons
-//    document.getElementById("prefs-save").addEventListener( "click", event => {
-//        // Save
-//        event.preventDefault();
-//        savePrefs();
-//    });
-//    document.getElementById("prefs-defaults").addEventListener( "click", event => {
-//        // Request defaults
-//        event.preventDefault();
-//        comms.postMessage({"message":"urllink-prefs-defaults-req"});
-//    });
-//    document.getElementById("prefs-cancel").addEventListener( "click", event => {
-//        // Undo edits
-//        event.preventDefault();
-//        displayPrefs();
-//    });
-
     // Load prefs.
     if (typeof(browser) !== "undefined")
     {
@@ -338,25 +334,6 @@ function preparePage(ev)
             // Apply prefs.
             displayPrefs();
         });
-
-        // i18n
-        // Look for data-i18n attributes, and look those up (or use the token if lookup fails due to no translation)
-        for (let elem of document.querySelectorAll( "[data-i18n]" ))
-        {
-            // Look up translation for main text
-            let i18n = i18nGet( elem.getAttribute('data-i18n') );
-
-            // Apply it
-            // Things like inputs can trigger translation with value equal "i18n"
-            if (typeof elem.value !== 'undefined' && elem.value === 'i18n')
-                elem.value = i18n;
-            else
-                elem.innerText = i18n;
-        }
-
-        // Again for tooltips
-        for (let elem of document.querySelectorAll( "[data-title-i18n]" ))
-            elem.title = i18nGet( elem.getAttribute('data-title-i18n') );
     }
     else
     {
@@ -373,6 +350,68 @@ function preparePage(ev)
     document.addEventListener( "dragenter", onDragEnter );
     document.addEventListener( "dragleave", onDragLeave );
     document.addEventListener( "dragend",   onDragEnd );
+
+    // i18n
+    // Look for data-i18n attributes, and look those up (or use the token if lookup fails due to no translation)
+    for (let elem of document.querySelectorAll( "[data-i18n]" ))
+    {
+        // Look up translation for main text
+        let i18n = i18nGet( elem.getAttribute('data-i18n') );
+
+        // Apply it
+        // Things like inputs can trigger translation with value equal "i18n"
+        if (typeof elem.value !== 'undefined' && elem.value === 'i18n')
+            elem.value = i18n;
+        else
+            elem.innerText = i18n;
+    }
+
+    // Again for tooltips
+    for (let elem of document.querySelectorAll( "[data-title-i18n]" ))
+        elem.title = i18nGet( elem.getAttribute('data-title-i18n') );
+
+    // Edit page regex selector
+    document.getElementById("action-select").onchange = function(event) {
+        const kREGEX_PREFAB_PATTERNS = [
+          "THIS_SHOULD_NEVER_BE_SEEN", // Custom (ignored)
+          "^(.+)$", // Any URL
+          "^https?://(.*)$", // Any HTTP
+          "^ftp://(.*)$", // Any FTP
+          "^ftp|https?://([a-zA-Z0-9\-]*\.yourdomain.com)$", // Subdomain
+        ];
+        if (this.selectedIndex)
+            document.getElementById("action-re").value = kREGEX_PREFAB_PATTERNS[ this.selectedIndex ];
+    };
+
+    // Monitor buttons
+    document.getElementById("prefs-save").addEventListener( "click", event => {
+        // Save
+        event.preventDefault();
+        savePrefs();
+    });
+    document.getElementById("prefs-tool-save").addEventListener( "click", event => {
+        // Request defaults
+        event.preventDefault();
+        saveTool();
+    });
+    document.getElementById("prefs-tool-cancel").addEventListener( "click", event => {
+        // Close tool editor
+        event.preventDefault();
+        editDone();
+    });
+
+    // Close editor if edit background clicked upon or escape typed
+    document.getElementById("editor-background").onclick = event => {
+        event.preventDefault();
+        editDone();
+    };
+    document.addEventListener("keypress", event => {
+        if (event.keyCode == 27)
+        {
+            event.preventDefault();
+            editDone();
+        }
+    });
 }
 
 
