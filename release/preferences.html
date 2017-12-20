@@ -221,7 +221,7 @@ form.buttons button
 
     <h3 data-i18n="digglerPrefGeneral.label"></h3>
     <div class="edit-section">
-      <input id="action-page-button" type="checkbox" selected="true">
+      <input id="page-button" type="checkbox" selected="true">
       <span data-i18n="digglerPrefEnabled.label"></span>
     </div>
 
@@ -233,23 +233,23 @@ form.buttons button
           <h3 data-i18n="digglerToolActionSection.label"></h3>
           <div class="edit-section">
             <p><span data-i18n="digglerToolMenuLabel.label"></span></p>
-            <input id="action-name" type="text" class="full">
+            <input id="action-name" type="text" class="full" tabindex=1>
             <br>
             <p><span data-i18n="digglerToolPattern.label"></span></p>
-            <select id="action-select">
+            <select id="action-select" tabindex=3>
               <option data-i18n="digglerToolPatternCmb1.label" selected></option>
               <option data-i18n="digglerToolPatternCmb2.label"></option>
               <option data-i18n="digglerToolPatternCmb3.label"></option>
               <option data-i18n="digglerToolPatternCmb4.label"></option>
               <option data-i18n="digglerToolPatternCmb5.label"></option>
             </select>
-            <span class="block"><input id="action-re" type="text" class="full"></span>
+            <span class="block"><input id="action-re" type="text" class="full" tabindex=2></span>
             <br>
             <p><span data-i18n="digglerToolAction.label"></span></p>
-            <input id="action-as-label" type="checkbox" selected="false">
+            <input id="action-as-label" type="checkbox" selected="false" tabindex=3>
             <span data-i18n="digglerToolUseActionAsLabel.label"></span>
             <br>
-            <input id="action" type="text" class="full">
+            <input id="action" type="text" class="full" tabindex=4>
           </div>
           <br>
 

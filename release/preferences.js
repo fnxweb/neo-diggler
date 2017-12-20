@@ -303,6 +303,9 @@ function displayPrefs()
 
     // Allow for adding a new one
     addPlusEntry( list, prefs.tools.length, "tool" );
+
+    // Finally, only general pref:  show button or not?
+    document.getElementById("page-button").checked = prefs.page_action;
 }
 
 
@@ -315,7 +318,7 @@ function editEntry(li)
     // Populate edit page
     let tool = li.getAttribute("data-tool");
     if (tool === null  ||  tool === "")
-        tool = "2|" + i18nGet("digglerToolDefaultLabel.label") + "|0||";
+        tool = "2|" + i18nGet("digglerToolDefaultLabel.label") + "|0|^(.+)$|";
 
     // Extract bits
     let bits = tool.split("|");
@@ -347,6 +350,7 @@ function saveTool()
     if (currentEdit !== null)
     {
         // Collate values
+        let li = currentEdit;
         let bits = [
             "2",    // format version (1 had URI encoded action URL)
             document.getElementById("action-name").value,
@@ -356,8 +360,23 @@ function saveTool()
         ];
 
         // Squirrel away
-        currentEdit.querySelector( ".entry" ).innerText = bits[1];
-        currentEdit.setAttribute( "data-tool", bits.join("|") );
+        li.querySelector( ".entry" ).innerText = bits[1];
+        li.setAttribute( "data-tool", bits.join("|") );
+
+        // Is it a new one?
+        if (li.id.match(/add$/))
+        {
+            // Yes: make it a normal one
+            li.id = li.id.replace(/add\b/g,"");
+            li.draggable = true;
+            setDeletable( li );
+            addEdit( li );
+
+            // Add a new +
+            let list = li.closest("ul");
+            let size = list.querySelectorAll("li.li-data").length;
+            addPlusEntry( list, size, "tool" );
+        }
     }
 
     // Close edit
@@ -446,16 +465,32 @@ function preparePage(ev)
         editDone();
     });
 
-    // Close editor if edit background clicked upon or escape typed
+    // Close editor if edit background clicked upon
     document.getElementById("editor-background").onclick = event => {
-        event.preventDefault();
-        editDone();
-    };
-    document.addEventListener("keypress", event => {
-        if (event.keyCode == 27)
+        if (currentEdit !== null)
         {
             event.preventDefault();
             editDone();
+        }
+    };
+
+    // Close editor on escape, save on enter
+    document.addEventListener("keypress", event => {
+        if (currentEdit !== null)
+        {
+            // Edit tool is open
+            if (event.keyCode == 27)
+            {
+                // Escape, cancel
+                event.preventDefault();
+                editDone();
+            }
+            else if (event.keyCode == 10  ||  event.keyCode == 13)
+            {
+                // Enter, save
+                event.preventDefault();
+                saveTool();
+            }
         }
     });
 }
