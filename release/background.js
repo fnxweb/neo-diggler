@@ -275,7 +275,7 @@ function digglerBuildMenu(url)
             // If using submenu, create it
             let submenuId = mainMenu;
             if (prefs.showToolsAsSubmenu)
-                submenuId = digglerCreateTempMenuItemName( "User Defined Tools", "" ); // TBD
+                submenuId = digglerCreateTempMenuItemName( browser.i18n.getMessage("digglerPrefTools.label"), "" );
             digglerBuildToolsMenu(submenuId, url, prefs.tools);
         }
     }
@@ -390,15 +390,15 @@ function digglerBuildUrlMenu (siteUrl)
       }
       else if (menuList[i][0] == "Google")
       {
-        digglerCreateTempMenuItemName(mainMenu, "Find page in Google cache", menuList[i][1]); // TBD
+        digglerCreateTempMenuItemName(mainMenu, browser.i18n.getMessage("digglerGoogle.label"), menuList[i][1]);
       }
       else if (menuList[i][0] == "Archive.org")
       {
-        digglerCreateTempMenuItemName(mainMenu, "Find page in Archive.org", menuList[i][1]); // TBD
+        digglerCreateTempMenuItemName(mainMenu, browser.i18n.getMessage("digglerArchive.label"), menuList[i][1]);
       }
       else if (menuList[i][0] == "Webcitation")
       {
-        digglerCreateTempMenuItemName(mainMenu, "Find page in Webcitation.org", menuList[i][1]); // TBD
+        digglerCreateTempMenuItemName(mainMenu, browser.i18n.getMessage("digglerWebcitation.label"), menuList[i][1]);
       }
       else
       {
