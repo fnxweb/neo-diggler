@@ -51,16 +51,33 @@ function onGo( event )
 
     // Use current URL
     browser.tabs.query( {active:true,currentWindow:true}, tabs => {
-        // Try to change URL (fails for file:/// etc.)
-        browser.tabs.update( tabs[0].id, {url:url.value} ).then(
-            result => {
-                // Was OK, close popup
-                window.close();
-            },
-            result => {
-                // Illegal URL
-                flagError( url );
+        // Try to change URL
+        if (url.value.search("file:") !== 0)
+        {
+            // Normal URI, try to do it
+            browser.tabs.update( tabs[0].id, {url:url.value} ).then(
+                result => {
+                    // Was OK, close popup
+                    window.close();
+                },
+                result => {
+                    // Illegal URL
+                    flagError( url );
+                });
+        }
+        else
+        {
+            // Work around for file:/// URIs
+            browser.runtime.sendMessage({
+                "message":  "neo-diggler-file-uri",
+                "tabId":    tabs[0].id,
+                "uri":      url.value
             });
+
+            // Assume it'll work ...
+            // Doesn't for built-in URIs like about: etc.;  could leave window open and get callback to flash/close depending?
+            window.close();
+        }
     });
 }
 

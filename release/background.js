@@ -74,6 +74,42 @@ var currentUrl = "";
 var mainMenu = "neo-diggler";
 
 
+// Function to write to the clipbard (from a page)
+function __diggler_setClipboardText( text )
+{
+    // Is there no easier way than this?
+    let textarea = document.createElement("textarea");
+
+    textarea.style.position = 'fixed';
+    textarea.style.top = 0;
+    textarea.style.left = 0;
+    textarea.style.width = '1px';
+    textarea.style.height = '1px';
+    textarea.style.padding = 0;
+    textarea.style.border = 'none';
+    textarea.style.outline = 'none';
+    textarea.style.boxShadow = 'none';
+    textarea.style.background = 'transparent';
+
+    textarea.value = text;
+
+    document.body.appendChild(textarea);
+
+    textarea.select();
+
+    try {
+        document.execCommand('copy');
+    } catch (err) {
+        console.error("Neo Diggler was unable to copy '" + text + "' to the clipboard");
+    }
+
+  document.body.removeChild(textarea);
+}
+
+// String version of such
+var setClipboardText = __diggler_setClipboardText.toString();
+
+
 // Load preferences
 function loadPrefs()
 {
@@ -229,16 +265,41 @@ function digglerDoMenu( info, tab )
 }
 
 
+// Open file:/// link via manual redirect
+function openFileLink( tabId, uriToLoad )
+{
+    // First copy link to clipboard from current page
+    uriToLoad = uriToLoad.replace(/"/g,"%22");
+    browser.tabs.executeScript( tabId, {
+        code: `(${setClipboardText})("${uriToLoad}"); delete __diggler_setClipboardText`
+    } );
+
+    // Open manual redirect message / instructions
+    browser.tabs.update( tabId, { "url": browser.extension.getURL("manual.html") } );
+}
+
+
 // Follow URL of given menu item
 function digglerSetUrl( tabId, menuId )
 {
     let match = menuId.match( /menuitem-([0-9]+)$/ );
     if (match.length > 1)
     {
+        // Determine URL to use
         let index = parseInt( match[1] );
         let uriToLoad = currentMenuItems[index].url;
-        // TBD Use URL Link hack for file:/// links
-        browser.tabs.update( tabId, { "url": uriToLoad } );
+
+        // file:/// links can't currently be triggered - use work-around
+        if (uriToLoad.search("file:") !== 0)
+        {
+            // OK, normal
+            browser.tabs.update( tabId, { "url": uriToLoad } );
+        }
+        else
+        {
+            // Work around for file:/// links
+            openFileLink( tabId, uriToLoad );
+        }
     }
 }
 
@@ -578,8 +639,10 @@ browser.tabs.onActivated.addListener( activeInfo => {
 // Prefs. save request from prefs. page
 browser.runtime.onMessage.addListener( (message, sender) => {
     // Save prefs and then re-apply them
-    if (message["message"] === "neo-diggler-prefs-save"  &&  message.hasOwnProperty("preferences"))
+    if (message["message"] === "neo-diggler-prefs-save")
         browser.storage.local.set({"preferences": message["preferences"]}).then( results => loadPrefs() );
+    else if (message["message"] === "neo-diggler-file-uri")
+        openFileLink( message["tabId"], message["uri"] );
 });
 
 // Finally - extension changed?
