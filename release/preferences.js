@@ -21,7 +21,7 @@
 // Current prefs
 var prefs = {};
 let debugPrefs =
-    {"popup_controls":true,"tab_controls":true,"image_controls":true,"submenu":true,"page_action":true,"image_behaviour":0,"show_popups":true,"tools":["2|Google Cache|0|^[a-z]+://(.*)$|https://www.google.co.uk/search?q=cache:$1","2|Google UK|0|^[a-z]+://(.*)$|https://www.google.co.uk/search?q=$1"]}
+    {"popup_controls":true,"tab_controls":true,"image_controls":true,"submenu":true,"page_action":true,"image_behaviour":0,"show_popups":true,"tools":[["2","Google Cache","0","^[a-z]+://(.*)$","https://www.google.co.uk/search?q=cache:$1"],["2","Google UK","0","^[a-z]+://(.*)$","https://www.google.co.uk/search?q=$1"]]}
 
 // Plus
 var plusChar = "➕";
@@ -221,15 +221,15 @@ function addEdit( li )
 // Add a new + entry
 function addPlusEntry( list, n, type )
 {
-    list.appendChild( createLi( n, type, "sep", "li-sep", "" ) );
-    let li = createLi( parseInt(n)+1, type, "add", "li-data", plusChar );
+    list.appendChild( createLi( n, type, "sep", "li-sep", [] ) );
+    let li = createLi( parseInt(n)+1, type, "add", "li-data", [plusChar] );
     li.onclick = event => editEntry( li );
     list.appendChild( li );
 }
 
 
 // Create a tools list item
-function createLi( n, list, listtype, cls, text )
+function createLi( n, list, listtype, cls, tool )
 {
     let li = document.createElement("li");
 
@@ -237,11 +237,11 @@ function createLi( n, list, listtype, cls, text )
     if (listtype !== "sep")
     {
         // If the text is an option-set [not the +], store that away and only show the label.
-        let bits = text.split("|");
-        if (bits.length > 1)
+        let text = tool[0];
+        if (tool.length > 1)
         {
-            li.setAttribute( "data-tool", text );
-            text = bits[1];
+            li.setAttribute( "data-tool", tool.join("|") );
+            text = tool[1];
         }
 
         // Delete button (or space for it for the add entry)
@@ -296,7 +296,7 @@ function displayPrefs()
     for (let n in prefs.tools)
     {
         if (n > 0)
-            list.appendChild( createLi( n, "tool", "sep", "li-sep", "" ) );
+            list.appendChild( createLi( n, "tool", "sep", "li-sep", [] ) );
         let li = createLi( parseInt(n)+1, "tool", "", "li-data", prefs.tools[n] );
         list.appendChild( li );
     }
@@ -395,7 +395,7 @@ function savePrefs()
     let tools = document.querySelectorAll( "li[data-tool]" );
     prefs.tools = [];
     for (let tool of tools)
-        prefs.tools.push( tool.getAttribute( "data-tool" ) );
+        prefs.tools.push( tool.getAttribute( "data-tool" ).split("|") );
 
     // Now action button
     prefs.page_action = document.getElementById("page-button").checked;

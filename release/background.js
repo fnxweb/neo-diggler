@@ -155,22 +155,22 @@ function loadPrefs()
             // Tools
             if (preferences.hasOwnProperty("tools"))            prefs.tools = preferences["tools"];
 
-            // Keep tools locally as array
+            // Converted prefs from old version still have data encoded (issue 1), so move to 2
+            let writePrefs = false;
             for (let idx in prefs.tools)
             {
-                // Converted prefs from old version still have data encoded (issue 1), so move to 2
-                if (prefs.tools[idx].search(/^1\|/) === 0)
+                if (prefs.tools[idx][0] == "1")
                 {
-                    prefs.tools[idx] = unescape( prefs.tools[idx] ).replace(/^\d+\|/,"2|");
+                    // Old format, convert
+                    prefs.tools[idx][0] = "2";
+                    prefs.tools[idx][1] = unescape( prefs.tools[idx][1] );
+                    prefs.tools[idx][3] = unescape( prefs.tools[idx][3] );
+                    prefs.tools[idx][4] = unescape( prefs.tools[idx][4] );
                     writePrefs = true;
                 }
-
-                // As array
-                prefs.tools[idx] = prefs.tools[idx].split("|");
             }
 
             // And remove from current prefs any not in defaults any more
-            let writePrefs = false;
             let defaults = collatePrefs( defaultPrefs );
             for (let pref in preferences)
                 if (preferences.hasOwnProperty(pref)  &&  !defaults.hasOwnProperty(pref))
@@ -219,10 +219,8 @@ function collatePrefs( prefs )
     preferences["image_behaviour"] = prefs.imageBehaviour;  // permissions.default.image
     preferences["show_popups"]     = prefs.showPopups;      // dom.disable_open_during_load
 
-    // Tools - de-array each tool
-    preferences["tools"] = [];
-    for (let tool of prefs.tools)
-        preferences["tools"].push( tool.join("|") );
+    // Tools
+    preferences["tools"] = prefs.tools;
 
     // Done
     return preferences;
