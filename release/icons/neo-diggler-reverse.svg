@@ -19,6 +19,8 @@
    inkscape:export-filename="/home/neil/usr/src/mozilla/xpi/diggler/webextension/icons/neo-diggler-48.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
+  <title
+     id="title37">Neo Diggler (reverse)</title>
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -29,7 +31,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="15.839192"
-     inkscape:cx="14.992004"
+     inkscape:cx="23.701111"
      inkscape:cy="23.217891"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -53,8 +55,28 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title>Neo Diggler (reverse)</dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/4.0/" />
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Neil Bird</dc:title>
+          </cc:Agent>
+        </dc:creator>
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <g
@@ -64,13 +86,13 @@
      transform="translate(0,-284.29998)">
     <path
        style="fill:#565656;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 12.170833,294.61873 h -7.9375 L 0.52916667,290.64998 4.233333,286.68123 h 7.9375 z"
+       d="m 12.170833,286.68123 h -7.9375 l -3.70416633,3.96875 3.70416633,3.96875 h 7.9375 z"
        id="path3731"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccc" />
     <path
        style="fill:#ffffff;fill-opacity:0.94117647;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 11.1125,293.5604 H 10.054166 L 8.2020831,291.70831 6.3499997,293.5604 H 5.2916664 v -1.05834 l 1.8520833,-1.85208 -1.8520833,-1.85208 v -1.05834 h 1.0583333 l 1.8520834,1.85208 1.8520829,-1.85208 H 11.1125 v 1.05834 l -2.116667,1.85208 2.116667,1.85208 z"
+       d="M 10.847916,288.00415 H 9.789583 l -1.5874999,1.5875 -1.5875001,-1.5875 H 5.5562497 v 1.05833 l 1.5875,1.5875 -1.5875,1.5875 v 1.05833 H 6.614583 l 1.5875001,-1.58749 1.5874999,1.58749 h 1.058333 v -1.05833 l -1.852083,-1.5875 1.852083,-1.5875 z"
        id="path4538"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccccccccccccccc" />
