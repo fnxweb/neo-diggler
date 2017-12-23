@@ -132,11 +132,15 @@ function onDragEnter(ev)
 {
     // If a valid item, highlight it as a target
     let target = ev.target;
-    if (target.tagName && target.tagName.search(/^(li|div|span)$/i) === 0)
+    if ((target.tagName && target.tagName.search(/^(li|div|span)$/i) === 0 )  ||
+        target.nodeName.search(/^(#text)$/i) === 0)
     {
+        if (!target.tagName)
+            target = target.parentNode;
         if (target.tagName.search(/^li$/i) !== 0)
             target = target.closest("li");
-        target.className += " dragging";
+        if (target !== null)
+            target.className += " dragging";
     }
 }
 
@@ -146,11 +150,15 @@ function onDragLeave(ev)
 {
     // If current is a valid item, stop highlighting it as a target
     let target = ev.target;
-    if (target.tagName && target.tagName.search(/^(li|div|span)$/i) === 0)
+    if ((target.tagName && target.tagName.search(/^(li|div|span)$/i) === 0 )  ||
+        target.nodeName.search(/^(#text)$/i) === 0)
     {
+        if (!target.tagName)
+            target = target.parentNode;
         if (target.tagName.search(/^li$/i) !== 0)
             target = target.closest("li");
-        target.className = target.className.replace(/ dragging\b/,'');
+        if (target !== null)
+            target.className = target.className.replace(/ dragging\b/,'');
     }
 }
 

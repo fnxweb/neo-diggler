@@ -13,6 +13,11 @@ body > h3
 {
   margin-left: 1em;
 }
+div.all-prefs
+{
+  margin-left: 8em;
+  margin-right: 2em;
+}
 
 ul.neo-diggler-list
 {
@@ -166,7 +171,7 @@ div.background
   border-radius: 4px;
   background-color: white;
   position: absolute;
-  top: 10ex;
+  top: 4ex;
   left: 20em;
   width: calc(100% - 40em);
 }
@@ -193,10 +198,14 @@ span.block
   float: right;
   margin-right: 2em;
 }
+input[type="text"],
+.re-selectors select
+{
+  margin-top: 0.5ex;
+}
 input[type="checkbox"]
 {
   margin-right: 1em;
-  margin-bottom: 2ex;
 }
 form.buttons button
 {
@@ -207,77 +216,90 @@ form.buttons button
   margin-right: 2em;
   margin-top: 8ex;
 }
+#editor form.buttons button
+{
+  margin-top: 5ex;
+  margin-bottom: 3ex;
+}
     </style>
   </head>
 
   <body>
-  <h1><span data-i18n="extensionName"></span> <span data-i18n="digglerPrefTitle.label"></span></h1>
+    <h1><span data-i18n="extensionName"></span> <span data-i18n="digglerPrefTitle.label"></span></h1>
 
-    <h3 data-i18n="digglerPrefTools.label"></h3>
-    <div id="tools-list" class="list-content">
-      <ul class="neo-diggler-list"></ul>
-    </div>
+    <div class="all-prefs">
 
-    <p></p>
+      <h3 data-i18n="digglerPrefTools.label"></h3>
+      <div id="tools-list" class="list-content">
+        <ul class="neo-diggler-list"></ul>
+      </div>
 
-    <h3 data-i18n="digglerPrefGeneral.label"></h3>
-    <div class="edit-section">
-      <input id="page-button" type="checkbox" selected="true">
-      <span data-i18n="digglerPrefEnabled.label"></span>
-    </div>
+      <p>&nbsp;</p>
 
-    <div id="editpage" class="hidden">
-      <div id="editor-background" class="background"></div>
-      <div id="editor">
-        <div class="content">
+      <h3 data-i18n="digglerPrefGeneral.label"></h3>
+      <div class="edit-section">
+        <input id="page-button" type="checkbox" selected="true">
+        <span data-i18n="digglerPrefEnabled.label"></span>
+      </div>
 
-          <h3 data-i18n="digglerToolActionSection.label"></h3>
-          <div class="edit-section">
-            <p><span data-i18n="digglerToolMenuLabel.label"></span></p>
-            <input id="action-name" type="text" class="full" tabindex=1>
+      <div id="editpage" class="hidden">
+        <div id="editor-background" class="background"></div>
+        <div id="editor">
+          <div class="content">
+
+            <h3 data-i18n="digglerToolActionSection.label"></h3>
+            <div class="edit-section">
+              <span data-i18n="digglerToolMenuLabel.label"></span>
+              <input id="action-name" type="text" class="full" tabindex=1>
+              <br><br>
+              <span data-i18n="digglerToolPattern.label"></span>
+              <div class="re-selectors">
+                <select id="action-select" tabindex=3>
+                  <option data-i18n="digglerToolPatternCmb1.label" selected></option>
+                  <option data-i18n="digglerToolPatternCmb2.label"></option>
+                  <option data-i18n="digglerToolPatternCmb3.label"></option>
+                  <option data-i18n="digglerToolPatternCmb4.label"></option>
+                  <option data-i18n="digglerToolPatternCmb5.label"></option>
+                </select>
+                <span class="block"><input id="action-re" type="text" class="full" tabindex=2></span>
+              </div>
+              <br>
+              <span data-i18n="digglerToolAction.label"></span>
+              <br>
+              <input id="action" type="text" class="full" tabindex=3>
+              <br>
+              <br>
+              <input id="action-as-label" type="checkbox" selected="false" tabindex=4>
+              <span data-i18n="digglerToolUseActionAsLabel.label"></span>
+            </div>
             <br>
-            <p><span data-i18n="digglerToolPattern.label"></span></p>
-            <select id="action-select" tabindex=3>
-              <option data-i18n="digglerToolPatternCmb1.label" selected></option>
-              <option data-i18n="digglerToolPatternCmb2.label"></option>
-              <option data-i18n="digglerToolPatternCmb3.label"></option>
-              <option data-i18n="digglerToolPatternCmb4.label"></option>
-              <option data-i18n="digglerToolPatternCmb5.label"></option>
-            </select>
-            <span class="block"><input id="action-re" type="text" class="full" tabindex=2></span>
-            <br>
-            <p><span data-i18n="digglerToolAction.label"></span></p>
-            <input id="action-as-label" type="checkbox" selected="false" tabindex=3>
-            <span data-i18n="digglerToolUseActionAsLabel.label"></span>
-            <br>
-            <input id="action" type="text" class="full" tabindex=4>
+
+            <h3 data-i18n="digglerToolHints.label"></h3>
+            <div class="edit-section">
+              <span data-i18n="digglerToolHint1.label"></span><br>
+              <span data-i18n="digglerToolHint2.label"></span><br>
+              <span data-i18n="digglerToolHint3.label"></span><br>
+              <span data-i18n="digglerToolHint4.label"></span><br>
+              <span data-i18n="digglerToolHint5.label"></span><br>
+              <span data-i18n="digglerToolHint6.label"></span><br>
+              <span data-i18n="digglerToolHint7.label"></span><br>
+              <span data-i18n="digglerToolHint8.label"></span><br>
+            </div>
+
+            <form class="buttons">
+              <button type="submit" class="browser-style" id="prefs-tool-save" data-i18n="prefs-apply"></button>
+              <button type="submit" class="browser-style" id="prefs-tool-cancel" data-i18n="prefs-cancel"></button>
+            </form>
+
           </div>
-          <br>
-
-          <h3 data-i18n="digglerToolHints.label"></h3>
-          <div class="edit-section">
-            <span data-i18n="digglerToolHint1.label"></span><br>
-            <span data-i18n="digglerToolHint2.label"></span><br>
-            <span data-i18n="digglerToolHint3.label"></span><br>
-            <span data-i18n="digglerToolHint4.label"></span><br>
-            <span data-i18n="digglerToolHint5.label"></span><br>
-            <span data-i18n="digglerToolHint6.label"></span><br>
-            <span data-i18n="digglerToolHint7.label"></span><br>
-            <span data-i18n="digglerToolHint8.label"></span><br>
-          </div>
-
-          <form class="buttons">
-            <button type="submit" class="browser-style" id="prefs-tool-save" data-i18n="prefs-apply"></button>
-            <button type="submit" class="browser-style" id="prefs-tool-cancel" data-i18n="prefs-cancel"></button>
-          </form>
-
         </div>
       </div>
-    </div>
 
-    <form class="buttons">
-      <button type="submit" class="browser-style" id="prefs-save" data-i18n="prefs-apply"></button>
-    </form>
+      <form class="buttons">
+        <button type="submit" class="browser-style" id="prefs-save" data-i18n="prefs-apply"></button>
+      </form>
+
+    </div>
 
     <h2><a target="_blank" href="changelog.html">Changelog</a></h2>
 
