@@ -51,11 +51,20 @@ function onGo( event )
 
     // Use current URL
     browser.tabs.query( {active:true,currentWindow:true}, tabs => {
+        // Need to trigger a search if non-URL
+        let val = url.value;
+        if (!val.match(/^[-A-Za-z0-9_]+:/))
+        {
+            // Doesn't look like a URI, convert to a search
+            // TBD use current search engine, access via bug 1352598
+            val = "https://www.google.com/search?q=" + escape(val.replace( / +/g, "+" ));
+        }
+
         // Try to change URL
-        if (url.value.search("file:") !== 0)
+        if (val.search("file:") !== 0)
         {
             // Normal URI, try to do it
-            browser.tabs.update( tabs[0].id, {url:url.value} ).then(
+            browser.tabs.update( tabs[0].id, {url:val} ).then(
                 result => {
                     // Was OK, close popup
                     window.close();
@@ -71,7 +80,7 @@ function onGo( event )
             browser.runtime.sendMessage({
                 "message":  "neo-diggler-file-uri",
                 "tabId":    tabs[0].id,
-                "uri":      url.value
+                "uri":      val
             });
 
             // Assume it'll work ...
