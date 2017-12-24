@@ -207,6 +207,7 @@ function setDeletable( li )
         button.className = "delete-button";
         button.title = i18nGet("digglerDeleteTool.label");
         button.addEventListener( "click", event => {
+            event.preventDefault();
             deleteEntry( li );
         } );
     }
@@ -220,6 +221,7 @@ function addEdit( li )
     button.className = "edit-button";
     button.appendChild( document.createTextNode( i18nGet("digglerEditTool.label") ) );
     button.addEventListener( "click", event => {
+        event.preventDefault();
         editEntry( li );
     } );
     li.appendChild( button );
@@ -231,7 +233,10 @@ function addPlusEntry( list, n, type )
 {
     list.appendChild( createLi( n, type, "sep", "li-sep", [] ) );
     let li = createLi( parseInt(n)+1, type, "add", "li-data", [plusChar] );
-    li.onclick = event => editEntry( li );
+    li.onclick = event => {
+        event.preventDefault();
+        editEntry( li );
+    }
     list.appendChild( li );
 }
 
@@ -379,6 +384,7 @@ function saveTool()
             li.draggable = true;
             setDeletable( li );
             addEdit( li );
+            li.onclick = null;
 
             // Add a new +
             let list = li.closest("ul");
