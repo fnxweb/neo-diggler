@@ -96,6 +96,7 @@ function onDrop(ev)
     {
         // Moving from top down, so shuffle up
         let moveText = originText.innerText;
+        let moveTool = origin.getAttribute("data-tool");
         let item = document.getElementById( set + originIndex );
         let itemText = item.querySelector(".entry");
         for (let index = originIndex+1;  index <= targetIndex;  ++index)
@@ -103,15 +104,18 @@ function onDrop(ev)
             let nextItem = document.getElementById( set + index );
             let nextText = nextItem.querySelector(".entry");
             itemText.innerText = nextText.innerText;
+            item.setAttribute( "data-tool", nextItem.getAttribute( "data-tool" ) );
             item = nextItem;
             itemText = nextText;
         }
         itemText.innerText = moveText;
+        item.setAttribute( "data-tool", moveTool );
     }
     else
     {
         // Moving from bottom up, so shuffle down
         let moveText = originText.innerText;
+        let moveTool = origin.getAttribute("data-tool");
         let item = document.getElementById( set + originIndex );
         let itemText = item.querySelector(".entry");
         for (let index = originIndex-1;  index >= targetIndex;  --index)
@@ -119,10 +123,12 @@ function onDrop(ev)
             let nextItem = document.getElementById( set + index );
             let nextText = nextItem.querySelector(".entry");
             itemText.innerText = nextText.innerText;
+            item.setAttribute( "data-tool", nextItem.getAttribute( "data-tool" ) );
             item = nextItem;
             itemText = nextText;
         }
         itemText.innerText = moveText;
+        item.setAttribute( "data-tool", moveTool );
     }
 }
 
