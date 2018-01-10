@@ -29,7 +29,6 @@
     },
 
     "permissions": [
-        "<all_urls>",
         "clipboardWrite",
         "menus",
         "storage",

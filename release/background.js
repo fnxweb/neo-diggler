@@ -73,41 +73,8 @@ var currentUrl = "";
 // ID of top-level menu
 var mainMenu = "neo-diggler";
 
-
-// Function to write to the clipbard (from a page)
-function __diggler_setClipboardText( text )
-{
-    // Is there no easier way than this?
-    let textarea = document.createElement("textarea");
-
-    textarea.style.position = 'fixed';
-    textarea.style.top = 0;
-    textarea.style.left = 0;
-    textarea.style.width = '1px';
-    textarea.style.height = '1px';
-    textarea.style.padding = 0;
-    textarea.style.border = 'none';
-    textarea.style.outline = 'none';
-    textarea.style.boxShadow = 'none';
-    textarea.style.background = 'transparent';
-
-    textarea.value = text;
-
-    document.body.appendChild(textarea);
-
-    textarea.select();
-
-    try {
-        document.execCommand('copy');
-    } catch (err) {
-        console.error("Neo Diggler was unable to copy '" + text + "' to the clipboard");
-    }
-
-  document.body.removeChild(textarea);
-}
-
-// String version of such
-var setClipboardText = __diggler_setClipboardText.toString();
+// Current clipboard text to set (by manual.html/js)
+var requiredClipboardText = "";
 
 
 // Load preferences
@@ -267,10 +234,7 @@ function digglerDoMenu( info, tab )
 function openFileLink( tabId, uriToLoad )
 {
     // First copy link to clipboard from current page
-    uriToLoad = uriToLoad.replace(/"/g,"%22");
-    browser.tabs.executeScript( tabId, {
-        code: `(${setClipboardText})("${uriToLoad}"); delete __diggler_setClipboardText`
-    } );
+    requiredClipboardText = uriToLoad.replace(/"/g,"%22");
 
     // Open manual redirect message / instructions
     browser.tabs.update( tabId, { "url": browser.extension.getURL("manual.html") } );
@@ -641,6 +605,11 @@ browser.runtime.onMessage.addListener( (message, sender) => {
         browser.storage.local.set({"preferences": message["preferences"]}).then( results => loadPrefs() );
     else if (message["message"] === "neo-diggler-file-uri")
         openFileLink( message["tabId"], message["uri"] );
+    else if (message["message"] === "neo-diggler-clipboard-request")
+        browser.runtime.sendMessage({
+            message: "neo-diggler-clipboard",
+            text:    requiredClipboardText
+        });
 });
 
 // Finally - extension changed?
