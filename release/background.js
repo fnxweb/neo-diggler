@@ -225,7 +225,7 @@ function digglerSubstituteURI(originalURI, pattern)
 // Menu handler
 function digglerDoMenu( info, tab )
 {
-    // Only URL actions off the menu any more
+    // Only pull URL actions out of the menu store now
     digglerSetUrl( tab.id, info.menuItemId );
 }
 
@@ -251,8 +251,14 @@ function digglerSetUrl( tabId, menuId )
         let index = parseInt( match[1] );
         let uriToLoad = currentMenuItems[index].url;
 
+        // Special case
+        if (uriToLoad === "<prefs>")
+        {
+            // Open prefs. page
+            browser.runtime.openOptionsPage();
+        }
         // file:/// links can't currently be triggered - use work-around
-        if (uriToLoad.search("file:") !== 0)
+        else if (uriToLoad.search("file:") !== 0)
         {
             // OK, normal
             browser.tabs.update( tabId, { "url": uriToLoad } );
@@ -306,7 +312,13 @@ function digglerBuildMenu(url)
     {
         console.log("Neo Diggler: exception " + ex);
     }
+
+    // Nav menu.
     digglerBuildUrlMenu(url);
+
+    // Add prefs. link
+    digglerCreateTempMenuSeparator(mainMenu);
+    digglerCreateTempMenuItemName(mainMenu, browser.i18n.getMessage("digglerPrefTitle.label"), "<prefs>");
 }
 
 
