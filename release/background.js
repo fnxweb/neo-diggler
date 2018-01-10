@@ -314,10 +314,12 @@ function digglerBuildMenu(url)
     }
 
     // Nav menu.
+    let currentMenuSize = currentMenuItems.length;
     digglerBuildUrlMenu(url);
 
-    // Add prefs. link
-    digglerCreateTempMenuSeparator(mainMenu);
+    // Add prefs. link, with sep. if required.
+    if (currentMenuSize !== currentMenuItems.length)
+        digglerCreateTempMenuSeparator(mainMenu);
     digglerCreateTempMenuItemName(mainMenu, browser.i18n.getMessage("digglerPrefTitle.label"), "<prefs>");
 }
 
@@ -415,7 +417,8 @@ function digglerBuildUrlMenu (siteUrl)
   }
   menuList = cleanExtraSeparators(menuList);
 
-  if (menuList.length > 0)
+  // Don't do anything if there's no menu list, or a menu list of only one thing (the site itself)
+  if (menuList.length > 1)
   {
     for (i = 0; i < menuList.length; i++)
     {
