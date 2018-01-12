@@ -51,11 +51,22 @@ function onGo( event )
 
     // Use current URL
     browser.tabs.query( {active:true,currentWindow:true}, tabs => {
-        // Need to trigger a search if non-URL
-        let val = url.value;
-        if (!val.match(/^[-A-Za-z0-9_]+:/))
+        // Strip any surrounding spaces (paste issues)
+        let val = url.value.replace( /^ *(.*?) *$/, "$1" );
+
+        // Might it be an incomplete URL (www.example.com)?
+        if (val.search(/^[-A-Za-z0-9_]+:/) !== 0  &&    // no protocol
+            val.indexOf(" ") === -1  &&                 // no spaces in it
+            val.indexOf(".") !== -1)                    // at least one dot
         {
-            // Doesn't look like a URI, convert to a search
+            // Incomplete URL, try http:// on the front (should we presume https nowadays?)
+            val = "https://" + val;
+        }
+
+        // Trigger a search for non-URL
+        if (val.search(/^[-A-Za-z0-9_]+:/) !== 0)
+        {
+            // Doesn't look like a URI or even the beginnings of one, convert to a search
             // TBD use current search engine, access via bug 1352598
             val = "https://www.google.com/search?q=" + escape(val.replace( / +/g, "+" ));
         }
