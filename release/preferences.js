@@ -26,6 +26,9 @@ let debugPrefs =
 // Plus
 var plusChar = "➕";
 
+// Field separator
+var FS = "\x1E";
+
 
 // i18n lookup
 function i18nGet( key )
@@ -259,7 +262,7 @@ function createLi( n, list, listtype, cls, tool )
         let text = tool[0];
         if (tool.length > 1)
         {
-            li.setAttribute( "data-tool", tool.join("|") );
+            li.setAttribute( "data-tool", tool.join(FS) );
             text = tool[1];
         }
 
@@ -337,10 +340,10 @@ function editEntry(li)
     // Populate edit page
     let tool = li.getAttribute("data-tool");
     if (tool === null  ||  tool === "")
-        tool = "2|" + i18nGet("digglerToolDefaultLabel.label") + "|0|^(.+)$|";
+        tool = `2${FS}` + i18nGet("digglerToolDefaultLabel.label") + `${FS}0${FS}^(.+)$${FS}`;
 
     // Extract bits
-    let bits = tool.split("|");
+    let bits = tool.split(FS);
 
     // Assign
     document.getElementById("action-name").value       = bits[1];
@@ -380,7 +383,7 @@ function saveTool()
 
         // Squirrel away
         li.querySelector( ".entry" ).innerText = bits[1];
-        li.setAttribute( "data-tool", bits.join("|") );
+        li.setAttribute( "data-tool", bits.join(FS) );
 
         // Is it a new one?
         if (li.id.match(/add$/))
@@ -415,7 +418,7 @@ function savePrefs()
     let tools = document.querySelectorAll( "li[data-tool]" );
     prefs.tools = [];
     for (let tool of tools)
-        prefs.tools.push( tool.getAttribute( "data-tool" ).split("|") );
+        prefs.tools.push( tool.getAttribute( "data-tool" ).split(FS) );
 
     // Now action button
     prefs.page_action = document.getElementById("page-button").checked;
