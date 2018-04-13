@@ -257,6 +257,13 @@ function digglerSetUrl( tabId, menuId )
             // Open prefs. page
             browser.runtime.openOptionsPage();
         }
+        // Run javascript?
+        else if (uriToLoad.search("javascript:") === 0)
+        {
+            // Yep, JS
+            let js = uriToLoad.replace("javascript:","");
+            browser.tabs.executeScript( tabId, { "code": js } );
+        }
         // file:/// links can't currently be triggered - use work-around
         else if (uriToLoad.search("file:") !== 0)
         {
