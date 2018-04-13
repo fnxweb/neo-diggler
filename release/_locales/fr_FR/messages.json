@@ -152,31 +152,31 @@
     },
 
     "digglerToolHint2.label": {
-        "message": "$S - l&apos;URL entière"
+        "message": "$$S - l&apos;URL entière"
     },
 
     "digglerToolHint3.label": {
-        "message": "$c - le protocole (ex. : http)"
+        "message": "$$c - le protocole (ex. : http)"
     },
 
     "digglerToolHint4.label": {
-        "message": "$u - l&apos;utilisateur / mot de passe (ex. : fred:bloggs)"
+        "message": "$$u - l&apos;utilisateur / mot de passe (ex. : fred:bloggs)"
     },
 
     "digglerToolHint5.label": {
-        "message": "$h - l&apos;hôte (ex. : www.mozilla.org)"
+        "message": "$$h - l&apos;hôte (ex. : www.mozilla.org)"
     },
 
     "digglerToolHint6.label": {
-        "message": "$t - le numéro de port (ex. : 80)"
+        "message": "$$t - le numéro de port (ex. : 80)"
     },
 
     "digglerToolHint7.label": {
-        "message": "$p - le chemin (ex. : /mon/chemin/index.html)"
+        "message": "$$p - le chemin (ex. : /mon/chemin/index.html)"
     },
 
     "digglerToolHint8.label": {
-        "message": "$1, $2 etc... - Regroupement des parties d&apos;une expression régulière."
+        "message": "$$1, $$2 etc... - Regroupement des parties d&apos;une expression régulière."
     },
 
     "digglerToolPatternCmb1.label": {

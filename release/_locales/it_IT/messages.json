@@ -152,31 +152,31 @@
     },
 
     "digglerToolHint2.label": {
-        "message": "$S - l&apos;intero URL"
+        "message": "$$S - l&apos;intero URL"
     },
 
     "digglerToolHint3.label": {
-        "message": "$c - lo schema (es: http)"
+        "message": "$$c - lo schema (es: http)"
     },
 
     "digglerToolHint4.label": {
-        "message": "$u - nome utente / password (es: fred:bloggs)"
+        "message": "$$u - nome utente / password (es: fred:bloggs)"
     },
 
     "digglerToolHint5.label": {
-        "message": "$h - il server (es: www.mozilla.org)"
+        "message": "$$h - il server (es: www.mozilla.org)"
     },
 
     "digglerToolHint6.label": {
-        "message": "$t - il numero della porta (es: 80)"
+        "message": "$$t - il numero della porta (es: 80)"
     },
 
     "digglerToolHint7.label": {
-        "message": "$p - il percorso (es: /mio/percorso/index.html)"
+        "message": "$$p - il percorso (es: /mio/percorso/index.html)"
     },
 
     "digglerToolHint8.label": {
-        "message": "$1, $2 etc. - parti fra parentesi delle espressioni regolari"
+        "message": "$$1, $$2 etc. - parti fra parentesi delle espressioni regolari"
     },
 
     "digglerToolPatternCmb1.label": {

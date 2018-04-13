@@ -152,31 +152,31 @@
     },
 
     "digglerToolHint2.label": {
-        "message": "$S - de volledige URL"
+        "message": "$$S - de volledige URL"
     },
 
     "digglerToolHint3.label": {
-        "message": "$c - het protocol (b.v. http)"
+        "message": "$$c - het protocol (b.v. http)"
     },
 
     "digglerToolHint4.label": {
-        "message": "$u - de gebruikersnaam/wachtwoord (b.v. fred:bloggs)"
+        "message": "$$u - de gebruikersnaam/wachtwoord (b.v. fred:bloggs)"
     },
 
     "digglerToolHint5.label": {
-        "message": "$h - de host (b.v. www.mozilla.org)"
+        "message": "$$h - de host (b.v. www.mozilla.org)"
     },
 
     "digglerToolHint6.label": {
-        "message": "$t - het poortnummer (b.v. 80)"
+        "message": "$$t - het poortnummer (b.v. 80)"
     },
 
     "digglerToolHint7.label": {
-        "message": "$p - het pad (b.v. /mijn/pad/index.html)"
+        "message": "$$p - het pad (b.v. /mijn/pad/index.html)"
     },
 
     "digglerToolHint8.label": {
-        "message": "$1, $2 enz. - delen van de reguliere expressie tussen haakjes"
+        "message": "$$1, $$2 enz. - delen van de reguliere expressie tussen haakjes"
     },
 
     "digglerToolPatternCmb1.label": {

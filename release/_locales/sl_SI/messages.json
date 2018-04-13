@@ -152,31 +152,31 @@
     },
 
     "digglerToolHint2.label": {
-        "message": "$S - celotni URL"
+        "message": "$$S - celotni URL"
     },
 
     "digglerToolHint3.label": {
-        "message": "$c - protokol (npr. http)"
+        "message": "$$c - protokol (npr. http)"
     },
 
     "digglerToolHint4.label": {
-        "message": "$u - uporabniško ime / geslo (npr. janez:skrivnost)"
+        "message": "$$u - uporabniško ime / geslo (npr. janez:skrivnost)"
     },
 
     "digglerToolHint5.label": {
-        "message": "$h - strežnik (npr. www.mozilla.org)"
+        "message": "$$h - strežnik (npr. www.mozilla.org)"
     },
 
     "digglerToolHint6.label": {
-        "message": "$t - številka vrat (npr. 80)"
+        "message": "$$t - številka vrat (npr. 80)"
     },
 
     "digglerToolHint7.label": {
-        "message": "$p - pot (npr. /moja/pot/index.html)"
+        "message": "$$p - pot (npr. /moja/pot/index.html)"
     },
 
     "digglerToolHint8.label": {
-        "message": "$1, $2, itd. - deli regularnega izraza v oklepajih"
+        "message": "$$1, $$2, itd. - deli regularnega izraza v oklepajih"
     },
 
     "digglerToolPatternCmb1.label": {

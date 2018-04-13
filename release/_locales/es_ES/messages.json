@@ -152,31 +152,31 @@
     },
 
     "digglerToolHint2.label": {
-        "message": "$S - the whole URL"
+        "message": "$$S - the whole URL"
     },
 
     "digglerToolHint3.label": {
-        "message": "$c - the scheme (e.g. http)"
+        "message": "$$c - the scheme (e.g. http)"
     },
 
     "digglerToolHint4.label": {
-        "message": "$u - the username / password (e.g. fred:bloggs)"
+        "message": "$$u - the username / password (e.g. fred:bloggs)"
     },
 
     "digglerToolHint5.label": {
-        "message": "$h - the host (e.g. www.mozilla.org)"
+        "message": "$$h - the host (e.g. www.mozilla.org)"
     },
 
     "digglerToolHint6.label": {
-        "message": "$t - the port number (e.g. 80)"
+        "message": "$$t - the port number (e.g. 80)"
     },
 
     "digglerToolHint7.label": {
-        "message": "$p - the path (e.g. /my/path/index.html)"
+        "message": "$$p - the path (e.g. /my/path/index.html)"
     },
 
     "digglerToolHint8.label": {
-        "message": "$1, $2 etc. - bracketed parts of the regular expression."
+        "message": "$$1, $$2 etc. - bracketed parts of the regular expression."
     },
 
     "digglerToolPatternCmb1.label": {

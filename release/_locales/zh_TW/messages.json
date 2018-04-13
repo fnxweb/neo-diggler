@@ -152,31 +152,31 @@
     },
 
     "digglerToolHint2.label": {
-        "message": "$S - 全網址"
+        "message": "$$S - 全網址"
     },
 
     "digglerToolHint3.label": {
-        "message": "$c - 協定 (e.g. http)"
+        "message": "$$c - 協定 (e.g. http)"
     },
 
     "digglerToolHint4.label": {
-        "message": "$u - 登入名稱/密碼 (e.g. fred:bloggs)"
+        "message": "$$u - 登入名稱/密碼 (e.g. fred:bloggs)"
     },
 
     "digglerToolHint5.label": {
-        "message": "$h - 主機 (e.g. www.mozilla.org)"
+        "message": "$$h - 主機 (e.g. www.mozilla.org)"
     },
 
     "digglerToolHint6.label": {
-        "message": "$t - 連接埠Port (e.g. 80)"
+        "message": "$$t - 連接埠Port (e.g. 80)"
     },
 
     "digglerToolHint7.label": {
-        "message": "$p - 路徑 (e.g. /my/path/index.html)"
+        "message": "$$p - 路徑 (e.g. /my/path/index.html)"
     },
 
     "digglerToolHint8.label": {
-        "message": "$1, $2 etc. - 括號內的指定運算式"
+        "message": "$$1, $$2 etc. - 括號內的指定運算式"
     },
 
     "digglerToolPatternCmb1.label": {

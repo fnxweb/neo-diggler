@@ -152,7 +152,7 @@
     },
 
     "digglerToolHint2.label": {
-        "message": "$S - vollständige URL"
+        "message": "$$S - vollständige URL"
     },
 
     "digglerToolHint3.label": {
@@ -160,23 +160,23 @@
     },
 
     "digglerToolHint4.label": {
-        "message": "$u - Benutzername/Passwort (z.B. fred:bloggs)"
+        "message": "$$u - Benutzername/Passwort (z.B. fred:bloggs)"
     },
 
     "digglerToolHint5.label": {
-        "message": "$h - Host (z.B. www.mozilla.org)"
+        "message": "$$h - Host (z.B. www.mozilla.org)"
     },
 
     "digglerToolHint6.label": {
-        "message": "$t - Portnummer (z.B. 80)"
+        "message": "$$t - Portnummer (z.B. 80)"
     },
 
     "digglerToolHint7.label": {
-        "message": "$p - Pfad (z.B. /mein/pfad/index.html)"
+        "message": "$$p - Pfad (z.B. /mein/pfad/index.html)"
     },
 
     "digglerToolHint8.label": {
-        "message": "$1,$2 etc. - geklammerte Teile des regulären Ausdrucks"
+        "message": "$$1,$$2 etc. - geklammerte Teile des regulären Ausdrucks"
     },
 
     "digglerToolPatternCmb1.label": {

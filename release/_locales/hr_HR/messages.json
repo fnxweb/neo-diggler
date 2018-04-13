@@ -152,31 +152,31 @@
     },
 
     "digglerToolHint2.label": {
-        "message": "$S - cijela web adresa"
+        "message": "$$S - cijela web adresa"
     },
 
     "digglerToolHint3.label": {
-        "message": "$c - shema (npr. http)"
+        "message": "$$c - shema (npr. http)"
     },
 
     "digglerToolHint4.label": {
-        "message": "$u - korisničko ime / lozinka (npr. marko:blogovi)"
+        "message": "$$u - korisničko ime / lozinka (npr. marko:blogovi)"
     },
 
     "digglerToolHint5.label": {
-        "message": "$h - glavni poslužitelj (npr. www.mozilla.org)"
+        "message": "$$h - glavni poslužitelj (npr. www.mozilla.org)"
     },
 
     "digglerToolHint6.label": {
-        "message": "$t - broj priključka (npr. 80)"
+        "message": "$$t - broj priključka (npr. 80)"
     },
 
     "digglerToolHint7.label": {
-        "message": "$p - putanja (npr. /moja/putanja/index.html)"
+        "message": "$$p - putanja (npr. /moja/putanja/index.html)"
     },
 
     "digglerToolHint8.label": {
-        "message": "$1, $2 itd. - dijelovi regularnih izraza ograđenih zagradom."
+        "message": "$$1, $$2 itd. - dijelovi regularnih izraza ograđenih zagradom."
     },
 
     "digglerToolPatternCmb1.label": {

@@ -152,31 +152,31 @@
     },
 
     "digglerToolHint2.label": {
-        "message": "$S - a URL inteira"
+        "message": "$$S - a URL inteira"
     },
 
     "digglerToolHint3.label": {
-        "message": "$c - o esquema (ex. http)"
+        "message": "$$c - o esquema (ex. http)"
     },
 
     "digglerToolHint4.label": {
-        "message": "$u - o nome de usuário / senha (ex. fred:bloggs)"
+        "message": "$$u - o nome de usuário / senha (ex. fred:bloggs)"
     },
 
     "digglerToolHint5.label": {
-        "message": "$h - o host (ex. www.mozilla.org)"
+        "message": "$$h - o host (ex. www.mozilla.org)"
     },
 
     "digglerToolHint6.label": {
-        "message": "$t - o número da porta (ex. 80)"
+        "message": "$$t - o número da porta (ex. 80)"
     },
 
     "digglerToolHint7.label": {
-        "message": "$p - o caminho (ex. /meu/caminho/index.html)"
+        "message": "$$p - o caminho (ex. /meu/caminho/index.html)"
     },
 
     "digglerToolHint8.label": {
-        "message": "$1, $2 etc. - partes separadas da expressão regular."
+        "message": "$$1, $$2 etc. - partes separadas da expressão regular."
     },
 
     "digglerToolPatternCmb1.label": {
