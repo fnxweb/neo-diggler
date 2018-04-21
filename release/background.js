@@ -212,13 +212,16 @@ function digglerSubstituteURI(originalURI, pattern)
     // $u - the username / password (e.g. fred:bloggs)
     // $p - the path (e.g. /my/path/index.html)
     // $1, $2 etc. - parts of the regular expression to be subsituted.
+    let userPass = originalURI.username + ':' + originalURI.password;
+    if (userPass === ':')
+        userPass = '';
     return pattern
-        .replace(/\$S/, originalURI.spec)
-        .replace(/\$c/, originalURI.scheme)
-        .replace(/\$h/, originalURI.host)
+        .replace(/\$S/, originalURI.href)
+        .replace(/\$c/, originalURI.protocol.replace(':',''))
+        .replace(/\$h/, originalURI.hostname)
         .replace(/\$t/, originalURI.port)
-        .replace(/\$u/, originalURI.userPass)
-        .replace(/\$p/, originalURI.path);
+        .replace(/\$u/, userPass)
+        .replace(/\$p/, originalURI.pathname);
 }
 
 
@@ -282,23 +285,24 @@ function digglerSetUrl( tabId, menuId )
 // Used to wrap now-unavailable nsIURIFixup
 function digglerFixupUrl(url)
 {
-    let match = url.match(/^ *(.*?) *$/);
-    if (match.length > 1)
-        return match[1];
+    // OK, this does more than I first thought!  Need to parse out bits of the URI.
+    var fixedUpURI = new URL(url);
+    if (fixedUpURI)
+        return fixedUpURI;
     return url;
 }
 
 
 // Build menus
-function digglerBuildMenu(url)
+function digglerBuildMenu(href)
 {
-    url = digglerFixupUrl(url);
+    url = digglerFixupUrl(href);
 
     // Need to do it?
-    if (url === currentUrl)
+    if (url.href === currentUrl)
         return;
     else
-        currentUrl = url;
+        currentUrl = url.href;
 
     // Clear all of the previous tools
     digglerClearTempMenuItems();
@@ -332,10 +336,8 @@ function digglerBuildMenu(url)
 
 
 // Create custom tools menu
-function digglerBuildToolsMenu(toolsMenu, siteUrl, tools)
+function digglerBuildToolsMenu(toolsMenu, uri, tools)
 {
-  var uri = digglerFixupUrl(siteUrl);
-
   // Read the array of tools and turn them into menu items
   var menuList = new Array();
   for (i = 0; i < tools.length; ++i)
@@ -354,7 +356,7 @@ function digglerBuildToolsMenu(toolsMenu, siteUrl, tools)
         "i",
         false); // this param controls recursion, but is dangerous to set to true
 
-     menuList = menuList.concat(matchUrl(siteUrl, option, uri));
+     menuList = menuList.concat(matchUrl(uri.href, option, uri));
   }
 
   menuList = cleanExtraSeparators(menuList);
@@ -420,7 +422,7 @@ function digglerBuildUrlMenu (siteUrl)
       continue;
     }
 
-    menuList = menuList.concat(matchUrl (siteUrl, option, null));
+    menuList = menuList.concat(matchUrl (siteUrl.href, option, null));
   }
   menuList = cleanExtraSeparators(menuList);
 
