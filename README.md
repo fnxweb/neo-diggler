@@ -1,5 +1,7 @@
 Neo Diggler is a small but powerful add-on for Firefox. It adds a customisable menu button next to the address bar with navigation and modification actions relevant to the current URL.
 ___
+[![Build Status](https://travis-ci.org/fnxweb/neo-diggler.svg?branch=master)](https://travis-ci.org/fnxweb/neo-diggler)
+
 The button's menu allows you navigate up through the current URL's parents, to visit the equivalent ftp URL, or to visit the site in [archive.org](https://archive.org/). A click on the menu button also provides a clear the location bar (something like the one in Konqueror) - useful for keyboard free browsing.
 
 It also has the ability to add custom URL conversions/manipulations.
