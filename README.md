@@ -1,3 +1,6 @@
+# THIS REPO HAS BEEN RELOCATED
+The new location is https://codeberg.org/fnxweb/neo-diggler
+___
 Neo Diggler is a small but powerful add-on for Firefox. It adds a customisable menu button next to the address bar with navigation and modification actions relevant to the current URL.
 ___
 [![Build Status](https://travis-ci.org/fnxweb/neo-diggler.svg?branch=master)](https://travis-ci.org/fnxweb/neo-diggler)
